@@ -160,7 +160,7 @@ public class RegisterControllerTest {
     Address address = new Address();
     address.setArea(null);
     address.setPincode("400072");
-    UpdateRequest updateRequest = UpdateRequest.builder().userId(100001L).address(address).emailId("test@mail.com").phoneNo("9988776655")
+    UpdateRequest updateRequest = UpdateRequest.builder().userId(100001L).address(address).emailId("testmail.com").phoneNo("9988776655")
         .firstName("Gagandeep").lastName("Singh").securityQuestion("New question").securityAnswer("answer").build();
     mockMvc
         .perform(MockMvcRequestBuilders.put("/register")
