@@ -49,7 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         return source;
       }).and() // Required for accessing prpotected routes
       .csrf().disable()
-      .authorizeRequests().antMatchers("/register/**", "/auth/**" , "/h2/**", "/swagger*/**", "/v2/api-docs", "/social/**").permitAll()
+      .authorizeRequests()
+      .antMatchers("/register/**", "/auth/**" , "/h2/**", "/swagger*/**", "/v2/api-docs", "/social/**").permitAll()
       .antMatchers("/**").permitAll()
       // .antMatchers().permitAll()
       .anyRequest().authenticated()
