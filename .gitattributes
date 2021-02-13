@@ -1,0 +1,6 @@
+# Fixes unncessary modified files on opening in container
+* text=auto eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+.devcontainer/* linguist-generated
