@@ -5,6 +5,14 @@ spring:
     active: test
   application:
     name: gift-shop
+  mail:
+    host: smtp.sendgrid.net
+    port: 25
+    ssl: no
+    tls: yes
+    username: apikey
+    password: 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
+    protocol: smtp
 
 # JTW Config
 jwt:
