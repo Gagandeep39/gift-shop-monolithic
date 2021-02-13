@@ -8,6 +8,7 @@
 package com.online.giftshop.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.online.giftshop.entities.ProductInfo;
 
@@ -20,4 +21,6 @@ public interface ProductInfoRepository extends JpaRepository<ProductInfo, Long> 
 	// List<ProductInfo> fetchProductByCategory(String category);
 
 	List<ProductInfo> findByProductNameContainingIgnoreCase(String name);
+
+	Optional<ProductInfo> findByproductId(long productId);
 }
