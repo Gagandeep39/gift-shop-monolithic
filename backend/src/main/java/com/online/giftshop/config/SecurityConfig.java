@@ -7,6 +7,7 @@
  */
 package com.online.giftshop.config;
 
+import java.util.Arrays;
 
 import com.online.giftshop.security.CustomAuthenticationEntryPoint;
 import com.online.giftshop.security.JwtAuthorizationFilter;
@@ -14,6 +15,7 @@ import com.online.giftshop.security.JwtProvider;
 import com.online.giftshop.services.implementation.JwtUserDetailsServiceImpl;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,6 +23,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.web.cors.CorsConfiguration;
 
 import lombok.AllArgsConstructor;
 
@@ -37,9 +40,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
   protected void configure(HttpSecurity http) throws Exception {
     http
       // Required when not using gateway
-      // .cors().and()
+      .cors()
+      .configurationSource(request -> {
+          CorsConfiguration source = new CorsConfiguration();
+          source.applyPermitDefaultValues();
+          // .applyPermitDefaultValues(); only allows GET, HEAD, POST
+          source.setAllowedMethods(Arrays.asList("GET", "HEAD", "POST", "DELETE", "PUT"));
+        return source;
+      }).and() // Required for accessing prpotected routes
       .csrf().disable()
       .authorizeRequests().antMatchers("/register/**", "/auth/**" , "/h2/**", "/swagger*/**", "/v2/api-docs", "/social/**").permitAll()
+      .antMatchers(HttpMethod.GET, "/product-service/**").permitAll()
       // .antMatchers().permitAll()
       .anyRequest().authenticated()
       .and()
