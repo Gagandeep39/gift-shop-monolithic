@@ -1,0 +1,18 @@
+server:
+  port: ${server_port:1999}
+spring:
+  profiles:
+    active: test
+  application:
+    name: gift-shop
+
+# JTW Config
+jwt:
+  secret: ${jwt_secret:thisisathirtycharacterlongstring}
+  expiration: 3600000
+
+google:
+  CLIENT_ID: 120787335948-g4r6bof29ub3vaaaiu7pc01jd5dalooq.apps.googleusercontent.com
+
+facebook:
+  TOKEN_VALIDATION_URL: https://graph.facebook.com/me?access_token=
