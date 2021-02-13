@@ -1,0 +1,466 @@
+<div class="root">
+  <div
+    class="background"
+    [ngStyle]="{
+      'background-image': 'url(/assets/images/celebration2.jpg)'
+    }"
+  ></div>
+  <div class="content">
+    <div class="my-card">
+      <div class="row">
+        <div class="p-5">
+          <h2 class="product-title">
+            <img
+              class="back-img"
+              (click)="goBack()"
+              src="/assets/images/back.svg"
+              alt=""
+            />
+            Edit Profile #<span class="product-id">
+              {{ userDetailsEdit?.userId }}
+            </span>
+          </h2>
+          <form
+            class="user"
+            [formGroup]="updateUserForm"
+            (ngSubmit)="submitForm()"
+          >
+            <input hidden type="text" formControlName="userId" />
+            <!-- User ID -->
+            <div class="form-group userId">
+              <label for="userId"> User ID</label>
+              <input
+                class="form-control form-control-user"
+                type="text"
+                id="userId"
+                formControlName="userId"
+                placeholder="User ID"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && updateUserForm.get('userId').invalid
+                }"
+                name="userId"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="submitted && updateUserForm.get('userId').invalid"
+              >
+                <div *ngIf="updateUserForm.get('userId').errors['required']">
+                  * Required
+                </div>
+                <div
+                  *ngIf="
+                    updateUserForm.get('userId').errors['serverValidationError']
+                  "
+                >
+                  {{
+                    updateUserForm.controls["userId"].errors
+                      .serverValidationError
+                  }}
+                </div>
+              </div>
+            </div>
+            <!-- First Name -->
+            <div class="row">
+              <div class="form-group col">
+                <label for="exampleInputfirstName"> First Name</label>
+                <input
+                  class="form-control form-control-user"
+                  formControlName="firstName"
+                  id="exampleInputfirstName"
+                  placeholder="First Name"
+                  name="firstName"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateUserForm.get('firstName').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateUserForm.get('firstName').invalid"
+                >
+                  <div
+                    *ngIf="updateUserForm.get('firstName').errors['required']"
+                  >
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateUserForm.get('firstName').errors[
+                        'serverValidationError'
+                      ]
+                    "
+                  >
+                    {{
+                      updateUserForm.controls["firstName"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Last Name -->
+              <div class="form-group col">
+                <label for="exampleInputlastName"> Last Name</label>
+                <input
+                  class="form-control form-control-user"
+                  formControlName="lastName"
+                  id="exampleInputlastName"
+                  placeholder="Last Name"
+                  name="lastName"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateUserForm.get('lastName').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateUserForm.get('lastName').invalid"
+                >
+                  <div
+                    *ngIf="updateUserForm.get('lastName').errors['required']"
+                  >
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateUserForm.get('lastName').errors[
+                        'serverValidationError'
+                      ]
+                    "
+                  >
+                    {{
+                      updateUserForm.controls["lastName"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <!-- Email ID -->
+              <div class="form-group col">
+                <label for="exampleInputemailId"> Email ID</label>
+                <input
+                  class="form-control form-control-user"
+                  type="emailId"
+                  formControlName="emailId"
+                  id="exampleInputemailId"
+                  placeholder="Email ID"
+                  name="emailId"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateUserForm.get('emailId').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateUserForm.get('emailId').invalid"
+                >
+                  <div *ngIf="updateUserForm.get('emailId').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateUserForm.get('emailId').errors[
+                        'serverValidationError'
+                      ]
+                    "
+                  >
+                    {{
+                      updateUserForm.controls["emailId"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Phone No -->
+              <div class="form-group col">
+                <label for="exampleInputphoneNo"> Phone No</label>
+                <input
+                  class="form-control form-control-user"
+                  formControlName="phoneNo"
+                  id="exampleInputphoneNo"
+                  placeholder="Phone No"
+                  name="phoneNo"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateUserForm.get('phoneNo').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateUserForm.get('phoneNo').invalid"
+                >
+                  <div *ngIf="updateUserForm.get('phoneNo').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateUserForm.get('phoneNo').errors[
+                        'serverValidationError'
+                      ]
+                    "
+                  >
+                    {{
+                      updateUserForm.controls["phoneNo"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div formGroupName="address">
+              <div class="row">
+                <div class="col address">
+                  <div class="form-group">
+                    <label for="city">City</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="City"
+                      name="city"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          updateUserForm.get('address.city').invalid
+                      }"
+                      formControlName="city"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="
+                        submitted && updateUserForm.get('address.city').invalid
+                      "
+                    >
+                      <div
+                        *ngIf="
+                          updateUserForm.get('address.city').errors['required']
+                        "
+                      >
+                        * Required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="country">State</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="State"
+                      name="State"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          updateUserForm.get('address.state').invalid
+                      }"
+                      formControlName="state"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="
+                        submitted && updateUserForm.get('address.state').invalid
+                      "
+                    >
+                      <div
+                        *ngIf="
+                          updateUserForm.get('address.state').errors['required']
+                        "
+                      >
+                        * Required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col address">
+                  <div class="form-group">
+                    <label for="area">Area</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Area"
+                      name="area"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          updateUserForm.get('address.area').invalid
+                      }"
+                      formControlName="area"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="
+                        submitted && updateUserForm.get('address.area').invalid
+                      "
+                    >
+                      <div
+                        *ngIf="
+                          updateUserForm.get('address.area').errors['required']
+                        "
+                      >
+                        * Required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="pinode">pincode</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="pincode"
+                      name="pincode"
+                      formControlName="pincode"
+                      [ngClass]="{
+                        'is-invalid':
+                          submitted &&
+                          updateUserForm.get('address.pincode').invalid
+                      }"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="
+                        submitted &&
+                        updateUserForm.get('address.pincode').invalid
+                      "
+                    >
+                      <div
+                        *ngIf="
+                          updateUserForm.get('address.pincode').errors[
+                            'required'
+                          ]
+                        "
+                      >
+                        * Required
+                      </div>
+                      <div
+                        *ngIf="
+                          updateUserForm.get('address.pincode').errors[
+                            'pattern'
+                          ]
+                        "
+                      >
+                        Must be of length 6
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Security Question -->
+            <div class="form-group">
+              <label for="exampleInputsecurityQuestion">
+                Security Question (To reset password from Login Page)
+              </label>
+              <textarea
+                class="form-control form-control-user"
+                type="text"
+                formControlName="securityQuestion"
+                id="exampleInputsecurityQuestion"
+                placeholder="Security Question"
+                name="securityQuestion"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && updateUserForm.get('securityQuestion').invalid
+                }"
+              ></textarea>
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && updateUserForm.get('securityQuestion').invalid
+                "
+              >
+                <div
+                  *ngIf="
+                    updateUserForm.get('securityQuestion').errors['required']
+                  "
+                >
+                  * Required
+                </div>
+                <div
+                  *ngIf="
+                    updateUserForm.get('securityQuestion').errors[
+                      'serverValidationError'
+                    ]
+                  "
+                >
+                  {{
+                    updateUserForm.controls["securityQuestion"].errors
+                      .serverValidationError
+                  }}
+                </div>
+              </div>
+            </div>
+            <!-- Security Answer -->
+            <div class="form-group">
+              <label for="exampleInputsecurityAnswer"> Security Answer</label>
+              <input
+                class="form-control form-control-user"
+                type="text"
+                formControlName="securityAnswer"
+                id="exampleInputsecurityAnswer"
+                placeholder="Security Answer"
+                name="securityAnswer"
+                [ngClass]="{
+                  'is-invalid':
+                    submitted && updateUserForm.get('securityAnswer').invalid
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  submitted && updateUserForm.get('securityAnswer').invalid
+                "
+              >
+                <div
+                  *ngIf="
+                    updateUserForm.get('securityAnswer').errors['required']
+                  "
+                >
+                  * Required
+                </div>
+                <div
+                  *ngIf="
+                    updateUserForm.get('securityAnswer').errors[
+                      'serverValidationError'
+                    ]
+                  "
+                >
+                  {{
+                    updateUserForm.controls["securityAnswer"].errors
+                      .serverValidationError
+                  }}
+                </div>
+              </div>
+            </div>
+            <div *ngIf="message" class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <div class="actions">
+              <hr />
+              <button class="primary-btn btn-block" type="submit">
+                <span
+                  *ngIf="loadingService.loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                Update
+              </button>
+              <button
+                class="secondary-btn btn-block"
+                type="button"
+                (click)="resetToDefault()"
+              >
+                Reset to default
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

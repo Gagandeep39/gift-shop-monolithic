@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gift Shop</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Prebiult UI -->
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <!-- Custom UI -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_51I3zWOI8py6Rj5ufY6RnJ1zjPK930I2xwWW0XKPWFr6cp7mAvgM8q8aoAV5R0trqmGEEqSgrLY6xVhZRqTsgZJqE00zW2TqkZa');
+
+  </script>
+  <!-- Razor pay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <!-- Google sign in -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="120787335948-g4r6bof29ub3vaaaiu7pc01jd5dalooq.apps.googleusercontent.com">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+</body>
+</html>

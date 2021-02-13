@@ -1,0 +1,115 @@
+nav {
+  padding: 0 54px;
+  /* background: red !important; */
+}
+
+.navbar-brand {
+  transform: scale(1);
+  transition: 0.4s;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.2);
+}
+
+.brand-logo {
+  height: 60px;
+  width: auto;
+}
+
+.title {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-nav {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.navbar-nav li a {
+  line-height: 2em;
+}
+
+.navbar-nav li .menu-item {
+  border-bottom: 2px solid white;
+  transition: 0.3s;
+}
+
+
+.navbar-nav li .menu-item:hover {
+  /* transform: scale(1.3); */
+  border-bottom: 2px solid black;
+}
+
+.search-hover {
+  width: 150px;
+  font-size: x-large;
+  transition: width 0.2s ease-in-out;
+  background-image: url("/assets/images/search.svg");
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  padding: 8px 20px 8px 8px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-right: 12px;
+}
+
+.search-hover:hover,
+.search-hover:focus {
+  width: 300px;
+  cursor: pointer;
+  outline: none;
+  max-width: 100%;
+}
+
+.navbar {
+  box-shadow: 0px 8px 8px 0.1px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item a {
+  cursor: pointer;
+}
+/* 
+px - Spacing in nav items
+py-3 - Increases height
+ml-auto - Align right
+*/
+
+.dropdown-toggle {
+  border-bottom: none;
+}
+
+
+.dropdown-item {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: large;
+  transition: 0.1s;
+  color: rgb(121, 121, 121);
+}
+.dropdown-item:hover {
+  /* transform: scale(1.1); */
+  background: inherit ;
+  color: black;
+  background: rgb(196, 196, 196);
+}
+
+
+/* .nav-link {
+  display: inline;
+  overflow: hidden;
+}
+
+.cart-quantity {
+  font-size: small;
+  background-color: red;
+  border-radius: 50%;
+  position: relative;
+  float: right;
+  width: 16px;
+  text-align: center;
+} */

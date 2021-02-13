@@ -1,0 +1,58 @@
+footer {
+  text-align: center;
+  /* Remove later */
+  padding-left: 36px;
+}
+.brand-logo {
+  height: 60px;
+  width: auto;
+}
+
+.title {
+  height: 60px;
+  width: auto;
+}
+
+.social {
+  margin-top: 12px;
+  text-align: center;
+  height: 24px;
+  /* padding: 0 12px; */
+  margin-right: 16px;
+  transition: 0.2s;
+}
+.social:hover {
+  transform: scale(1.2);
+}
+
+.footer-title {
+  font-weight: bolder;
+  font-size: 120%;
+  letter-spacing: 2px;
+}
+
+.footer-items {
+  letter-spacing: 2px;
+  align-items: center;
+  font-size: 100%;
+  text-decoration: none;
+  color: rgb(100, 100, 100);
+}
+
+.footer-items:hover {
+  color: rgb(43, 43, 43);
+}
+
+p {
+  margin-top: 4px;
+}
+
+p,
+.footer-copyright {
+  letter-spacing: 1px;
+}
+
+.footer-copyright {
+  font-weight: bold;
+  padding-bottom: 8px;
+}

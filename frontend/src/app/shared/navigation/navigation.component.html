@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light py-3 sticky-top">
+  <a class="navbar-brand" (click)="changeCategory(null)">
+    <img class="brand-logo" src="assets/images/gift-box.svg" />
+    <img class="title" src="assets/images/logo-text.png" />
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item px-2">
+      <input
+        type="text"
+        (keydown.enter)="searchItem()"
+        [(ngModel)]="searchQuery"
+        class="search-hover"
+        name=""
+        placeholder="Search..."
+      />
+    </li>
+    <li class="dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        All Products
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a
+          *ngFor="let category of categories"
+          class="dropdown-item"
+          (click)="changeCategory(category.categoryName)"
+        >
+          {{ category.categoryName }}
+        </a>
+        <a class="dropdown-item" (click)="changeCategory(null)">
+          All Products
+        </a>
+      </div>
+    </li>
+    <!-- Admin drop down -->
+    <li class="dropdown" *ngIf="isLoggedIn && role === 'Admin'">
+      <a
+        class="nav-link dropdown-toggle"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Manage
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a
+          *ngFor="let item of adminTabs"
+          class="dropdown-item"
+          [routerLink]="[item.link]"
+        >
+          {{ item.name }}
+        </a>
+      </div>
+    </li>
+    <!-- Navbar items -->
+    <li class="nav-item px-2" *ngFor="let item of activeTabs">
+      <!-- <span class="cart-quantity">0</span>  -->
+      <a class="nav-link menu-item" [routerLink]="[item.link]">
+        {{ item.name }}</a
+      >
+    </li>
+    <li class="nav-item px-2"></li>
+    <!-- User Profile Dropdown -->
+    <li class="dropdown" *ngIf="isLoggedIn">
+      <a
+        class="nav-link dropdown-toggle"
+        id="navbarDropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {{ name }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a
+          *ngFor="let item of profileTabs"
+          class="dropdown-item"
+          [routerLink]="[item.link]"
+        >
+          {{ item.name }}
+        </a>
+        <a class="dropdown-item" *ngIf="isLoggedIn" (click)="logOut()"
+          >Log Out</a
+        >
+      </div>
+    </li>
+  </ul>
+</nav>

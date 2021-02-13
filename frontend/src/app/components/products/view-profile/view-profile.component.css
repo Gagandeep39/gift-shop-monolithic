@@ -1,0 +1,156 @@
+.background {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(12px);
+}
+
+.content {
+  padding: 5%;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+}
+
+.root {
+  min-height: calc(100vh - 178px);
+}
+
+.front-img {
+  max-width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px 0 0 2px;
+  opacity: 0.8;
+  transition: opacity 0.5s;
+}
+
+.front-img:hover {
+  opacity: 1;
+}
+/* Fixes extra white content on right */
+.row {
+  margin: 0;
+}
+
+.my-card {
+  /* width: 70%; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 2px;
+  justify-content: center;
+  width: 80%;
+}
+
+.section-user {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  min-height: 400px;
+}
+
+/* Back Button Section */
+
+/* Container */
+.section-back {
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.1s;
+  margin-bottom: 4%;
+}
+
+.section-back:hover {
+  transform: scale(1.1);
+}
+/* Button */
+.back-img {
+  transform: scale(1.3);
+}
+
+.back-text {
+  padding: 12px;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+  font-size: 110%;
+  font-weight: 550;
+  color: #24b7d8;
+  text-transform: uppercase;
+  /* text-shadow: 0.5px 0.5px 3px rgba(0, 0, 0, 0.2); */
+}
+
+.summary {
+  /* padding-left: 2%; */
+  /* text-transform: uppercase; */
+  font-size: 150%;
+  width: 100%;
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4%;
+}
+
+.summary:hover {
+  transform: scaleY(1.02);
+}
+
+.item {
+  color: #1f9db9;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+hr {
+  border-top: 2px solid #fb5a69;
+  width: 100px;
+  margin: 0;
+  transition: 0.2s;
+  margin-bottom: 4%;
+}
+
+.section-userinfo:hover hr {
+  width: 200px;
+}
+
+.name {
+  font-weight: bold;
+  color: #24b7d8;
+  letter-spacing: 2px;
+  font-size: 300%;
+  margin: 8% 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.address {
+  letter-spacing: 2px;
+  color: #aaaaaa;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  font-size: 180%;
+}
+
+.section-address hr {
+  margin-top: 4%;
+}
+.section-address:hover hr {
+  width: 200px;
+}
+
+.section-address .summary {
+  padding: 0;
+  margin: 4px;
+  font-size: large;
+}
+
+
+.edit {
+  color: #94c3ce;
+  float: right;
+  margin-top: 1%;
+  cursor: pointer;
+}

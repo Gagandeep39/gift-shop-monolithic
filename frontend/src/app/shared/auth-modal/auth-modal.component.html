@@ -1,0 +1,18 @@
+<ng-container *ngIf="display$ | async as display">
+  <section [class.open]="display === 'open'" (click)="close()">
+    <div (click)="$event.stopPropagation()">
+      <h1>You are currently not logged In</h1>
+      <p>To access your cart or other functionalities, you will have to login to the application.</p>
+      <hr>
+      <div class="actions">
+        <div class="auth">
+          <button class="custom-btn" (click)="goTo('/login')">Login</button>
+          <button class="custom-btn" (click)="goTo('/register')">Register</button>
+        </div>
+        <div class="other">
+          <button class="custom-btn cancel" (click)="close()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

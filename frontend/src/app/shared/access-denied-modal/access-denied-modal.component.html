@@ -1,0 +1,14 @@
+<ng-container *ngIf="display$ | async as display">
+  <section [class.open]="display === 'open'" (click)="close()">
+    <div (click)="$event.stopPropagation()">
+      <h1>Access Denied</h1>
+      <p>You are not authorized to access this page</p>
+      <hr>
+      <div class="actions">
+        <div class="other">
+          <button class="custom-btn cancel" (click)="close()">Go Back</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

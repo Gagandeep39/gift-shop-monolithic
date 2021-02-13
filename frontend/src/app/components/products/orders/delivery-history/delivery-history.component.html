@@ -1,0 +1,121 @@
+<div class="parent px-1 px-md-4 py-5 mx-auto">
+  <div class="card">
+    <div class="row d-flex justify-content-between px-3 top">
+      <div class="logo-container">
+        <img
+          [routerLink]="['/']"
+          class="title"
+          src="assets/images/logo-text.png"
+        />
+        <hr />
+        <h1 class="title-main">Delivery History</h1>
+      </div>
+      <p class="summary">
+        Order #<span class="item">{{ orderId }} </span>
+      </p>
+      <p class="summary">
+        Current Status
+        <span class="item">
+          {{ OrderStaus[deliveryHistory.slice(-1)[0]?.orderStatus] }}
+        </span>
+      </p>
+      <p class="summary">
+        Updated On
+        <span class="item">
+          {{ formattedDate(deliveryHistory.slice(-1)[0]?.updatedOn) }}
+        </span>
+      </p>
+    </div>
+    <!-- Add class 'active' to progress -->
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <ul id="progressbar" class="text-center">
+          <li
+            *ngFor="let item of deliveryHistory"
+            class="active step0"
+            ata-toggle="popover"
+            [title]="OrderStaus[item.orderStatus]"
+            [attr.data-content]="'Updated On ' + formattedDate(item.updatedOn)"
+            data-placement="top"
+            onmouseenter="$(this).popover('show')"
+            onmouseout="$(this).popover('hide')"
+            [ngClass]="{ delete: item.orderStatus === 'CANCELLED' }"
+          ></li>
+          <!-- Display in active for remaining lements -->
+          <!-- <span *ngIf="deliveryHistory.slice(-1)[0]?.orderStatus!=='CANCELLED'"> -->
+          <li
+            class="step0"
+            *ngFor="let i of [].constructor(4 - deliveryHistory.length)"
+          ></li>
+          <!-- </span> -->
+        </ul>
+      </div>
+    </div>
+    <div class="row justify-content-between delivery-icon-container">
+      <div class="delivery-container row d-flex icon-content">
+        <img class="icon" src="/assets/images/created.svg" />
+        <p class="font-weight-bold">Order<br />Created</p>
+      </div>
+      <div class="delivery-container row icon-content">
+        <img class="icon" src="/assets/images/dispatched.svg" />
+        <p class="font-weight-bold">Order<br />Dispatched</p>
+      </div>
+      <div class="delivery-container row icon-content">
+        <img class="icon" src="/assets/images/out_for_delivery.svg" />
+        <p class="font-weight-bold">Out for<br />Delivery</p>
+      </div>
+      <div class="delivery-container row icon-content">
+        <img class="icon" src="/assets/images/delivered.svg" />
+        <p class="font-weight-bold">Delivered</p>
+      </div>
+    </div>
+    <div class="logs-container">
+      <div class="logs-heading">
+        <hr />
+        <h1 class="title-main">Delivery Logs</h1>
+      </div>
+      <div
+        class="log-entry"
+        *ngFor="let item of deliveryHistory?.slice().reverse()"
+      >
+        <img
+          class="log-img"
+          [ngStyle]="{
+            'background-color': fetchDeliveryColor(item.orderStatus)
+          }"
+          src="/assets/images/check.svg"
+          alt=""
+        />
+        <span class="log-item">
+          Order<span
+            class="log-status"
+            [ngStyle]="{ color: fetchDeliveryColor(item.orderStatus) }"
+          >
+            {{ OrderStaus[item.orderStatus] }}
+          </span>
+          on
+          <span class="log-date">{{
+            formattedDate(item.updatedOn)
+          }}</span></span
+        >
+      </div>
+    </div>
+    <br />
+    <div class="actions">
+      <button class="back-btn" (click)="goBack()">Back</button>
+      <button
+        class="cancel-btn"
+        (click)="cancelOrder()"
+        *ngIf="checkIfCancellable()"
+      >
+        <span
+          *ngIf="loadingService.loading"
+          class="spinner-border spinner-border-sm"
+        ></span>
+        Cancel Order
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-order-cancel-modal></app-order-cancel-modal>

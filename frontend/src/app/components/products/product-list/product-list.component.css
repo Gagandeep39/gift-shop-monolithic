@@ -1,0 +1,68 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2021-01-24 01:33:09
+ * @modify date 2021-01-24 01:33:09
+ * @desc [description]
+ */
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+  padding: 24px 124px;
+  /* flex-direction: column; */
+}
+
+.product-card {
+  max-width: 20%;
+  min-width: 200px;
+  height: max-content;
+  margin: 12px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  cursor: pointer;
+  opacity: 0.9;
+  /* Fixes border radius on images */
+  overflow: hidden;
+}
+
+.product-card:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+}
+
+/* Categories */
+.category {
+  /* background: red; */
+  width: 100%;
+  /* margin: 12px; */
+  font-weight: 1000;
+  font-size: 380%;
+  padding: 36px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 2px rgb(211, 211, 211);
+  color: black;
+}
+
+.category-icon {
+  transform: scale(1.2);
+}
+
+.category-icon:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+/* Loading spinner */
+.spinner-grow {
+  vertical-align: middle;
+  color: #fb5a69;
+  height: 3rem;
+  width: 3rem;
+  margin-left: 24px;
+}

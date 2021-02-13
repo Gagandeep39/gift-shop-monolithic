@@ -1,0 +1,16 @@
+.container {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.fa-trash {
+  color: #d42020;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 92%;
+  left: 70.3%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

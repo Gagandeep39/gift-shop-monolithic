@@ -1,0 +1,259 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+      <!-- Shopping cart table -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-gift fa-lg"></i>&nbsp;Product
+                </div>
+              </th>
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-money fa-lg" aria-hidden="true"></i
+                  >&nbsp;&nbsp;Price
+                </div>
+              </th>
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-percent fa-lg" aria-hidden="true"></i
+                  >&nbsp;&nbsp;Discount
+                </div>
+              </th>
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-sort-numeric-asc fa-lg" aria-hidden="true"></i
+                  >&nbsp;&nbsp;Quantity
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-money fa-lg" aria-hidden="true"></i
+                  >&nbsp;&nbsp;Total
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="py-2 text-uppercase">
+                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i
+                  >&nbsp;&nbsp;Remove
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <th scope="row" class="border-0">
+                <div class="p-2">
+                  <img
+                    src="{{ product.productIcon }}"
+                    alt=""
+                    width="100"
+                    class="img-fluid rounded shadow-sm"
+                  />
+                  <div class="ml-3 d-inline-block align-middle">
+                    <h5 class="mb-0">
+                      <a
+                        href="#"
+                        class="text-dark d-inline-block align-middle"
+                        >{{ product.productName }}</a
+                      >
+                    </h5>
+                    <span
+                      class="text-muted font-weight-normal font-italic d-block"
+                      >{{ product.productCategory }}</span
+                    >
+                  </div>
+                </div>
+              </th>
+              <td class="border-0 align-middle">
+                <strong>{{ product.productPrice | currency: "INR" }}</strong>
+              </td>
+              <td class="border-0 align-middle">
+                <strong>{{ product.discountPercent }}</strong>
+              </td>
+              <td class="border-0 align-middle">
+                <strong>{{ product.productStock }}</strong>
+              </td>
+              <td class="border-0 align-middle">
+                <strong>{{ calculatePrice(product) | currency: "INR" }}</strong>
+              </td>
+
+              <td class="border-0 align-middle">
+                <button class="btn" (click)="removeItem(product.productId)">
+                  <img src="/assets/images/trash.svg" alt="" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- End  -->
+    </div>
+  </div>
+
+  <div class="row py-5 p-4 bg-white rounded shadow-sm" *ngIf="products?.length > 0">
+    <div class="col-lg-6">
+      <div
+        class="bg-info text-white rounded-pill px-4 py-3 text-uppercase font-weight-bold"
+        style="color: aliceblue"
+      >
+        <i class="fa fa-truck fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Shipping
+        Details
+      </div>
+      <div class="p-4">
+        <form>
+          <div class="input-group mb-3 input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-map-marker" aria-hidden="true"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              placeholder="Enter your Address"
+              class="form-control"
+              [(ngModel)]="address.area"
+              name="area"
+              #area="ngModel"
+              required
+              pattern="[A-Za-z]{3,}"
+            />
+            <div
+              *ngIf="area.invalid && area.touched && area.dirty"
+              class="alert alert-danger"
+            >
+              Area must be atleast 3 characters long!
+            </div>
+          </div>
+          <div class="input-group mb-3 input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-location-arrow" aria-hidden="true"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              placeholder="Enter your City"
+              class="form-control"
+              [(ngModel)]="address.city"
+              name="city"
+              #city="ngModel"
+              required
+              pattern="[A-Za-z]{3,}"
+            />
+            <div
+              *ngIf="city.invalid && city.touched && city.dirty"
+              class="alert alert-danger"
+            >
+              City must be atleast 3 characters long!
+            </div>
+          </div>
+          <div class="input-group mb-3 input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-map-o" aria-hidden="true"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              placeholder="Enter your State"
+              class="form-control"
+              [(ngModel)]="address.state"
+              name="state"
+              #state="ngModel"
+              required
+              pattern="[A-Za-z]{3,}"
+            />
+            <div
+              *ngIf="state.invalid && state.touched && state.dirty"
+              class="alert alert-danger"
+            >
+              State must be atleast 3 characters long!
+            </div>
+          </div>
+          <div class="input-group mb-3 input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fa fa-map-pin" aria-hidden="true"></i
+              ></span>
+            </div>
+            <input
+              type="text"
+              placeholder="Enter your Pincode"
+              class="form-control"
+              [(ngModel)]="address.pincode"
+              name="pincode"
+              #pincode="ngModel"
+              required
+              pattern="[0-9]{6}"
+              (change)="calculateDistance()"
+            />
+            <div
+              *ngIf="(pincode.invalid && pincode.touched && pincode.dirty) || error"
+              class="alert alert-danger"
+            >
+              Invalid Pincode or delivery unavailable
+            </div>
+          </div>
+
+          
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div
+        class="bg-info text-white rounded-pill px-4 py-3 text-uppercase font-weight-bold"
+      >
+        <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i
+        >&nbsp;&nbsp;Order summary
+      </div>
+      <div class="p-4">
+        <ul class="list-unstyled mb-4">
+          <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">TOTAL </strong
+            ><strong>{{ totalBeforeDiscount | currency: "INR" }}</strong>
+          </li>
+          <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">TOTAL AFTER DISCOUNT </strong
+            ><strong>{{ orderTotal | currency: "INR" }}</strong>
+          </li>
+          <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">DELIVERY CHARGE </strong
+            ><strong>{{ deliveryCharge | currency: "INR" }}</strong>
+          </li>
+          <!-- <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted"
+              >SHIPPING
+              AND HANDLING</strong
+            > (Free for Order greater than ₹ 2000) <strong>{{ shipping | currency: "INR" }}</strong>
+          </li> -->
+          <!-- Removed for time being -->
+          <!-- <li class="d-flex justify-content-between py-3 border-bottom">
+                <strong class="text-muted">GST (18%)</strong
+                ><strong>{{ tax | currency: "INR" }}</strong>
+              </li> -->
+          <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted" style="font-size: 120%">TOTAL</strong>
+            <h4 class="font-weight-bold">{{ total | currency: "INR" }}</h4>
+          </li>
+        </ul>
+        <button
+            class="btn btn-outline-success font-weight-bold"
+            (click)="checkout()"
+            [disabled]="!total"
+          >
+            <i class="fa fa-credit-card-alt" aria-hidden="true"></i> &nbsp;
+            Pay with Stripe
+          </button>
+          &nbsp;
+          <button [disabled]="!total" class="btn btn-outline-success font-weight-bold" id="rzp-button1" (click)="payFromRazorPay()">Pay with Razor Pay</button>
+      </div>
+      
+    </div>
+  </div>
+</div>

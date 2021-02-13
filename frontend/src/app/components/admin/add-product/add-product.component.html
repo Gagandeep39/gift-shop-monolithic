@@ -1,0 +1,256 @@
+<h1 style="text-align: center">Add Product</h1>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+/>
+
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px">
+      <form
+        (ngSubmit)="saveProduct()"
+        #addProduct="ngForm"
+        class="needs-validation"
+      >
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                class="fa fa-gift"
+                style="font-size: 1.5em; color: #f56774"
+              ></i>
+            </span>
+          </div>
+          <input
+            pattern="[A-Z][A-Za-z]{2,}"
+            name="productName"
+            id="productName"
+            [(ngModel)]="product.productName"
+            #productName="ngModel"
+            class="form-control"
+            placeholder="Product Name"
+            type="text"
+          />
+          <br />
+          <div
+            *ngIf="
+              productName.invalid && productName.touched && productName.dirty
+            "
+            class="alert alert-danger"
+          >
+            First letter must be capital! Name must be atleast 3 characters
+            long!
+          </div>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-inr"
+              ></i>
+            </span>
+          </div>
+          <input
+            name="productPrice"
+            pattern="[1-9][0-9]{2,3}"
+            id="productPrice"
+            [(ngModel)]="product.productPrice"
+            #productPrice="ngModel"
+            class="form-control"
+            placeholder="Price"
+          />
+          <br />
+          <div
+            *ngIf="
+              productPrice.invalid && productPrice.touched && productPrice.dirty
+            "
+            class="alert alert-danger"
+          >
+            Price must be between 100 to 9999
+          </div>
+        </div>
+
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-inr"
+              ></i>
+            </span>
+          </div>
+          <input
+            name="discountPercent"
+            pattern="([0-9]|[1-9][0-9]|100)"
+            id="discountPercent"
+            [(ngModel)]="product.discountPercent"
+            #discountPercent="ngModel"
+            class="form-control"
+            placeholder="Discount Percent"
+          />
+          <br />
+          <div
+            *ngIf="
+              discountPercent.invalid && discountPercent.touched && discountPercent.dirty
+            "
+            class="alert alert-danger"
+          >
+            Enter a valid discount
+          </div>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-sort-numeric-desc"
+              ></i>
+            </span>
+          </div>
+          <input
+            name="productStock"
+            pattern="[1-9][0-9]{0,2}"
+            id="productStock"
+            [(ngModel)]="product.productStock"
+            #productStock="ngModel"
+            class="form-control"
+            placeholder="Stock"
+          />
+          <br />
+          <div
+            *ngIf="
+              productStock.invalid && productStock.touched && productStock.dirty
+            "
+            class="alert alert-danger"
+          >
+            Stock must be entered in digits and must be more than 1
+          </div>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                class="fa fa-info"
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+              ></i>
+            </span>
+          </div>
+          <textarea
+            required
+            name="productDescription"
+            id="productDescription"
+            [(ngModel)]="product.productDescription"
+            #productDescription="ngModel"
+            placeholder="Product Description"
+            cols="36"
+            rows="2"
+          ></textarea>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-file-image-o"
+              ></i>
+            </span>
+          </div>
+          <textarea
+            required
+            name="productIcon"
+            id="productIcon"
+            [(ngModel)]="product.productIcon"
+            #productIcon="ngModel"
+            placeholder="Product Icon"
+            cols="36"
+            rows="2"
+          ></textarea>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-toggle-on"
+              ></i>
+            </span>
+          </div>
+          <select
+            placeholder="Select"
+            required
+            aria-placeholder="ENABLED"
+            id="productStatus"
+            name="productStatus"
+            [(ngModel)]="product.productStatus"
+            #productStatus="ngModel"
+            class="form-control"
+          >
+            <option value="" selected>Select Product Status</option>
+            <option value="ENABLED">ENABLED</option>
+            <option value="DISABLED">DISABLED</option>
+          </select>
+        </div>
+        <!-- form-group end.// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-filter"
+              ></i>
+            </span>
+          </div>
+          <select
+            required
+            name="categoryId"
+            (change)="getSelectedOptionText($event.target.value)"
+            id="categoryId"
+            [(ngModel)]="product.categoryId"
+            #categoryId="ngModel"
+            class="form-control"
+          >
+            <option *ngFor="let c of category" [value]="c.categoryId">
+              {{ c.categoryName }}
+            </option>
+          </select>
+        </div>
+        <!-- form-group// -->
+
+        <div class="form-group">
+          <button
+            type="submit"
+            [disabled]="!addProduct.valid"
+            class="btn btn-primary btn-block"
+          >
+            Add Product
+          </button>
+        </div>
+        <!-- form-group// -->
+      </form>
+    </article>
+  </div>
+  <!-- card.// -->
+</div>
+<!--container end.//-->

@@ -1,0 +1,62 @@
+<div class="root">
+  <div
+    class="background"
+    [ngStyle]="{
+      'background-image': 'url(/assets/images/celebration2.jpg)'
+    }"
+  ></div>
+  <div class="content">
+    <div class="my-card">
+      <div class="row">
+        <div
+          class="col-6 front-img"
+          [ngStyle]="{
+            'background-image': 'url(/assets/images/celebration2.jpg)'
+          }"
+        ></div>
+        <div class="col-6 section-user">
+          <div class="p-5">
+            <div class="section-back" (click)="goBack()">
+              <img class="back-img" src="/assets/images/back.svg" alt="" />
+              <span class="back-text">Back</span>
+            </div>
+            <div class="profile-data">
+              <div class="section-userinfo">
+                <hr />
+                <p class="summary name">
+                  {{ user?.firstName + " " + user?.lastName }}
+                  <img
+                    class="edit"
+                    [routerLink]="['/products/editprofile']"
+                    src="/assets/images/edit.svg"
+                    alt=""
+                  />
+                </p>
+                <p class="summary">
+                  User #<span class="item">{{ user?.userId }} </span>
+                </p>
+
+                <p class="summary">
+                  Phone No <span class="item">{{ user?.phoneNo }} </span>
+                </p>
+                <p class="summary">
+                  Email <span class="item">{{ user?.emailId }} </span>
+                </p>
+              </div>
+              <div class="section-address">
+                <hr />
+                <p class="address">Address</p>
+                <p class="summary">{{ user?.address?.area }},</p>
+                <p class="summary">{{ user?.address?.city }},</p>
+                <p class="summary">{{ user?.address?.state }},</p>
+                <p class="summary">
+                  {{ user?.address?.pincode }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

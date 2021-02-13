@@ -1,0 +1,72 @@
+<footer class="page-footer font-small bg-light pt-4">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+      <div class="col-md-1 mt-md-0 mt-3"></div>
+      <div class="col-md-4 mt-md-0 mt-3">
+        <a class="navbar-brand" [routerLink]="['/']">
+          <img class="brand-logo" src="assets/images/gift-box.svg" />
+          <img class="title" src="assets/images/logo-text.png" />
+        </a>
+        <p>
+          Gift Shop Private Limited, <br />
+          Powai, 400072, Maharashtra, India
+        </p>
+      </div>
+      <hr class="clearfix w-100 d-md-none pb-3" />
+      <div class="col-md-2 mb-md-0 mb-3">
+        <h5 class="text-uppercase footer-title">Community</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a class="footer-items" [routerLink]="['/about']">About Us</a>
+          </li>
+          <li>
+            <a class="footer-items" [routerLink]="['/']">Home</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 mb-md-0 mb-3">
+        <h5 class="text-uppercase footer-title">Links</h5>
+
+        <ul class="list-unstyled text-dark">
+          <li>
+            <a class="footer-items" [routerLink]="['/products/cart']">Cart</a>
+          </li>
+          <li>
+            <a class="footer-items" [routerLink]="['/products/orders']">
+              Purchases
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 mb-md-0 mb-3">
+        <h5 class="text-uppercase footer-title">Follow Us</h5>
+        <ul class="list-unstyled row">
+          <li>
+            <a [routerLink]="['/']">
+              <img class="social" src="/assets/images/twitter.svg" />
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/']">
+              <img class="social" src="/assets/images/facebook_color.svg" />
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/']">
+              <img class="social" src="/assets/images/instagram.svg" />
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/']">
+              <img class="social" src="/assets/images/whatsapp.svg" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center">
+    © 2021 Copyright ❤️️
+    <a class="footer-items" [routerLink]="['/']"> Gift Shop</a>
+  </div>
+</footer>

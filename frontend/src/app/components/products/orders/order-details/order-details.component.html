@@ -1,0 +1,40 @@
+<div class="container-xl">
+  <div class="table-responsive">
+      <div class="table-wrapper">
+          <div class="table-title">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <h2>Order <b>Details</b></h2>
+                  </div>
+              </div>
+          </div>
+          <table class="table table-striped text-center">
+              <thead>
+                  <tr>
+                      <th scope="col" style="color: #566787;">#</th>
+                      <th scope="col" style="color: #566787;">productId</th>
+                      <th scope="col" style="color: #566787;">productName</th>
+                      <th scope="col" style="color: #566787;">productDescription</th>
+                      <th scope="col" style="color: #566787;">productIcon</th>
+                      <th scope="col" style="color: #566787;">productCategory</th>
+                      <th scope="col" style="color: #566787;">productStock</th>	
+                  </tr>
+              </thead>
+              <tbody>
+                  
+                  <tr *ngFor="let product of products?.products">
+                      <td>{{product.productInOrderId}}</td>
+                      <td>{{product.productId}}</td>
+                      <td>{{product.productName}}</td>  
+                      <td>{{product.productDescription}}</td> 
+                      <img src={{product.productIcon}} alt="" width="100" class="img-fluid rounded shadow-sm">
+                      <td>{{product.productCategory}}</td>
+                      <td>{{product.productStock}}</td>
+                      <!-- <td><button routerLink="/orderdetail" style="background-color:  #fb5a69; border-radius: 5%;">Order Details</button></td> -->
+                      <td><a (click)="goBack()"><i class="fa fa-table"></i>Back To Order Page</a></td>
+                  </tr> 
+              </tbody>
+          </table>
+      </div>
+  </div>        
+</div>  

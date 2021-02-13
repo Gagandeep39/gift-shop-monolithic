@@ -1,0 +1,21 @@
+.content:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: url("/assets/images/celebration3.jpg");
+  width: 100%;
+  height: 100%;
+  filter: blur(12px);
+}
+/* .content {
+  left: 0;
+  right: 0;
+  z-index: 1;
+} */
+
+/* Responsive footer */
+.allButFooter {
+  min-height: calc(100vh - 178px);
+}

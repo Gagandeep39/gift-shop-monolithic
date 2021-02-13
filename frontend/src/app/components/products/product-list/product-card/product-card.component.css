@@ -1,0 +1,178 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2021-01-24 01:33:03
+ * @modify date 2021-01-24 01:33:03
+ * @desc [description]
+ */
+
+.product-img {
+  /* Must have full width as parent */
+  width: 100%;
+  height: 240px;
+  /* Scale object while mantaining aspect ratio */
+  object-fit: cover;
+  /* Moved  */
+  object-position: center;
+  /* Code requied for out of stock */
+  transition: 0.2s;
+}
+
+.product-body {
+  /* Flex makes css editing easier */
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  text-align: center;
+}
+/* Removes unnecessary padding inside body */
+.product-body * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Display Thubnail iamge in catalog */
+.product-img-sold {
+  width: 100%;
+  height: 100%;
+  background: url("/assets/images/sold_out2.png");
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* Adds shadow to image */
+  filter: drop-shadow(5px 5px 5px #222);
+  transform: scale(0.8);
+  top: 30%;
+}
+
+/* Related to animation on hover */
+.img-container {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+/* Initially button are hidden */
+.details,
+.add {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Ading blur behind in background */
+.img-container:hover .product-img {
+  filter: blur(2px);
+  z-index: 0;
+}
+
+/* Centering button aboce te background */
+.img-container:hover .overlay .details {
+  opacity: 1;
+  z-index: 1;
+  top: 30%;
+  /* Center lign */
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Centering button aboce te background */
+.img-container:hover .overlay .add {
+  opacity: 1;
+  top: 60%;
+  /* Center lign */
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Buttons */
+.details,
+.add {
+  background: #24b7d8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px;
+  display: inline-block;
+  font-size: medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.details:hover,
+.add:hover {
+  background: white;
+  color: #24b7d8;
+  transform: scale(1.2);
+}
+
+/* Products data */
+
+.product-name {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 130%;
+  color: rgb(68, 68, 68);
+}
+
+.product-description {
+  font-size: 120%;
+}
+
+.product-price {
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Added a line between image and product */
+.img-container::after {
+  display: block;
+  height: 2px;
+  background-color: #fb5a69;
+  content: " ";
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 20px;
+  transition: 0.2s;
+}
+
+.img-container:hover::after {
+  /* width: 200px; */
+  transform: scaleX(1.5);
+}
+
+.product-price {
+  color: #1f9db9;
+  font-size: 130%;
+  font-weight: 500;
+
+}
+
+hr {
+  height:  12px;
+  border: transparent;
+}
+
+.badge {
+  vertical-align: middle;
+  /* white-space: nowrap; */
+  padding: 4px !important;
+  color: #ffffff;
+  background-color: #1f9db9;
+  border-radius: 9px;
+}
+.badge:hover {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reduced {
+  text-decoration: line-through;
+  color: #7babb6;
+}

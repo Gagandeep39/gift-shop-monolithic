@@ -1,0 +1,47 @@
+<div class="backdrop"></div>
+<div class="row h-100 align-items-center">
+  <div class="col-12">
+    <div class="my-card mx-auto">
+      <div class="row">
+        <div class="col-6 front-img">
+        </div>
+        <div class="col-6 user-form">
+          <div class="p-5">
+            <div class="text-center logo-container">
+              <img class="logo" [routerLink]="['/']" src="assets/images/gift-box.svg" />
+              <img class="title" [routerLink]="['/']" src="assets/images/logo-text.png" />
+              <hr>
+            </div>
+            <form class="user"  [formGroup]="requestQuestionForm" (ngSubmit)="requestSecretQuestion()">
+              <div class="form-group">
+                <input
+                  formControlName="username"
+                  class="form-control form-control-user"
+                  type="text"
+                  placeholder="Enter Username"
+                  name="username"
+                  [ngClass]="{'is-invalid': submitted && requestQuestionForm.get('username').invalid}"
+                />
+                <div class="invalid-feedback" *ngIf="submitted && requestQuestionForm.get('username').invalid">
+                  <div *ngIf="requestQuestionForm.get('username').errors['required']">* Required</div>
+                  <div *ngIf="requestQuestionForm.get('username').errors['serverValidationError']"> 
+                      {{requestQuestionForm.controls['username'].errors.serverValidationError }} 
+                  </div>
+                </div>
+              </div>
+              <button class="primary-btn btn-block" type="submit">
+                <span *ngIf="loadingService.loading" class="spinner-border spinner-border-sm"></span>
+                Request Secret Question
+              </button>
+            </form>
+            <!-- <hr /> -->
+            <br>
+            <div class="text-center">
+              <a class="actions" [routerLink]="['/login']">Back To Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="img-container">
+  <div
+    class="overlay"
+    [ngStyle]="{ visibility: isProductAvailable() ? 'hidden' : 'visible' }"
+  >
+    <button class="details" [routerLink]="['/products/', productId]">
+      Details
+    </button>
+    <button class="add" (click)="addNewItem(productId)">
+      <span
+        *ngIf="loadingService.loading"
+        class="spinner-border spinner-border-sm"
+      ></span>
+
+      Add to Cart
+    </button>
+  </div>
+  <img
+    class="product-img"
+    [src]="productImageUrl"
+    [alt]="productName"
+    (error)="$event.target.src = '/assets/images/celebration2.jpg'"
+    [ngStyle]="{ filter: isProductAvailable() ? 'blur(4px)' : '0' }"
+  />
+  <!-- Display if Product disabled / quantity 0 -->
+  <div *ngIf="isProductAvailable()" class="product-img-sold"></div>
+</div>
+<div class="product-body">
+  <h1 class="product-name">
+    {{ productName }}
+    <span
+      class="badge"
+      *ngIf="discountPercent > 0"
+      [ngStyle]="{ backgroundColor: badgeColor() }"
+    >
+      - {{ discountPercent }}%
+    </span>
+  </h1>
+  <p class="product-description">{{ productDescription }}</p>
+  <hr />
+  <p class="product-price">
+    ₹ {{ reducedPrice() }} <span class="reduced">₹ {{ productPrice }}</span> 
+  </p>
+</div>

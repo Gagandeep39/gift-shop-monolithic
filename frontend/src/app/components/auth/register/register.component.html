@@ -1,0 +1,263 @@
+<div class="backdrop"></div>
+<div class="row h-100 align-items-center">
+  <div class="col-12">
+    <div class="my-card mx-auto">
+      <div class="row">
+        <!-- <div class="col-6 front-img"></div> -->
+        <div class="col-12 user-form">
+          <div class="p-3">
+            <div class="logo-container">
+              <img [routerLink]="['/']" class="title" src="assets/images/logo-text.png" />
+              <hr>
+            </div>
+            <!-- <div class="text-center">
+              <img class="logo" src="assets/images/gift-box.svg" />
+              <img class="title" src="assets/images/logo-text.png" />
+            </div> -->
+            <form (ngSubmit)="submitForm()" [formGroup]="userForm">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="firstName"
+                          ><strong>First Name</strong><br /></label
+                        ><input
+                          class="form-control"
+                          formControlName="firstName"
+                          type="text"
+                          placeholder="First Name"
+                          name="firstName"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('firstName').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('firstName').invalid">
+                          <div *ngIf="userForm.get('firstName').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('firstName').errors['serverValidationError']"> 
+                              {{userForm.controls['firstName'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="lastName"><strong>Last Name</strong></label
+                        ><input
+                          class="form-control"
+                          formControlName="lastName"
+                          type="text"
+                          placeholder="Last Name"
+                          name="lastName"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('lastName').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('lastName').invalid">
+                          <div *ngIf="userForm.get('lastName').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('lastName').errors['serverValidationError']"> 
+                              {{userForm.controls['lastName'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="phoneNo"><strong>Phone No</strong><br /></label
+                        ><input
+                          class="form-control"
+                          type="text"
+                          placeholder="Enter Phone No."
+                          name="phoneNo"
+                          formControlName="phoneNo"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('phoneNo').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('phoneNo').invalid">
+                          <div *ngIf="userForm.get('phoneNo').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('phoneNo').errors['serverValidationError']"> 
+                              {{userForm.controls['phoneNo'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="emailId"><strong>Email</strong><br /></label
+                        ><input
+                          class="form-control"
+                          type="text"
+                          placeholder="Email"
+                          name="emailId"
+                          formControlName="emailId"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('emailId').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('emailId').invalid">
+                          <div *ngIf="userForm.get('emailId').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('emailId').errors['serverValidationError']"> 
+                              {{userForm.controls['emailId'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                  <div  formGroupName="address">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="city"><strong>City</strong></label
+                          ><input
+                            type="text"
+                            class="form-control"
+                            placeholder="City"
+                            name="city"
+                            [ngClass]="{'is-invalid': submitted && userForm.get('address.city').invalid}"
+                            formControlName="city"
+                          />
+                          <div class="invalid-feedback" *ngIf="submitted && userForm.get('address.city').invalid">
+                            <div *ngIf="userForm.get('address.city').errors['required']">* Required</div>
+                            <div *ngIf="userForm.get('address.city').errors['minLength']">Min length ust be 4</div>
+                            <div *ngIf="userForm.get('address.city').errors['maxLength']">Max length must be 30</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="country"><strong>State</strong></label
+                          ><input
+                            type="text"
+                            class="form-control"
+                            placeholder="State"
+                            name="State"
+                            [ngClass]="{'is-invalid': submitted && userForm.get('address.state').invalid}"
+                            formControlName="state"
+                          />
+                          <div class="invalid-feedback" *ngIf="submitted && userForm.get('address.state').invalid">
+                            <div *ngIf="userForm.get('address.state').errors['required']">* Required</div>
+                            <div *ngIf="userForm.get('address.state').errors['minLength']">Min length ust be 4</div>
+                            <div *ngIf="userForm.get('address.state').errors['maxLength']">Max length must be 30</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="area"><strong>Area</strong></label
+                          ><input
+                            type="text"
+                            class="form-control"
+                            placeholder="Area"
+                            name="area"
+                            [ngClass]="{'is-invalid': submitted && userForm.get('address.area').invalid}"
+                            formControlName="area"
+                          />
+                          <div class="invalid-feedback" *ngIf="submitted && userForm.get('address.area').invalid">
+                            <div *ngIf="userForm.get('address.area').errors['required']">* Required</div>
+                            <div *ngIf="userForm.get('address.area').errors['minLength']">Min length ust be 4</div>
+                            <div *ngIf="userForm.get('address.area').errors['maxLength']">Max length must be 30</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="pinode"><strong>pincode</strong></label
+                          ><input
+                            type="text"
+                            class="form-control"
+                            placeholder="pincode"
+                            name="pincode"
+                            formControlName="pincode"
+                            [ngClass]="{'is-invalid': submitted && userForm.get('address.pincode').invalid}"
+                          />
+                          <div class="invalid-feedback" *ngIf="submitted && userForm.get('address.pincode').invalid">
+                            <div *ngIf="userForm.get('address.pincode').errors['required']">* Required</div>
+                            <div *ngIf="userForm.get('address.pincode').errors['pattern']">Must be of length 6</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="password"><strong>Password</strong></label
+                        ><input
+                          type="password"
+                          class="form-control"
+                          placeholder="Enter Password"
+                          name="password"
+                          formControlName="password"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('password').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('password').invalid">
+                          <div *ngIf="userForm.get('password').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('password').errors['serverValidationError']"> 
+                              {{userForm.controls['password'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="password2"
+                          ><strong>Re-enter Password</strong></label
+                        ><input
+                          type="password"
+                          class="form-control"
+                          placeholder="Re-enter Password"
+                          name="password2"
+                          formControlName="password2"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('password2').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('password2').invalid">
+                          <div *ngIf="userForm.get('password2').errors['required']">* Required</div><div *ngIf="userForm.get('password2').errors['passwordMatchError']">Password not same</div>
+                          <div *ngIf="userForm.get('password2').errors['serverValidationError']"> 
+                              {{userForm.controls['password2'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="username"><strong>Username</strong></label
+                        ><input
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter Username"
+                          name="username"
+                          formControlName="username"
+                          [ngClass]="{'is-invalid': submitted && userForm.get('username').invalid}"
+                        />
+                        <div class="invalid-feedback" *ngIf="submitted && userForm.get('username').invalid">
+                          <div *ngIf="userForm.get('username').errors['required']">* Required</div>
+                          <div *ngIf="userForm.get('username').errors['serverValidationError']"> 
+                              {{userForm.controls['username'].errors.serverValidationError }} 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <button class="primary-btn btn-block" type="submit">
+                          <span *ngIf="loadingService.loading" class="spinner-border spinner-border-sm"></span>
+                          Register
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="message" class="alert alert-success" role="alert">
+                    {{message}}
+                  </div>
+            </form>
+            <div class="text-center">
+              <hr>
+              <a class="actions" [routerLink]="['/login']"
+                >Back to Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

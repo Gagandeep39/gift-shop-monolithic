@@ -1,0 +1,15 @@
+<ng-container *ngIf="display$ | async as display">
+  <section [class.open]="display === 'open'" (click)="close()">
+    <div (click)="$event.stopPropagation()">
+      <h1>Item Added to Cart</h1>
+      <p>Thank You.</p>
+      <hr>
+      <div class="actions">
+        <button class="custom-btn"  (click)="goToCart()">Go to Cart</button>
+        <div class="other">
+          <button class="custom-btn cancel" (click)="close()">Okay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

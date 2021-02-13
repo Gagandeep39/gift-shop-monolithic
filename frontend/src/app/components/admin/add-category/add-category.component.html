@@ -1,0 +1,109 @@
+<h1 style="text-align: center">Add Category</h1>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+/>
+
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px">
+      <form
+        (ngSubmit)="saveCategory()"
+        #addCategory="ngForm"
+        class="needs-validation"
+      >
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                class="fa fa-gift"
+                style="font-size: 1.5em; color: #f56774"
+              ></i>
+            </span>
+          </div>
+          <input
+            pattern="[A-Z][A-Za-z]{2,}"
+            name="categoryName"
+            id="categoryName"
+            [(ngModel)]="category.categoryName"
+            #categoryName="ngModel"
+            class="form-control"
+            placeholder="Category Name"
+            type="text"
+          />
+          <br />
+          <div
+            *ngIf="
+              categoryName.invalid && categoryName.touched && categoryName.dirty
+            "
+            class="alert alert-danger"
+          >
+            First letter must be capital! Name must be atleast 3 characters
+            long!
+          </div>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                class="fa fa-info"
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+              ></i>
+            </span>
+          </div>
+          <textarea
+            required
+            name="categoryDescription"
+            id="categoryDescription"
+            [(ngModel)]="category.categoryDescription"
+            #productDescription="ngModel"
+            placeholder="Category Description"
+            cols="36"
+            rows="2"
+          ></textarea>
+        </div>
+        <!-- form-group// -->
+
+        <p>Required*</p>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i
+                style="width: 20px; font-size: 1.5em; color: #f56774"
+                class="fa fa-file-image-o"
+              ></i>
+            </span>
+          </div>
+          <textarea
+            required
+            name="categoryImageUrl"
+            id="categoryImageUrl"
+            [(ngModel)]="category.categoryImageUrl"
+            #productIcon="ngModel"
+            placeholder="Category Image URL"
+            cols="36"
+            rows="2"
+          ></textarea>
+        </div>
+        <!-- form-group// -->
+
+        <div class="form-group">
+          <button
+            type="submit"
+            [disabled]="!addCategory.valid"
+            class="btn btn-primary btn-block"
+          >
+            Add Category
+          </button>
+        </div>
+        <!-- form-group// -->
+      </form>
+    </article>
+  </div>
+  <!-- card.// -->
+</div>

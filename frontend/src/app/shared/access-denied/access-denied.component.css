@@ -1,0 +1,33 @@
+.parent {
+  text-align: center;
+  vertical-align: middle;
+  height: 100vh;
+}
+
+.item {
+  padding-top: 10%;
+}
+
+h1 {
+  font-size: 1200%;
+  padding: 24px;
+}
+
+h2 {
+  font-size: 600%;
+  padding: 24px;
+}
+
+a {
+  font-size: larger;
+  cursor: pointer;
+  color: #24b7d8 !important;
+}
+
+hr {
+  width: 90%;
+}
+
+a:hover {
+  color: #1c7e94 !important;
+}
