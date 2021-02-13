@@ -68,6 +68,35 @@ public class CustomExceptionHandler {
                 .timeStamp(System.currentTimeMillis()).build());
     }
 
+    
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCategory(CategoryNotFoundException ex) {
+
+        return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .body(ErrorResponse.builder()
+                .timeStamp(System.currentTimeMillis())
+                .status(HttpStatus.BAD_REQUEST.value()).message("FieldException")
+                .errors(Collections.singletonList(FieldErrorResponse.builder()
+                    .field(ex.getErrorName())
+                    .message(ex.getErrorDescription())
+                    .build())).build());
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidCategory(ProductNotFoundException ex) {
+
+        return ResponseEntity
+            .status(HttpStatus.BAD_REQUEST)
+            .body(ErrorResponse.builder()
+                .timeStamp(System.currentTimeMillis())
+                .status(HttpStatus.BAD_REQUEST.value()).message("FieldException")
+                .errors(Collections.singletonList(FieldErrorResponse.builder()
+                    .field(ex.getErrorName())
+                    .message(ex.getErrorDescription())
+                    .build())).build());
+    }
+
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> catchAllException(Exception exception) {
         return ResponseEntity

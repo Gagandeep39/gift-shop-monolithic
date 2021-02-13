@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
       }).and() // Required for accessing prpotected routes
       .csrf().disable()
       .authorizeRequests().antMatchers("/register/**", "/auth/**" , "/h2/**", "/swagger*/**", "/v2/api-docs", "/social/**").permitAll()
-      .antMatchers(HttpMethod.GET, "/product-service/**").permitAll()
+      .antMatchers("/products/**", "/categories/**").permitAll()
       // .antMatchers().permitAll()
       .anyRequest().authenticated()
       .and()
