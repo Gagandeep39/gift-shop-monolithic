@@ -1,0 +1,99 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2021-02-08 19:33:44
+ * @modify date 2021-02-08 19:33:44
+ * @desc [description]
+ */
+//  Launch SONAR using docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+pipeline =  {
+    stage('Checkout') {
+        SERVICE = 'backend'
+        // bat 'if exist auth-service rmdir /s /q auth-service'
+        // bat 'dir'
+        bat "xcopy /E D:\\Workspaces\\vscode_workspace\\gift-shop-monolith\\${SERVICE} /i ${SERVICE} /Y"
+    }
+    stage('Preparation') {
+        dir(SERVICE) {
+            
+        bat 'dir'
+            pom = readMavenPom file: 'pom.xml'
+            bat 'echo pom.version'
+            IMAGE = pom.artifactId
+            VERSION = pom.version
+        }
+    }
+    stage ('Compile Stage') {
+        dir(SERVICE) {
+            bat './mvnw clean compile'
+        }
+    } 
+    stage ('Testing Stage') {
+        dir(SERVICE) {
+            bat './mvnw test'
+            junit 'target/surefire-reports/**/*.xml'
+        }
+    }
+    stage('Jacoco Static Analysis') {
+        dir (SERVICE) {
+            step([$class: 'JacocoPublisher', 
+            execPattern: 'target/*.exec',
+            classPattern: 'target/classes',
+            sourcePattern: 'src/main/java',
+            exclusionPattern: 'src/test*'
+            ])
+            bat './mvnw verify -DskipTests'
+        }
+    }
+    stage('Sonar Scanner Coverage') {
+        dir (SERVICE) {
+            withCredentials([string(credentialsId: 'sonarToken', variable: 'sonarLogin')]) {
+                sonarUrl = 'http://192.168.0.194:9000/'
+                bat "./mvnw sonar:sonar -Dsonar.login=${sonarLogin} -Dsonar.host.url=${sonarUrl}"
+            }
+        }
+    }
+    stage ('Package Stage') {
+        dir(SERVICE) {
+            bat './mvnw clean package -DskipTests'
+        }
+    }
+    stage ('Publish to Nexus') {
+        dir (SERVICE) {
+           nexusPublisher nexusInstanceId: 'Nexus-Mac', nexusRepositoryId: 'gift-shop-mono', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './target/gift-shop-api.war']], mavenCoordinate: [artifactId: SERVICE, groupId: 'com.online', packaging: 'war', version: VERSION]]]
+        }
+    }
+    stage ('Deploy on this Server') {
+        dir (SERVICE) {
+          deploy adapters: [tomcat9(credentialsId: 'DepoyerTomcat9', path: '', url: 'http://localhost:8085')], contextPath: null, war: '**/*.war'
+        }
+    }
+}
+
+postFailure = {
+    def to = emailextrecipients([
+        [$class: 'CulpritsRecipientProvider'],
+        [$class: 'DevelopersRecipientProvider'],
+        [$class: 'RequesterRecipientProvider']
+    ])
+
+    currentBuild.result = 'FAILURE'
+    // set variables
+    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.result}"
+    def content = '${JELLY_SCRIPT,template="html"}'
+    // send email
+    if (to != null && !to.isEmpty()) {
+        emailext(body: content, mimeType: 'text/html',
+                replyTo: '$DEFAULT_REPLYTO', subject: subject,
+                to: to, attachLog: true )
+    }
+}
+
+node {
+    try {
+        pipeline()
+    }
+    catch (e) {
+        postFailure()
+    }
+}
