@@ -2,7 +2,6 @@ package com.online.giftshop.util;
 
 import com.online.giftshop.dto.ProductInfoDto;
 import com.online.giftshop.dto.ProductInfoRequest;
-import com.online.giftshop.dto.StockDto;
 import com.online.giftshop.entities.ProductInfo;
 import com.online.giftshop.enums.ProductStatus;
 
@@ -18,19 +17,6 @@ public class ProductMapper {
 		productInfo.setProductIcon(request.getProductIcon());
 		productInfo.setProductStatus(ProductStatus.valueOf(request.getProductStatus()));
 		productInfo.setDiscountPercent(request.getDiscountPercent());
-		return productInfo;
-	}
-	
-	public static ProductInfo stockDtoToEntity(StockDto stockDto) {
-		ProductInfo productInfo = new ProductInfo();
-		productInfo.setProductId(stockDto.getProductId());
-		productInfo.setProductStock(stockDto.getQuantity());
-//		productInfo.setProductName(productInfo.getProductName());
-//		productInfo.setProductDescription(productInfo.getProductDescription());
-//		productInfo.setProductIcon(productInfo.getProductIcon());
-//		productInfo.setProductPrice(productInfo.getProductPrice());
-//		productInfo.setProductStatus(productInfo.getProductStatus());
-//		productInfo.setProductCategory(productInfo.getProductCategory());
 		return productInfo;
 	}
 

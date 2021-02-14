@@ -140,6 +140,8 @@
                     <exclude>**/dto/**</exclude>
                     <exclude>**/entities/**</exclude>
                     <exclude>**/enums/**</exclude>
+                    <exclude>**/config/**</exclude>
+                    <exclude>**/security/**</exclude>
                 </excludes>
           </configuration>
 				<executions>
