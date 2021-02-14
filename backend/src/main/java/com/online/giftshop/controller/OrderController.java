@@ -32,22 +32,22 @@ public class OrderController {
   private OrderService service;
 
   @GetMapping("/user/{userId}")
-  List<OrderMain> fetchByUserId(@PathVariable Long userId) {
+  public List<OrderMain> fetchByUserId(@PathVariable Long userId) {
     return service.fetchByUserId(userId);
   }
 
   @GetMapping
-  List<OrderMain> fetchAll() {
+  public List<OrderMain> fetchAll() {
     return service.fetchAll();
   }
 
   @GetMapping("/{id}")
-  OrderMain findByOrderId(@PathVariable Long id) {
+  public OrderMain findByOrderId(@PathVariable Long id) {
     return service.findByOrderId(id);
   }
 
   @PostMapping
-  OrderMain updateOrderStatus(@Valid @RequestBody UpdateStatusDto updateStatusDto) {
+  public OrderMain updateOrderStatus(@Valid @RequestBody UpdateStatusDto updateStatusDto) {
     return service.updateOrderStatus(updateStatusDto);
   }
 
