@@ -29,7 +29,8 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        { type: 'lcov' }, // Fies lcov not generating
       ]
     },
     reporters: ['progress', 'kjhtml'],

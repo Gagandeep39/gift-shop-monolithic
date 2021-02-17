@@ -49,3 +49,4 @@ build/
 ### Others ###
 *.log
 *.gz
+.scannerwork
