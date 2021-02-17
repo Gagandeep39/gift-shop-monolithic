@@ -1,5 +1,5 @@
 .backdrop {
-  background-image: url("/assets/images/celebration2.jpg");
+  background-image: url("^assets/images/celebration2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -13,7 +13,7 @@
 
 .front-img {
   max-width: 100%;
-  background-image: url("/assets/images/celebration.jpeg");
+  background-image: url("^assets/images/celebration.jpeg");
   background-size: cover;
   background-position: center;
   border-radius: 2px 0 0 2px;
