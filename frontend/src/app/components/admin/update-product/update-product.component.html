@@ -3,7 +3,7 @@
     class="background"
     [ngStyle]="{
       'background-image':
-        'url(' + productIcon + '), url(/assets/images/celebration2.jpg)'
+        'url(' + productIcon + '), url(^assets/images/celebration2.jpg)'
     }"
   ></div>
   <div class="content">
@@ -13,7 +13,7 @@
           class="col-6 front-img"
           [ngStyle]="{
             'background-image':
-              'url(' + productIcon + '), url(/assets/images/celebration2.jpg)'
+              'url(' + productIcon + '), url(^assets/images/celebration2.jpg)'
           }"
         ></div>
         <div class="col-6 section-product">
@@ -22,7 +22,7 @@
               <img
                 class="back-img"
                 (click)="goBack()"
-                src="/assets/images/back.svg"
+                src="assets/images/back.svg"
                 alt=""
               />
               Edit Product #<span class="product-id"> {{ productId }} </span>
