@@ -1,0 +1,92 @@
+/**
+ * @author Gagandeep Singh
+ * @email singh.gagandeep3911@gmail.com
+ * @create date 2021-02-08 19:33:44
+ * @modify date 2021-02-08 19:33:44
+ * @desc [description]
+ */
+//  Launch SONAR using docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+pipeline =  {
+    stage('Checkout') {
+        SERVICE = 'frontend'
+        // bat 'if exist auth-service rmdir /s /q auth-service'
+        // bat 'dir'
+        bat "xcopy /E /exclude:D:\\Workspaces\\vscode_workspace\\gift-shop-monolith\\frontend\\ignore.txt D:\\Workspaces\\vscode_workspace\\gift-shop-monolith\\${SERVICE} /i ${SERVICE} /Y"
+    }
+    stage ('Install dependency') {
+        dir(SERVICE) {
+            bat 'npm install'
+        }
+    } 
+    stage ('Testing Stage') {
+        dir(SERVICE) {
+            bat 'npx ng test --no-watch --code-coverage'
+        }
+    }
+    stage('Sonar Scanner Coverage') {
+        dir (SERVICE) {
+            bat "npm run sonar"
+        }
+    }
+    stage('Make Prod Build') {
+        dir (SERVICE) {
+            bat 'npx ng build --prod --base-href=/frontend/ && cd dist/frontend && jar -cvf frontend.war *'
+            bat 'npx ng build --prod --base-href=/ && cd dist/frontend && jar -cvf frontend.war *'
+        }
+    }
+      stage ('Publish to Nexus') {
+        dir (SERVICE) {
+          nexusPublisher nexusInstanceId: 'Nexus-Mac', nexusRepositoryId: 'gift-shop-mono', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './dist/frontend/frontend.war']], mavenCoordinate: [artifactId: SERVICE, groupId: 'com.online', packaging: 'war', version: java.time.LocalDateTime.now().toString()]]]
+        }
+    }
+    stage ('Deploy on this Server') {
+        dir (SERVICE) {
+            deploy adapters: [tomcat9(credentialsId: 'DepoyerTomcat9', path: '', url: 'http://localhost:8085')], contextPath: null, war: '**/*.war'
+        }
+    }
+    stage ('Deploy to S3') {
+        dir (SERVICE) {
+            s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'gift-shop-mono', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-2', showDirectlyInBrowser: false, sourceFile: 'dist/frontend/**', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'aws-s3', userMetadata: []
+        }
+    }
+    stage ('Clear Workspace') {
+        deleteDir()
+    }
+    stage('Send Mail') {
+        currentBuild.result = 'SUCCESS'
+        sendMail()
+    }
+}
+
+postFailure = {
+    currentBuild.result = 'FAILURE'
+    sendMail()
+}
+sendMail = {
+    // def to = emailextrecipients([
+    //     [$class: 'CulpritsRecipientProvider'],
+    //     [$class: 'DevelopersRecipientProvider'],
+    //     [$class: 'RequesterRecipientProvider']
+    // ])
+    def to = "singh.gagandeep3911@gmail.com"
+    // set variables
+    def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.result}"
+    // def content = '${JELLY_SCRIPT,template="html"}'
+    def content = "Check console output at ${env.BUILD_URL} to view the results."
+    // send email
+    if (to != null && !to.isEmpty()) {
+        emailext(body: content, mimeType: 'text/html',
+                replyTo: '$DEFAULT_REPLYTO', subject: subject,
+                to: to, attachLog: true )
+    }
+}
+
+node {
+    try {
+        pipeline()
+    }
+    catch (e) {
+        deleteDir()
+        postFailure()
+    }
+}
