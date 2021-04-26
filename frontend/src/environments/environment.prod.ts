@@ -1,8 +1,8 @@
 export const environment = {
   production: false,
-  protocol: 'http://',
-  applicationUrl: 'localhost:8085/gift-shop-api',
-  // applicationUrl: 'localhost:1999',
+  protocol: 'https://',
+  // applicationUrl: 'localhost:8085/gift-shop-api',
+  applicationUrl: 'glacial-bastion-78267.herokuapp.com',
   authService: '',
   productService: '',
   orderService: '',
