@@ -1,0 +1,153 @@
+<div class="root">
+  <div
+    class="background"
+    [ngStyle]="{
+      'background-image':
+        'url(' + categoryImageUrl + '), url(/assets/images/celebration2.jpg)'
+    }"
+  ></div>
+  <div class="content">
+    <div class="my-card">
+      <div class="row">
+        <div
+          class="col-6 front-img"
+          [ngStyle]="{
+            'background-image':
+              'url(' + categoryImageUrl + '), url(/assets/images/invalid_url2.png)'
+          }"
+        ></div>
+        <div class="col-6 section-product">
+          <div class="p-5">
+            <h2 class="product-title">
+              <img
+                class="back-img"
+                (click)="goBack()"
+                src="/assets/images/back.svg"
+                alt=""
+              />
+              Add New Category
+            </h2>
+            <form
+              class="user"
+              [formGroup]="updateCategoryForm"
+              (ngSubmit)="submitForm()"
+            >
+              <!-- Category Name -->
+              <div class="form-group">
+                <label for="categoryName"> Category Name</label>
+                <input
+                  class="form-control form-control-user"
+                  type="text"
+                  id="categoryName"
+                  formControlName="categoryName"
+                  placeholder="Category Name"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateCategoryForm.get('categoryName').invalid
+                  }"
+                  name="categoryName"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateCategoryForm.get('categoryName').invalid"
+                >
+                  <div *ngIf="updateCategoryForm.get('categoryName').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateCategoryForm.get('categoryName').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateCategoryForm.controls["categoryName"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Category Description -->
+              <div class="form-group">
+                <label for="exampleInputcategoryDescription"> Category Description</label>
+                <textarea
+                  class="form-control form-control-user"
+                  formControlName="categoryDescription"
+                  id="exampleInputcategoryDescription"
+                  placeholder="Category Description"
+                  name="categoryDescription"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted &&
+                      updateCategoryForm.get('categoryDescription').invalid
+                  }"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateCategoryForm.get('categoryDescription').invalid"
+                >
+                  <div *ngIf="updateCategoryForm.get('categoryDescription').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateCategoryForm.get('categoryDescription').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateCategoryForm.controls["categoryDescription"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Category Icon -->
+              <div class="form-group">
+                <label for="exampleInputcategoryImageUrl"> Category Icon</label>
+                <textarea
+                  class="form-control form-control-user"
+                  type="text"
+                  formControlName="categoryImageUrl"
+                  id="exampleInputcategoryImageUrl"
+                  placeholder="Category Icon"
+                  (change)="updateImage($event.target.value)"
+                  name="categoryImageUrl"
+                  [ngClass]="{
+                    'is-invalid': submitted && updateCategoryForm.get('categoryImageUrl').invalid
+                  }"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateCategoryForm.get('categoryImageUrl').invalid"
+                >
+                  <div *ngIf="updateCategoryForm.get('categoryImageUrl').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateCategoryForm.get('categoryImageUrl').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateCategoryForm.controls["categoryImageUrl"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="message" class="alert alert-success" role="alert">
+                {{message}}
+              </div>
+              <button class="primary-btn btn-block" type="submit">
+                <span
+                  *ngIf="loadingService.loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                Add Category
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

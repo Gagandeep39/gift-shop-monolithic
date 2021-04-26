@@ -1,0 +1,332 @@
+<div class="root">
+  <div
+    class="background"
+    [ngStyle]="{
+      'background-image':
+        'url(' + productIcon + '), url(/assets/images/celebration2.jpg)'
+    }"
+  ></div>
+  <div class="content">
+    <div class="my-card">
+      <div class="row">
+        <div
+          class="col-6 front-img"
+          [ngStyle]="{
+            'background-image':
+              'url(' + productIcon + '), url(/assets/images/celebration2.jpg)'
+          }"
+        ></div>
+        <div class="col-6 section-product">
+          <div class="p-5">
+            <h2 class="product-title">
+              <img
+                class="back-img"
+                (click)="goBack()"
+                src="/assets/images/back.svg"
+                alt=""
+              />
+              Add New Product
+            </h2>
+            <form
+              class="user"
+              [formGroup]="updateProductForm"
+              (ngSubmit)="submitForm()"
+            >
+              <!-- Product Name -->
+              <div class="form-group">
+                <label for="productName"> Product Name</label>
+                <input
+                  class="form-control form-control-user"
+                  type="text"
+                  id="productName"
+                  formControlName="productName"
+                  placeholder="Product Name"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateProductForm.get('productName').invalid
+                  }"
+                  name="productName"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('productName').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('productName').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('productName').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["productName"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Product Price -->
+              <div class="form-group">
+                <label for="exampleInputproductPrice"> Product Price</label>
+                <input
+                  class="form-control form-control-user"
+                  formControlName="productPrice"
+                  type="number"
+                  id="exampleInputproductPrice"
+                  placeholder="Product Price"
+                  name="productPrice"
+                  [ngClass]="{
+                    'is-invalid': submitted && updateProductForm.get('productPrice').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('productPrice').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('productPrice').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('productPrice').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["productPrice"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Discount Percent -->
+              <div class="form-group">
+                <label for="exampleInputdiscountPercent"> Discount Percent</label>
+                <input
+                  class="form-control form-control-user"
+                  formControlName="discountPercent"
+                  type="number"
+                  id="exampleInputdiscountPercent"
+                  placeholder="Discount Percent"
+                  name="discountPercent"
+                  [ngClass]="{
+                    'is-invalid': submitted && updateProductForm.get('discountPercent').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('discountPercent').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('discountPercent').errors['required']">
+                    * Required
+                  </div>
+                  <div *ngIf="updateProductForm.get('discountPercent').errors['pattern']">
+                    Enter  anumber between 1-99
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('discountPercent').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["discountPercent"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Product Stock -->
+              <div class="form-group">
+                <label for="exampleInputproductStock"> Product Stock</label>
+                <input
+                  class="form-control form-control-user"
+                  type="productStock"
+                  formControlName="productStock"
+                  type="number"
+                  id="exampleInputproductStock"
+                  placeholder="Product Stock"
+                  name="productStock"
+                  [ngClass]="{
+                    'is-invalid': submitted && updateProductForm.get('productStock').invalid
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('productStock').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('productStock').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('productStock').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["productStock"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Product Description -->
+              <div class="form-group">
+                <label for="exampleInputproductDescription"> Product Description</label>
+                <textarea
+                  class="form-control form-control-user"
+                  formControlName="productDescription"
+                  id="exampleInputproductDescription"
+                  placeholder="Product Description"
+                  name="productDescription"
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted &&
+                      updateProductForm.get('productDescription').invalid
+                  }"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('productDescription').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('productDescription').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('productDescription').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["productDescription"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Product Icon -->
+              <div class="form-group">
+                <label for="exampleInputproductIcon"> Product Icon</label>
+                <textarea
+                  class="form-control form-control-user"
+                  type="text"
+                  formControlName="productIcon"
+                  id="exampleInputproductIcon"
+                  placeholder="Product Icon"
+                  (change)="updateImage($event.target.value)"
+                  name="productIcon"
+                  [ngClass]="{
+                    'is-invalid': submitted && updateProductForm.get('productIcon').invalid
+                  }"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="submitted && updateProductForm.get('productIcon').invalid"
+                >
+                  <div *ngIf="updateProductForm.get('productIcon').errors['required']">
+                    * Required
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProductForm.get('productIcon').errors['serverValidationError']
+                    "
+                  >
+                    {{
+                      updateProductForm.controls["productIcon"].errors
+                        .serverValidationError
+                    }}
+                  </div>
+                </div>
+              </div>
+              <!-- Product Status -->
+              <div class="form-group">
+                <div>
+                  <label>Product Status</label>
+                  <div *ngFor="let status of statuses | keyvalue" class="custom-control custom-radio">
+                    <input
+                      [ngClass]="{'is-invalid':submitted && updateProductForm.get('productStatus').invalid}"
+                      [value]="status.key"
+                      class="custom-control-input"
+                      formControlName="productStatus"
+                      [id]="status.key"
+                      type="radio"
+                    />
+                    <label class="custom-control-label" for="{{ status.key }}">{{
+                      status.value
+                    }}</label>
+                  </div>
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="
+                      submitted &&
+                      updateProductForm.get('productStatus').invalid
+                    "
+                  >
+                    <div
+                      *ngIf="
+                        updateProductForm.get('productStatus').errors[
+                          'required'
+                        ]
+                      "
+                    >
+                      * Required
+                    </div>
+                    <div
+                      *ngIf="
+                        updateProductForm.get('productStatus').errors[
+                          'serverValidationError'
+                        ]
+                      "
+                    >
+                      {{
+                        updateProductForm.controls["productStatus"].errors
+                          .serverValidationError
+                      }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Product Category -->
+              <div class="form-group">
+                <label for="supplierId"><strong>Category</strong><br /></label
+                ><select
+                  [ngClass]="{
+                    'is-invalid':
+                      submitted && updateProductForm.get('categoryId').invalid
+                  }"
+                  class="form-control"
+                  formControlName="categoryId"
+                >
+                  <option value="" disabled="true" [selected]="true">
+                    Select a Category
+                  </option>
+                  <option
+                    *ngFor="let item of categories"
+                    [value]="item.categoryId"
+                  >
+                    {{ item.categoryName }}
+                  </option>
+                </select>
+                <div class="invalid-feedback" *ngIf="submitted && updateProductForm.get('categoryId').invalid">
+                  <div *ngIf="updateProductForm.get('categoryId').errors['required']">* Required</div>
+                  <div *ngIf="updateProductForm.get('categoryId').errors['serverValidationError']"> 
+                      {{updateProductForm.controls['categoryId'].errors.serverValidationError }} 
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="message" class="alert alert-success" role="alert">
+                {{message}}
+              </div>
+              <button class="primary-btn btn-block" type="submit">
+                <span
+                  *ngIf="loadingService.loading"
+                  class="spinner-border spinner-border-sm"
+                ></span>
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
