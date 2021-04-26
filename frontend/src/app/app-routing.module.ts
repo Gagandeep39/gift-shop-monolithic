@@ -7,12 +7,15 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddCategoryNewComponent } from './components/admin/add-category-new/add-category-new.component';
 import { AddCategoryComponent } from './components/admin/add-category/add-category.component';
+import { AddProductNewComponent } from './components/admin/add-product-new/add-product-new.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UpdateCategoryComponent } from './components/admin/update-category/update-category.component';
 import { UpdateProductComponent } from './components/admin/update-product/update-product.component';
 import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
+import { ViewProductNewComponent } from './components/admin/view-product-new/view-product-new.component';
 import { ViewProductComponent } from './components/admin/view-product/view-product.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -20,14 +23,18 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { RequestQuestionComponent } from './components/auth/request-question/request-question.component';
 import { SocialRegisterComponent } from './components/auth/social-register/social-register.component';
 import { AboutUsComponent } from './components/products/about-us/about-us.component';
+import { CartNewComponent } from './components/products/cart-new/cart-new.component';
 import { CartComponent } from './components/products/cart/cart.component';
 import { CartSummaryComponent } from './components/products/checkout/cart-summary/cart-summary.component';
 import { CheckoutComponent } from './components/products/checkout/checkout.component';
+import { PaymentSuccessComponent } from './components/products/checkout/payment-success/payment-success.component';
 import { PaymentComponent } from './components/products/checkout/payment/payment.component';
 import { ShippingDetailsComponent } from './components/products/checkout/shipping-details/shipping-details.component';
 import { EditProfileComponent } from './components/products/edit-profile/edit-profile.component';
 import { DeliveryHistoryComponent } from './components/products/orders/delivery-history/delivery-history.component';
+import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
 import { OrderDetailsComponent } from './components/products/orders/order-details/order-details.component';
+import { OrderHistoryNewComponent } from './components/products/orders/order-history-new/order-history-new.component';
 import { OrderHistoryComponent } from './components/products/orders/order-history/order-history.component';
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
@@ -66,10 +73,10 @@ const routes: Routes = [
     component: ProductsComponent,
     children: [
       { path: '', component: ProductListComponent },
-      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'cart', component: CartNewComponent, canActivate: [AuthGuard] },
       {
         path: 'orders',
-        component: OrderHistoryComponent,
+        component: OrderHistoryNewComponent,
         canActivate: [AuthGuard],
       },
       {
@@ -84,7 +91,7 @@ const routes: Routes = [
       },
       {
         path: 'orders/:orderId',
-        component: OrderDetailsComponent,
+        component: OrderDetailsNewComponent,
         canActivate: [AuthGuard],
       },
       { path: 'about', component: AboutUsComponent },
@@ -101,6 +108,8 @@ const routes: Routes = [
           { path: 'summary', component: CartSummaryComponent },
           { path: 'shipping', component: ShippingDetailsComponent },
           { path: 'payment', component: PaymentComponent },
+          { path: 'success/:orderId', component: PaymentSuccessComponent },
+          { path: '', redirectTo: 'shipping', pathMatch: 'full' },
         ],
       },
       { path: ':productId', component: ProductDetailsComponent },
@@ -112,10 +121,10 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'Admin' },
     children: [
-      { path: 'add', component: AddProductComponent },
-      { path: 'view', component: ViewProductComponent },
+      { path: 'add', component: AddProductNewComponent },
+      { path: 'view', component: ViewProductNewComponent },
       { path: 'categoryview', component: ViewCategoriesComponent },
-      { path: 'categoryadd', component: AddCategoryComponent },
+      { path: 'categoryadd', component: AddCategoryNewComponent },
       { path: 'categoryedit/:categoryId', component: UpdateCategoryComponent },
       { path: '', redirectTo: 'view', pathMatch: 'full' },
       { path: 'update/:productId', component: UpdateProductComponent },

@@ -53,6 +53,18 @@ import { ViewCategoriesComponent } from './components/admin/view-categories/view
 import { MaterialCustomModule } from './material-custom/material-custom.module';
 import { UpdateCategoryComponent } from './components/admin/update-category/update-category.component';
 import { AddCategoryComponent } from './components/admin/add-category/add-category.component';
+import { CategoryCarauselComponent } from './components/products/product-list/category-carausel/category-carausel.component';
+import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
+import { ProductDetailCardComponent } from './components/products/orders/order-details-new/product-detail-card/product-detail-card.component';
+import { ViewProductNewComponent } from './components/admin/view-product-new/view-product-new.component';
+import { UpdateStatusModalComponent } from './shared/update-status-modal/update-status-modal.component';
+import { AddProductNewComponent } from './components/admin/add-product-new/add-product-new.component';
+import { FormSubmitModalComponent } from './shared/form-submit-modal/form-submit-modal.component';
+import { AddCategoryNewComponent } from './components/admin/add-category-new/add-category-new.component';
+import { PaymentSuccessComponent } from './components/products/checkout/payment-success/payment-success.component';
+import { CartNewComponent } from './components/products/cart-new/cart-new.component';
+import { CartItemCardComponent } from './components/products/cart-new/cart-item-card/cart-item-card.component';
+import { OrderHistoryNewComponent } from './components/products/orders/order-history-new/order-history-new.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +106,18 @@ import { AddCategoryComponent } from './components/admin/add-category/add-catego
     ViewCategoriesComponent,
     UpdateCategoryComponent,
     AddCategoryComponent,
+    CategoryCarauselComponent,
+    OrderDetailsNewComponent,
+    ProductDetailCardComponent,
+    ViewProductNewComponent,
+    UpdateStatusModalComponent,
+    AddProductNewComponent,
+    FormSubmitModalComponent,
+    AddCategoryNewComponent,
+    PaymentSuccessComponent,
+    CartNewComponent,
+    CartItemCardComponent,
+    OrderHistoryNewComponent,
   ],
   imports: [
     BrowserModule,
