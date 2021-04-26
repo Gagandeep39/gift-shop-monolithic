@@ -26,7 +26,7 @@ jobs:
       - name: Make a production build
         run: |
           npm install
-          npx ng build --prod --base-href=https://gagandeep39.github.io/gift-shop-monolithic/ --deploy-url=https://gagandeep39.github.io/gift-shop-monolithic/
+          npx ng build --prod --base-href=https://gagandeep39.github.io/gift-shop-monolithic/
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
