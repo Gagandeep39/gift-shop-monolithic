@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { UpdateOrderStatus } from '../models/update-order-status.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ import { UpdateOrderStatus } from '../models/update-order-status.model';
 export class OrderService {
   orderServiceUrl = `${environment.protocol}${environment.applicationUrl}/orders`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   updateOrderStatus(data: UpdateOrderStatus) {
     return this.http.post(`${this.orderServiceUrl}`, data);
@@ -28,5 +29,15 @@ export class OrderService {
 
   fetchById(id) {
     return this.http.get(`${this.orderServiceUrl}/${id}`);
+  }
+
+  fetchByLoggedInUserId() {
+    return this.fetchByUserId(
+      this.authService.fetchFromSessionStorage()?.userId
+    );
+  }
+
+  fetchByUserId(userId) {
+    return this.http.get(`${this.orderServiceUrl}/user/${userId}`);
   }
 }

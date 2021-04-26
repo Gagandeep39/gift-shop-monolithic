@@ -46,4 +46,7 @@ export class ProductService {
     return this.http.put(`${this.productServiceUrl}`, product);
   }
 
+  fetchAllByPaging(page, sortBy, direction) {
+    return this.http.get(`${this.productServiceUrl}/pages?pageNo=${page}&sortBy=${sortBy}&direction=${direction}`).pipe(map(res => res['content']));
+  }
 }

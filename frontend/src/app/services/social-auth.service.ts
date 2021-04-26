@@ -27,20 +27,24 @@ export class SocialAuthService {
 
   validateGoogleTokenAndLogin(data) {
     return this.http
-      .post(`${this.authServiceUrl}/google`, data);
+      .post(`${this.authServiceUrl}/google`, data)
+      .pipe(tap((user: User) => this.triggerLogin(user)));
   }
 
   validateFacebookTokenAndLogin(data) {
     return this.http
-      .post(`${this.authServiceUrl}/facebook`, data);
+      .post(`${this.authServiceUrl}/facebook`, data)
+      .pipe(tap((user: User) => this.triggerLogin(user)));
   }
 
   socialSignUp(data) {
     return this.http
-      .post(`${this.authServiceUrl}/signup`, data);
+      .post(`${this.authServiceUrl}/signup`, data)
+      .pipe(tap((user: User) => this.triggerLogin(user)));
   }
 
   triggerLogin(user: User) {
     this.authService.saveToSessionStorage(user);
+    this.eventServie.loggedInUser.next(user);
   }
 }

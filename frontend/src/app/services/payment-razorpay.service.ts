@@ -27,7 +27,7 @@ export class PaymentRazorpayService {
     });
   }
 
-  // updatePaymentInDb(data) {
-  //   return this.http.post(`${this.paymentServiceUrl}/razorsuccess`, data);
-  // }
+  updatePaymentInDb(data) {
+    return this.http.post(`${this.paymentServiceUrl}/razorsuccess`, data);
+  }
 }
