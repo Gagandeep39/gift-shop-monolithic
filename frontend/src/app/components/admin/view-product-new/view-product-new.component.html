@@ -15,7 +15,7 @@
         />
         <img
           class="product-add"
-          src="/assets/images/add_circle_filled.svg"
+          src="assets/images/add_circle_filled.svg"
           alt="Category Add"
           [routerLink]="['/admin/add']"
         />
@@ -57,7 +57,7 @@
                 (click)="updateStatus(element)"
                 aria-label="Example icon button with a menu icon"
               >
-                <img src="/assets/images/edit_square.svg" alt="" />
+                <img src="assets/images/edit_square.svg" alt="" />
               </button>
             </td>
           </ng-container>
@@ -88,7 +88,7 @@
             <td mat-cell *matCellDef="let element" class="product-edit">
               <img
                 [routerLink]="['/admin/update', element.productId]"
-                src="/assets/images/edit.svg"
+                src="assets/images/edit.svg"
                 alt=""
               />
             </td>
