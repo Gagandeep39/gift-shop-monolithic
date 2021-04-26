@@ -19,7 +19,7 @@
     class="product-img"
     [src]="productImageUrl"
     [alt]="productName"
-    (error)="$event.target.src = '^assets/images/celebration2.jpg'"
+    (error)="$event.target.src = 'assets/images/celebration2.jpg'"
     [ngStyle]="{ filter: isProductAvailable() ? 'blur(4px)' : '0' }"
   />
   <!-- Display if Product disabled / quantity 0 -->
