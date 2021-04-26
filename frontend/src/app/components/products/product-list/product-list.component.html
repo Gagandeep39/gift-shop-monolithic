@@ -1,7 +1,18 @@
 <div class="parent">
+  <div class="section-category-carausel" *ngIf="(!this.activeCategory && !this.productQuery)">
+    <app-category-carausel></app-category-carausel>
+  </div>
   <!-- Displyed when no category is selected -->
   <div class="category" *ngIf="!activeCategory && !productQuery">
     All Products
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ activeSortType?.name }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+        <a *ngFor="let types of sortByTypes" class="dropdown-item" (click)="onChangeSorting(types)"> {{ types.name }} </a>
+      </div>
+    </div>
     <span *ngIf="loadingService.loading" class="spinner-grow"></span>
   </div>
   <!-- Displayed when we pecify a cateogy -->

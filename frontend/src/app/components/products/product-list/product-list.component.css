@@ -66,3 +66,23 @@
   width: 3rem;
   margin-left: 24px;
 }
+
+.section-category-carausel {
+  /* height: 50vh;
+  overflow: hidden; */
+  width: 100%;
+}
+
+.dropdown, .dropdown-toggle {
+  float: right;
+  background: transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 12px 12px ;
+}
