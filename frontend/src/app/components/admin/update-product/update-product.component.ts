@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { Product } from 'src/app/models/product.model';
 import { CategoryService } from 'src/app/services/category.service';
+import { FormSubmitModalService } from 'src/app/services/form-submit-modal.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -37,6 +38,7 @@ export class UpdateProductComponent implements OnInit {
     private categoryService: CategoryService,
     private location: Location,
     private router: Router,
+    private formModal: FormSubmitModalService,
   ) {}
 
   ngOnInit(): void {
@@ -92,11 +94,12 @@ export class UpdateProductComponent implements OnInit {
     this.productService.updateProduct(formData).subscribe(
       (response) => {
         this.loadingService.disableLoading();
-        this.message =
-        'Successfully updated product with ID ' + response['productId'];
-        setTimeout(() => {
-          this.router.navigateByUrl('/admin/view');
-        }, 3000);
+        this.formModal.open('Successfully updated product with ID ' + response['productId'], '/admin/view')
+        // this.message =
+        // 'Successfully updated product with ID ' + response['productId'];
+        // setTimeout(() => {
+        //   this.router.navigateByUrl('/admin/view');
+        // }, 3000);
       },
       (error) => {
         this.loadingService.disableLoading();

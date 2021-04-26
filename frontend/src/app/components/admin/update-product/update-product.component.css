@@ -280,3 +280,7 @@ letter-spacing: 0.5px;
 input[type="radio"] {
   background-color: #21a0bd;
 }
+
+.custom-control {
+  z-index: 0;
+}
