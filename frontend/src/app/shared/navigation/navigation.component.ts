@@ -65,7 +65,7 @@ export class NavigationComponent implements OnInit {
 
   initializeNavItems() {
     this.eventService.loggedInUser.subscribe((res) => {
-      if (res === null) {
+      if (!res || res['status'] === 202 ) {
         this.isLoggedIn = false;
         this.activeTabs = this.anonymousTab;
       } else {
