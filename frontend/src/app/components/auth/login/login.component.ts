@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
 
   // Google sign in
   auth2;
-  logo = '/assets/images/btn_google_light_normal.svg';
+  logo = '^assets/images/btn_google_light_normal.svg';
 
   public googleInit() {
     gapi.load('auth2', () => {

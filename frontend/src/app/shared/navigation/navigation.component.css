@@ -46,7 +46,7 @@ nav {
   width: 150px;
   font-size: x-large;
   transition: width 0.2s ease-in-out;
-  background-image: url("/assets/images/search.svg");
+  background-image: url("^assets/images/search.svg");
   background-repeat: no-repeat;
   background-position: 90% 50%;
   padding: 8px 20px 8px 8px;

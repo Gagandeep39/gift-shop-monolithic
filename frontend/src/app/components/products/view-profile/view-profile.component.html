@@ -2,7 +2,7 @@
   <div
     class="background"
     [ngStyle]="{
-      'background-image': 'url(/assets/images/celebration2.jpg)'
+      'background-image': 'url(^assets/images/celebration2.jpg)'
     }"
   ></div>
   <div class="content">
@@ -11,13 +11,13 @@
         <div
           class="col-6 front-img"
           [ngStyle]="{
-            'background-image': 'url(/assets/images/celebration2.jpg)'
+            'background-image': 'url(^assets/images/celebration2.jpg)'
           }"
         ></div>
         <div class="col-6 section-user">
           <div class="p-5">
             <div class="section-back" (click)="goBack()">
-              <img class="back-img" src="/assets/images/back.svg" alt="" />
+              <img class="back-img" src="^assets/images/back.svg" alt="" />
               <span class="back-text">Back</span>
             </div>
             <div class="profile-data">
@@ -28,7 +28,7 @@
                   <img
                     class="edit"
                     [routerLink]="['/products/editprofile']"
-                    src="/assets/images/edit.svg"
+                    src="^assets/images/edit.svg"
                     alt=""
                   />
                 </p>

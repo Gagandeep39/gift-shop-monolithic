@@ -41,7 +41,7 @@ section:hover::before {
 }
 
 .payment-page {
-  background-image: url("/assets/images/pay_now2.png");
+  background-image: url("^assets/images/pay_now2.png");
   background-repeat: no-repeat;
   background-position: right;
   /* background-size: 300px; */
