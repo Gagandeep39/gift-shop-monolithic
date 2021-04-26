@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Create a separate brach with content of 'backend' directory
+      - name: Create a separate brach for backend
+        run: |
+          git subtree split --prefix backend -b heroku-deploy
+      # Deploy the subrach to heroku
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "glacial-bastion-78267" #Must be unique in Heroku
+          heroku_email: 'singh.gagandeep3911@gmail.com'
+          branch: heroku-deploy
