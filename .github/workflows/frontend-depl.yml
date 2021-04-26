@@ -25,8 +25,8 @@ jobs:
           node-version: '14.x'
       - name: Make a production build
         run: |
-          yarn
-          yarn build --prod
+          npm install
+          npx ng serve --prod
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
