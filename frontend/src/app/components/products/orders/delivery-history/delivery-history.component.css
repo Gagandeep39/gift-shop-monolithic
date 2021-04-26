@@ -36,7 +36,7 @@
 }
 
 #progressbar .step0:before {
-  content: url("^assets/images/check.svg");
+  content: url("/assets/images/check.svg");
 }
 
 #progressbar li:before {
@@ -98,11 +98,11 @@
 }
 
 #progressbar li.active:before {
-  content: url("^assets/images/check.svg");
+  content: url("/assets/images/check.svg");
 }
 
 #progressbar li.delete:before {
-  content: url("^assets/images/check.svg");
+  content: url("/assets/images/check.svg");
   background: red;
 }
 

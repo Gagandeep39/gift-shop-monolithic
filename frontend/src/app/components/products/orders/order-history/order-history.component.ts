@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
 
 declare global {
@@ -17,7 +18,11 @@ export class OrderHistoryComponent implements OnInit {
   orderId1: number;
   order;
 
-  constructor(private orderservice: OrderService, private router: Router) {}
+  constructor(
+    private orderservice: OrderService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.getOrders();
@@ -35,8 +40,8 @@ export class OrderHistoryComponent implements OnInit {
 
   getOrders() {
     console.log('before call');
-    this.orderservice.fetchOrder().subscribe((data) => {
-      this.order = data;
+    this.orderservice.fetchOrder().subscribe((data: Object[]) => {
+      this.order = data.filter((o) => o['userId'] === this.authService.fetchFromSessionStorage()?.userId);
       //alert("Orders in your cart");
     });
   }

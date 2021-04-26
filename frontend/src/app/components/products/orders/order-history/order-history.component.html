@@ -24,38 +24,39 @@
           <thead>
             <tr>
               <th scope="col" style="color: #566787">#</th>
-              <th scope="col" style="color: #566787">Customer Email</th>
+              <!-- <th scope="col" style="color: #566787">Customer Email</th> -->
               <th scope="col" style="color: #566787">Customer Name</th>
               <th scope="col" style="color: #566787">Customer Phone</th>
               <th scope="col" style="color: #566787">Customer Address</th>
-              <th scope="col" style="color: #566787">Location</th>
+              <!-- <th scope="col" style="color: #566787">Location</th>
               <th scope="col" style="color: #566787">City</th>
-              <th scope="col" style="color: #566787">Pincode</th>
+              <th scope="col" style="color: #566787">Pincode</th> -->
               <th scope="col" style="color: #566787">Net Amount</th>
               <th scope="col" style="color: #566787">Order Status</th>
               <th scope="col" style="color: #566787">Payment TYpe</th>
-              <th scope="col" style="color: #566787">Payment Id</th>
-              <th scope="col" style="color: #566787">User Id</th>
+              <!-- <th scope="col" style="color: #566787">Payment Id</th>
+              <th scope="col" style="color: #566787">User Id</th> -->
               <th scope="col" style="color: #566787">Action</th>
+              <th scope="col" style="color: #566787">Delivery</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let orders of order">
               <td>{{ orders.orderId }}</td>
-              <td>{{ orders.buyerEmail }}</td>
+              <!-- <td>{{ orders.buyerEmail }}</td> -->
               <td>{{ orders.buyerName }}</td>
               <td>{{ orders.buyerPhone }}</td>
               <td>{{ orders.buyerAddress }}</td>
-              <td>{{ orders.buyerState }}</td>
+              <!-- <td>{{ orders.buyerState }}</td>
               <td>{{ orders.buyerCity }}</td>
-              <td>{{ orders.buyerPincode }}</td>
+              <td>{{ orders.buyerPincode }}</td> -->
               <td>{{ orders.orderAmount }}</td>
               <td>{{ orders.orderStatus }}</td>
               <td>{{ orders.paymentType }}</td>
-              <td>{{ orders.paymentId }}</td>
-              <td>{{ orders.userId }}</td>
-              <td><button (click)="onSave(orders.orderId)">Details</button></td>
-              <td><button [routerLink]="['/products/delivery', orders.orderId ]">Delivery</button></td>
+              <!-- <td>{{ orders.paymentId }}</td>
+              <td>{{ orders.userId }}</td> -->
+              <td><button [routerLink]="['/products/orders', orders.orderId]" >Details</button></td>
+              <td><button [routerLink]="['/products/delivery', orders.orderId]" >Delivery</button></td>
             </tr>
           </tbody>
         </table>

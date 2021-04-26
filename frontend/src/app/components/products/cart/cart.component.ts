@@ -201,16 +201,17 @@ export class CartComponent implements OnInit {
         address: 'Gift Shop office',
       },
       theme: {
-        color: '#3399cc',
+        color: '#21a0bd',
       },
     };
     this.initRazorPay();
   }
-
   updatePaymentInServer(razorId) {
-    const res = {
-      paymentId: 100000 + Math.floor(Math.random() * 900000)
-    }
-      this.checkOutInServer(res);
+    const name = this.user['firstName'] + this.user['lastName'];
+    const amount = this.total;
+    this.razorpayService.updatePaymentInDb({ razorId, amount, name }).subscribe(res => {
+      console.log(res);
+      this.checkOutInServer(res)
+    });
   }
 }
