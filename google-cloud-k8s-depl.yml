@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: gagandeep39/gift-shop-mono-backend
+          resources:
+            limits:
+              memory: '350Mi'
+              cpu: '250m'
+
+---
+# Redundant for Current deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-srv
+spec:
+  type: LoadBalancer
+  selector:
+    app: backend
+  ports:
+    - port: 1999
+      name: backend-port
+      protocol: TCP
+      targetPort: 1999
+ 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: gagandeep39/gift-shop-mono-frontend:34.122.9.10
+          resources:
+            limits:
+              memory: '350Mi'
+              cpu: '250m'
+
+---
+# Redundant for Current deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-srv
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      name: frontend-port
+      protocol: TCP
+      targetPort: 80
