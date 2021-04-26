@@ -164,7 +164,8 @@ public class OrderMainServiceImpl implements OrderMainService {
 		orderMain.setFinalPrice(BigDecimal.valueOf(discountPrice + orderDto.getDeliveryCharge().doubleValue()));
 		orderRepo.save(orderMain);
 		createDeliveryHistoryEntry(orderMain.getOrderId());
-		sendEmail(user, orderMain);
+		// Enble Email
+		// sendEmail(user, orderMain);
 		
 		return Collections.singletonMap("orderId", orderMain.getOrderId().toString());
 	}

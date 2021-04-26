@@ -5,6 +5,8 @@ spring:
     active: test
   application:
     name: gift-shop
+  # Email Temporarily disab;ed
+  # ENble it at OrderMainServiceImpl.java line 168
   mail:
     host: smtp.sendgrid.net
     port: 25
