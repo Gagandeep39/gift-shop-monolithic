@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  backend-service:
+    # container_name: backend-service
+    image: gagandeep39/gift-shop-mono-backend
+    environment:
+      - SPRING_PROFILES_ACTIVE=test
+    ports:
+      - '1999:1999'
+    restart: always
+  frontend-service:
+    # container_name: frontend-service
+    image: gagandeep39/gift-shop-mono-frontend
+    ports:
+      - '80:80'
+    restart: always
+# Execute using  docker-compose up --remove-orphans -d
