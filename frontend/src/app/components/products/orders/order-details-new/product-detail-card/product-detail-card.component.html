@@ -1,0 +1,32 @@
+<div class="product-item">
+  <img
+    [src]="productIcon"
+    [alt]="productName"
+    (error)="$event.target.src = '/assets/images/celebration2.jpg'"
+    class="product-img"
+  />
+  <div class="product-details">
+    <div class="product-data">
+      <p class="product-name">
+        {{ productName }}
+        <img
+          class="detail"
+          [routerLink]="['/products', productId]"
+          src="/assets/images/info.svg"
+          alt=""
+        />
+      </p>
+      <p class="product-description">{{ productDescription }}</p>
+    </div>
+    <div class="product-quantity">
+      <img src="/assets/images/basket.svg" alt="" />
+      <span> {{ productQuantity }} </span>
+    </div>
+    <div class="product-price">
+      ₹ {{ discountPrice() }}
+      <span class="strike" *ngIf="discountPercent > 0"
+        >₹ {{ productPrice }}
+      </span>
+    </div>
+  </div>
+</div>

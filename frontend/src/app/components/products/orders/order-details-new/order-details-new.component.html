@@ -1,0 +1,146 @@
+<div class="parent px-1 px-md-4 py-5 mx-auto">
+  <div class="card">
+    <div class="row d-flex justify-content-between px-3 top">
+      <div class="logo-container">
+        <img
+          [routerLink]="['/']"
+          class="title"
+          src="assets/images/logo-text.png"
+        />
+        <hr />
+        <h1 class="title-main">Purchase History</h1>
+      </div>
+      <div class="row">
+        <section class="col">
+          <p class="summary">
+            Order #<span class="item"> {{ orderDetails?.orderId }} </span>
+          </p>
+          <p class="summary">
+            Current Status
+            <span class="item">
+              {{ orderDetails?.orderStatus }}
+              <img
+                src="/assets/images/info.svg"
+                alt=""
+                [routerLink]="['/products/delivery', orderDetails?.orderId]"
+              />
+            </span>
+          </p>
+          <p class="summary">
+            Updated On
+            <span class="item">
+              {{ formattedDate(deliveryHistory?.slice(-1)[0]?.updatedOn) }}
+            </span>
+          </p>
+        </section>
+        <section class="col">
+          <!-- Name -->
+          <p class="summary">
+            Name
+            <span class="item"> {{ orderDetails?.buyerName }} </span>
+          </p>
+          <!-- Phone -->
+          <p class="summary">
+            Phone No.
+            <span class="item"> {{ orderDetails?.buyerPhone }} </span>
+          </p>
+          <!-- Email -->
+          <p class="summary">
+            Email
+            <span class="item"> {{ orderDetails?.buyerEmail }} </span>
+          </p>
+        </section>
+      </div>
+      <!-- Address -->
+      <section>
+        <!-- Street -->
+        <p class="summary">
+          Street
+          <span class="item"> {{ orderDetails?.buyerAddress }} </span>
+        </p>
+        <!-- City -->
+        <p class="summary">
+          City
+          <span class="item"> {{ orderDetails?.buyerCity }} </span>
+        </p>
+        <!-- Phone -->
+        <p class="summary">
+          State
+          <span class="item"> {{ orderDetails?.buyerState }} </span>
+        </p>
+        <!-- Email -->
+        <p class="summary">
+          Pincode
+          <span class="item"> {{ orderDetails?.buyerPincode }} </span>
+        </p>
+      </section>
+    </div>
+    <!-- <div class="logs-container"> -->
+    <div class="logs-heading">
+      <hr />
+      <h1 class="title-main">Payment Details</h1>
+    </div>
+    <section>
+      <p class="summary">
+        Order Amount
+        <span class="item">₹ {{ orderDetails?.orderAmount }} </span>
+      </p>
+      <p class="summary">
+        Discounted Amount
+        <span class="item">₹ {{ orderDetails?.discountedAmount }} </span>
+      </p>
+      <p class="summary">
+        Delivery Charge
+        <span class="item">₹ {{ orderDetails?.deliveryCharge }} </span>
+      </p>
+      <p class="summary">
+        Final Price
+        <span class="item">₹ {{ orderDetails?.finalPrice }} </span>
+      </p>
+      <p class="summary">
+        Payment Type
+        <span class="item"> {{ orderDetails?.paymentType }} </span>
+      </p>
+    </section>
+    <div class="logs-heading">
+      <hr />
+      <h1 class="title-main">Product Details</h1>
+      <div class="product-list">
+        <app-product-detail-card
+          [productId]="item.productId"
+          [productName]="item.productName"
+          [productDescription]="item.productDescription"
+          [productIcon]="item.productIcon"
+          [productQuantity]="item.productStock"
+          [productPrice]="item.productPrice"
+          [discountPercent]="item.discountPercent"
+          *ngFor="let item of orderDetails?.products"
+        ></app-product-detail-card>
+      </div>
+    </div>
+
+    <!-- </div> -->
+    <br />
+    <div class="actions">
+      <button class="back-btn" (click)="goBack()">Back</button>
+      <button
+        class="secondary-btn"
+        [routerLink]="['/products/delivery', orderId]"
+      >
+        Delivery History
+      </button>
+      <button
+        class="cancel-btn"
+        (click)="cancelOrder()"
+        *ngIf="checkIfCancellable()"
+      >
+        <span
+          *ngIf="loadingService.loading"
+          class="spinner-border spinner-border-sm"
+        ></span>
+        Cancel Order
+      </button>
+    </div>
+  </div>
+</div>
+<app-order-cancel-modal></app-order-cancel-modal>

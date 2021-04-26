@@ -1,0 +1,40 @@
+<div
+  id="carouselExampleInterval"
+  class="carousel slide carousel-fade"
+  data-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div
+      [ngClass]="i == 0 ? 'active' : ''"
+      class="carousel-item"
+      data-interval="2000"
+      [attr.data-slide-to]="i + 1"
+      *ngFor="let category of categories; let i = index"
+      (click)="triggerCategoryChange(category.categoryName)"
+    >
+      <img [src]="category.categoryImageUrl" class="d-block" alt="..." />
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ category.categoryName }}</h5>
+        <p>{{ category.categoryDescription }}</p>
+      </div>
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleInterval"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleInterval"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

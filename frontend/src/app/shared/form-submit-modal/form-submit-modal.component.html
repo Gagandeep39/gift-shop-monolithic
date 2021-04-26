@@ -1,0 +1,14 @@
+<ng-container *ngIf="display$ | async as display">
+  <section [class.open]="display === 'open'" (click)="close()">
+    <div (click)="$event.stopPropagation()">
+      <h1>Success</h1>
+      <p> {{ message }} </p>
+      <hr />
+      <div class="actions">
+        <div class="other">
+          <button class="custom-btn" (click)="close()">Okay</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

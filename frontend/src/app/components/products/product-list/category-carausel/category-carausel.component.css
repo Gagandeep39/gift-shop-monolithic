@@ -1,0 +1,36 @@
+#carouselExampleInterval {
+  margin: 0 3%;
+  border-radius: 4px;
+  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item {
+  height: 400px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.95;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+h5 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  font-size: 300%;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+p {
+  margin-top: 24px;
+  font-size: 200%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-transform: capitalize;
+
+}

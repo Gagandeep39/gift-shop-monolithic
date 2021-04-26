@@ -1,0 +1,112 @@
+section {
+  visibility: hidden;
+  opacity: 0;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 250ms ease-in;
+  overflow-y: hidden;
+  height: 100%;
+}
+section.open {
+  visibility: inherit;
+  opacity: 1;
+}
+section > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: auto;
+  max-width: 40%;
+  background: white;
+  padding: 36px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+section button.close {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 16px;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 12px 0;
+  padding: 0;
+  letter-spacing: 0.5px;
+  font-size: 120%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-btn {
+  margin-right: 8px;
+  margin-top: 12px;
+  background: #24b7d8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px;
+  display: inline-block;
+  font-size: medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.cancel {
+  background: #fb5a69;
+}
+
+.custom-btn:hover {
+  background: white;
+  color: #24b7d8;
+  transform: scale(1.2);
+}
+
+.custom-btn[disabled] {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.cancel:hover {
+  color: #fb5a69;
+}
+
+hr {
+  border-top: 2px solid #fb5a69;
+  width: 100px;
+  margin: 0;
+  transition: 0.2s;
+}
+
+section div:hover hr {
+  width: 200px;
+}

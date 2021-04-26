@@ -1,0 +1,32 @@
+<ng-container *ngIf="display$ | async as display">
+  <section [class.open]="display === 'open'">
+    <div (click)="$event.stopPropagation()">
+      <h1>Updte Status</h1>
+      <p>Product ID: {{ product?.productId }}</p>
+      <p>Current Status: {{ product?.productStatus }}</p>
+      <div class="form-group">
+        <select class="form-control" [(ngModel)]="currentStatus">
+          <option value="" disabled="true" [selected]="true">
+            Select a Category
+          </option>
+          <option *ngFor="let item of statusTypes | keyvalue" [value]="item.key">
+            {{ item.value }}
+          </option>
+        </select>
+      </div>
+      <hr />
+      <div class="actions">
+        <div class="other">
+          <button [disabled]="currentStatus===product?.productStatus" class="custom-btn" (click)="update()">
+            <span
+              *ngIf="loadingService.loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
+            Update
+          </button>
+          <button class="custom-btn cancel" (click)="close()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
