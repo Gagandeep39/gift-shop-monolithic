@@ -1,4 +1,4 @@
-name: Create production build and deploy to gh-pages
+name: Frontend - Gh Pages
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: Make a production build
         run: |
           npm install
-          npx ng serve --prod
+          npx ng build --prod
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
