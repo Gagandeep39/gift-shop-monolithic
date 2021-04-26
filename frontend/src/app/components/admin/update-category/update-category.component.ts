@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
-import { Product } from 'src/app/models/product.model';
 import { CategoryService } from 'src/app/services/category.service';
+import { FormSubmitModalService } from 'src/app/services/form-submit-modal.service';
 import { LoadingService } from 'src/app/services/loading.service';
-import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-update-category',
@@ -27,7 +26,7 @@ export class UpdateCategoryComponent implements OnInit {
     public loadingService: LoadingService,
     private categoryService: CategoryService,
     private location: Location,
-    private router: Router
+    private formModal: FormSubmitModalService,
   ) {}
 
   ngOnInit(): void {
@@ -72,11 +71,15 @@ export class UpdateCategoryComponent implements OnInit {
     this.categoryService.updateCategory(formData).subscribe(
       (response) => {
         this.loadingService.disableLoading();
-        this.message =
-          'Successfully updated Category with ID ' + response['categoryId'];
-        setTimeout(() => {
-          this.router.navigateByUrl('/admin/categoryview');
-        }, 3000);
+        this.formModal.open(
+          'Successfully updated Category with ID ' + response['categoryId'],
+          '/admin/categoryview'
+        );
+        // this.message =
+        //   'Successfully updated Category with ID ' + response['categoryId'];
+        // setTimeout(() => {
+        //   this.router.navigateByUrl('/admin/categoryview');
+        // }, 3000);
       },
       (error) => {
         this.loadingService.disableLoading();
