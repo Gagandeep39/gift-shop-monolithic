@@ -30,7 +30,7 @@ export class PaymentStripeService {
 
   // Predefined UI
   pay(amount) {
-    var handler = window.StripeCheckout.configure({
+    var handler = (window as any).StripeCheckout.configure({
       key: environment.publicStripeKey,
       locale: 'auto',
       token: (token: any) => {
