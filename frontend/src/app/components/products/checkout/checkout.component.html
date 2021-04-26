@@ -1,2 +1,45 @@
-<p>checkout works!</p>
-<router-outlet></router-outlet>
+<div class="parent px-1 px-md-4 py-5 mx-auto">
+  <div class="card">
+    <div class="row d-flex justify-content-between px-3 top">
+      <div class="logo-container">
+        <img
+          [routerLink]="['/']"
+          class="title"
+          src="assets/images/logo-text.png"
+        />
+        <!-- <hr /> -->
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-12">
+        <ul id="progressbar" class="text-center">
+          <li
+            *ngFor="let item of activeStages"
+            class="active step0"
+            data-toggle="tooltip"
+            [title]="item.title"
+            data-placement="top"
+            onmouseenter="$(this).tooltip('show')"
+            onmouseout="$(this).tooltip('hide')"
+          ></li>
+          <li
+            class="step0"
+            *ngFor="let i of [].constructor(3 - activeStages.length)"
+          ></li>
+        </ul>
+      </div>
+    </div>
+    <div class="logs-container">
+      <div class="logs-heading">
+        <h1 class="title-main"> {{ title }} </h1>
+        <hr />
+        <div class="router">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-order-cancel-modal></app-order-cancel-modal>

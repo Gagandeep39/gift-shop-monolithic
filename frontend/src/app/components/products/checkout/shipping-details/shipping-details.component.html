@@ -1,1 +1,95 @@
-<p>shipping-details works!</p>
+<form  [formGroup]="addressForm" (submit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="city"><strong>City</strong></label
+        ><input
+          type="text"
+          class="form-control"
+          placeholder="City"
+          name="city"
+          [ngClass]="{'is-invalid': submitted && addressForm.get('city').invalid}"
+          formControlName="city"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && addressForm.get('city').invalid">
+          <div *ngIf="addressForm.get('city').errors['required']">* Required</div>
+          <div *ngIf="addressForm.get('city').errors['minlength']">Min length ust be 4</div>
+          <div *ngIf="addressForm.get('city').errors['maxlength']">Max length must be 30</div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="country"><strong>State</strong></label
+        ><input
+          type="text"
+          class="form-control"
+          placeholder="State"
+          name="State"
+          [ngClass]="{'is-invalid': submitted && addressForm.get('state').invalid}"
+          formControlName="state"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && addressForm.get('state').invalid">
+          <div *ngIf="addressForm.get('state').errors['required']">* Required</div>
+          <div *ngIf="addressForm.get('state').errors['minlength']">Min length ust be 4</div>
+          <div *ngIf="addressForm.get('state').errors['maxlength']">Max length must be 30</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="area"><strong>Area</strong></label
+        ><input
+          type="text"
+          class="form-control"
+          placeholder="Area"
+          name="area"
+          [ngClass]="{'is-invalid': submitted && addressForm.get('area').invalid}"
+          formControlName="area"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && addressForm.get('area').invalid">
+          <div *ngIf="addressForm.get('area').errors['required']">* Required</div>
+          <div *ngIf="addressForm.get('area').errors['minlength']">Min length ust be 4</div>
+          <div *ngIf="addressForm.get('area').errors['maxlength']">Max length must be 30</div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <label for="pinode"><strong>pincode</strong></label
+        ><input
+          type="text"
+          class="form-control"
+          placeholder="pincode"
+          name="pincode"
+          (change)="calculateDistance()"
+          formControlName="pincode"
+          [ngClass]="{'is-invalid': submitted && addressForm.get('pincode').invalid}"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && addressForm.get('pincode').invalid">
+          <div *ngIf="addressForm.get('pincode').errors['required']">* Required</div>
+          <div *ngIf="addressForm.get('pincode').errors['pattern']">Must be of length 6</div>
+          <div *ngIf="addressForm.get('pincode').errors['serverValidationError']"> 
+            {{addressForm.controls['pincode'].errors.serverValidationError }} 
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="delivery-charge">
+    <span class="delivery-caption">Delivery Cost </span> &nbsp; &nbsp; <span class="delivery-price">₹ {{ deliveryCharge }}  </span>  <span
+    *ngIf="loadingService.loading"
+    class="spinner-border spinner-border-sm"
+  ></span>
+    <br> <span class="warning">Calculated Based on Pincode location*</span>
+  </div>
+  <button class="primary-btn" (click)="goBack()">Back</button>
+  <div style="float: right;">
+    <button class="primary-btn" (click)="resetToDefault()">Reset Values</button>
+    <button type="submit" class="secondary-btn" >Next</button>
+  </div>
+  <br>
+  <br>
+</form>

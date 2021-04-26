@@ -1,0 +1,90 @@
+<section>
+  <p class="summary">
+    Order #<span class="item"> {{ orderDetails?.orderId }} </span>
+  </p>
+  <p class="summary">
+    Current Status
+    <span class="item">
+      Delivered
+      <img
+        src="/assets/images/info.svg"
+        alt=""
+        [routerLink]="['/products/delivery', orderDetails?.orderId]"
+      />
+    </span>
+  </p>
+  <p class="summary">
+    Updated On
+    <span class="item">
+      {{ formattedDate(deliveryHistory?.slice(-1)[0]?.updatedOn) }}
+    </span>
+  </p>
+</section>
+<section>
+  <!-- Name -->
+  <p class="summary">
+    Name
+    <span class="item"> {{ orderDetails?.buyerName }} </span>
+  </p>
+  <!-- Phone -->
+  <p class="summary">
+    Phone No.
+    <span class="item"> {{ orderDetails?.buyerPhone }} </span>
+  </p>
+  <!-- Email -->
+  <p class="summary">
+    Email
+    <span class="item"> {{ orderDetails?.buyerEmail }} </span>
+  </p>
+</section>
+<!-- Address -->
+<section>
+  <!-- Street -->
+  <p class="summary">
+    Street
+    <span class="item"> {{ orderDetails?.buyerAddress }} </span>
+  </p>
+  <!-- City -->
+  <p class="summary">
+    City
+    <span class="item"> {{ orderDetails?.buyerCity }} </span>
+  </p>
+  <!-- Phone -->
+  <p class="summary">
+    State
+    <span class="item"> {{ orderDetails?.buyerState }} </span>
+  </p>
+  <!-- Email -->
+  <p class="summary">
+    Pincode
+    <span class="item"> {{ orderDetails?.buyerPincode }} </span>
+  </p>
+</section>
+<!-- <div class="logs-container"> -->
+<div class="logs-heading">
+  <h1 class="title-main">Payment Details</h1>
+</div>
+<section>
+  <p class="summary">
+    Order Amount
+    <span class="item">₹ {{ orderDetails?.orderAmount }} </span>
+  </p>
+  <p class="summary">
+    Discounted Amount
+    <span class="item">₹ {{ orderDetails?.discountedAmount }} </span>
+  </p>
+  <p class="summary">
+    Delivery Charge
+    <span class="item">₹ {{ orderDetails?.deliveryCharge }} </span>
+  </p>
+  <p class="summary">
+    Final Price
+    <span class="item">₹ {{ orderDetails?.finalPrice }} </span>
+  </p>
+  <p class="summary">
+    Payment Type
+    <span class="item"> {{ orderDetails?.paymentType }} </span>
+  </p>
+</section>
+<button class="primary-btn" [routerLink]="['/']">Continue Shopping</button>
+<button class="secondary-btn" [routerLink]="['/products/delivery', orderId]" >Delivery Status</button>

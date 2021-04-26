@@ -1,0 +1,69 @@
+/* Buttons */
+.primary-btn,
+.secondary-btn {
+  background: #24b7d8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px;
+  display: inline-block;
+  font-size: medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: 0.2s;
+  margin-right: 12px;
+  margin-top: 12px;
+}
+
+.primary-btn[disabled], .secondary-btn[disabled] {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+
+.primary-btn:hover {
+  background: white;
+  color: #24b7d8;
+  transform: scale(1.1);
+}
+
+.secondary-btn {
+  background: #fb5a69;
+}
+
+.secondary-btn:hover {
+  background: white;
+  color: #fb5a69;
+  transform: scale(1.1);
+}
+
+.delivery-caption {
+  text-transform: uppercase;
+  color: #24b7d8;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  font-size: large;
+}
+.delivery-price {
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  font-size: 160%;
+  letter-spacing: 1.2px;
+}
+
+.delivery-charge {
+  margin-top: 1%;
+}
+
+.spinner-border {
+  margin-bottom: 2px;
+  color: #fb5a69 !important;
+}
+.warning {
+  font-style: italic;
+  color: #969696;
+}

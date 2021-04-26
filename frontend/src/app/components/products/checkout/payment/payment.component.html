@@ -1,1 +1,53 @@
-<p>payment works!</p>
+<!-- Address -->
+<div class="payment-page">
+  <section>
+    <!-- Street -->
+    <p class="summary">
+      Street
+      <span class="item"> {{ address?.area }} </span>
+    </p>
+    <!-- City -->
+    <p class="summary">
+      City
+      <span class="item"> {{ address?.city }} </span>
+    </p>
+    <!-- Phone -->
+    <p class="summary">
+      State
+      <span class="item"> {{ address?.state }} </span>
+    </p>
+    <!-- Email -->
+    <p class="summary">
+      Pincode
+      <span class="item"> {{ address?.pincode }} </span>
+    </p>
+  </section>
+  <section>
+    <p class="summary">TOTAL <span class="item">₹  {{ totalBeforeDiscount }} </span></p>
+    <p class="summary">TOTAL AFTER DISCOUNT<span class="item">₹ {{ totalAfterDiscount }} </span></p>
+    <p class="summary">
+      DELIVERY CHARGE <span class="item">₹ {{ deliveryCharge }} </span>
+    </p>
+    <p class="summary">
+      Final Price <span class="item">₹ {{ finalTotal }} </span>
+    </p>
+  </section>
+</div>
+
+<div class="payment-section">
+  <button class="primary-btn" (click)="goBack()">Back</button>
+  <span class="pay-with">Pay with </span>
+  <button class="primary-btn stripe" (click)="payWithStripe()">
+    <img src="/assets/images/stripe_logo.svg" alt="" /> 
+  </button>
+  <button class="secondary-btn" (click)="payWithRazorpay()">
+    <img class="razor-pay" src="/assets/images/razorpay_logo.svg" alt="" /> 
+  </button>
+  <span
+    *ngIf="loadingService.loading"
+    class="spinner-border text-primary"
+  ></span>
+</div>
+<br />
+<br />
+<br />

@@ -1,5 +1,5 @@
 section {
-  width: 50%;
+  width: 100%;
   justify-content: left;
   text-align: left;
   /* margin-top: 24px; */
@@ -40,18 +40,8 @@ section:hover::before {
   text-align: right;
 }
 
-.payment-page {
-  background-image: url("/assets/images/pay_now2.png");
-  background-repeat: no-repeat;
-  background-position: right;
-  /* background-size: 300px; */
-  background-size: contain;
-}
-
-/* Buttons */
-.primary-btn,
-.secondary-btn {
-  background: #1f9db9;
+.primary-btn, .secondary-btn{
+  background: #24b7d8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: white;
   border: none;
@@ -66,42 +56,29 @@ section:hover::before {
   transition: 0.2s;
   margin-right: 12px;
   margin-top: 12px;
-  overflow: hidden;
 }
 
-.primary-btn[disabled],
-.secondary-btn[disabled] {
-  opacity: 0.4;
-  cursor: default;
-  pointer-events: none;
-}
-
-.primary-btn:hover,
-.secondary-btn:hover {
+.primary-btn:hover {
+  background: white;
+  color: #24b7d8;
   transform: scale(1.1);
 }
 
 .secondary-btn {
-  background: #fff;
+  background: #fb5a69;
+
 }
 
-.stripe {
-
-  background: #5433ff;
+.secondary-btn:hover {
+  background: white;
+  color: #fb5a69;
+  transform: scale(1.1);
 }
 
-.razor-pay {
-  transform: scale(4);
-}
-
-.pay-with {
-  font-size: larger;
-  font-weight: bold;
+.title-main {
+  font-weight: 600;
+  font-size: 200%;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-right: 12px;
-  margin-left: 5%;
-}
-
-.spinner-border {
-  vertical-align: middle;
+  text-align: center;
 }

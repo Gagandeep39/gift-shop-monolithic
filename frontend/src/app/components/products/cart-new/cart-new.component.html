@@ -1,0 +1,53 @@
+<div class="parent px-1 px-md-4 py-5 mx-auto">
+  <div class="card">
+    <div class="logo-container">
+      <h1 class="title-main">Cart Items</h1>
+      <hr />
+    </div>
+    <div class="section-empty"  *ngIf="cart?.products.length === 0">
+      Its Seems Empty Around Here,
+      Lets start by adding few items in the cart.
+      <button class="primary-btn" [routerLink]="['/']">
+        Show Catalog
+      </button>
+    </div>
+    <div class="product-list" *ngIf="cart?.products.length > 0">
+      <app-cart-item-card
+        [productId]="item.productId"
+        [productName]="item.productName"
+        [productDescription]="item.productDescription"
+        [productIcon]="item.productIcon"
+        [productQuantity]="item.productStock"
+        [productPrice]="item.productPrice"
+        [discountPercent]="item.discountPercent"
+        [loadingState]="loadingState"
+        (removeItemEvent)="removeItem($event)"
+        *ngFor="let item of cart?.products"
+      ></app-cart-item-card>
+    </div>
+    <div class="logo-container">
+      <br />
+      <br />
+      <h1 class="title-main">Estimated Price</h1>
+      <hr />
+    </div>
+    <div>
+      <p class="summary">
+        TOTAL &nbsp;<span class="item">₹ {{ totalBeforeDiscount }} </span>
+      </p>
+      <p class="summary">
+        TOTAL AFTER DISCOUNT &nbsp;<span class="item"
+          >₹ {{ totalAfterDiscount }}
+        </span>
+      </p>
+    <div style="margin-left: 10%;">
+      <button class="primary-btn" [routerLink]="['/']">
+        Continue Shopping
+      </button>
+      <button [disabled]="cart?.products.length === 0" class="secondary-btn" [routerLink]="['/products/checkout']">
+        Checkout
+      </button>
+    </div>
+    </div>
+  </div>
+</div>

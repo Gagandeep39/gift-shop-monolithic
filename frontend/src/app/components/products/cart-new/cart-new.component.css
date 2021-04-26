@@ -5,8 +5,6 @@
 }
 
 .card {
-  z-index: 0;
-  background: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   padding: 20px;
@@ -17,116 +15,6 @@
   padding-top: 40px;
   padding-left: 13% !important;
   padding-right: 13% !important;
-}
-
-#progressbar {
-  margin-bottom: 30px;
-  color: #455a64;
-  justify-content: center;
-  display: flex;
-  padding-left: 0;
-}
-
-#progressbar li {
-  list-style-type: none;
-  font-size: 13px;
-  width: 25%;
-  float: left;
-  position: relative;
-  font-weight: 400;
-  outline: none;
-}
-
-#progressbar .step0:before {
-  content: url("/assets/images/check.svg");
-}
-
-#progressbar li:before {
-  width: 40px;
-  height: 40px;
-  line-height: 45px;
-  display: block;
-  font-size: 20px;
-  background: #c5cae9;
-  border-radius: 50%;
-  margin: auto;
-  padding: 0px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-#progressbar li:after {
-  content: "";
-  width: 100%;
-  height: 12px;
-  background: #c5cae9;
-  position: absolute;
-  left: 0;
-  top: 16px;
-  z-index: -1;
-}
-
-#progressbar li:last-child:after {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  position: absolute;
-  left: -50%;
-}
-
-#progressbar li:nth-child(2):after,
-#progressbar li:nth-child(3):after {
-  left: -50%;
-}
-
-#progressbar li:first-child:after {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  position: absolute;
-  left: 50%;
-}
-
-#progressbar li:last-child:after {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-#progressbar li:first-child:after {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-
-#progressbar li.active:before,
-#progressbar li.active:after {
-  background: #24b7d8;
-}
-
-#progressbar li.active:before {
-  content: url("/assets/images/check.svg");
-  cursor: pointer;
-}
-
-#progressbar li.delete:before {
-  content: url("/assets/images/check.svg");
-  background: red;
-}
-
-.icon {
-  width: 60px;
-  height: 60px;
-  margin-right: 15px;
-}
-
-.icon-content {
-  padding: 20px 0;
-}
-
-@media screen and (max-width: 992px) {
-  .icon-content {
-    width: 50%;
-  }
-}
-
-.font-weight-bold {
-  letter-spacing: 1.2px;
 }
 
 /* Responsive delivery icons */
@@ -180,9 +68,6 @@
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* .separator {
-  text-align: center;
-} */
 .logo-container hr {
   width: 10%;
   border-top: 3px solid #fb5a69;
@@ -285,4 +170,15 @@
 }
 .router {
   /* background: red; */
+}
+
+
+.section-empty {
+  text-align: center;
+  font-size: x-large;
+  margin: 24px 10%;
+  font-weight: 300;
+  letter-spacing: 2px;
+  line-height: 30px;
+  text-transform: capitalize;
 }
