@@ -28,8 +28,8 @@ export class NavigationComponent implements OnInit {
   ];
   anonymousTab = [
     { name: 'About', link: '/about' },
-    { name: 'Login', link: '/login' },
-    { name: 'Register', link: '/register' },
+    { name: 'Login', link: '/auth/login' },
+    { name: 'Register', link: '/auth/register' },
   ];
   adminTabs = [
     { name: 'Add Product', link: '/admin/add' },

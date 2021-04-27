@@ -58,7 +58,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         (response) => {
           this.success = true;
           setTimeout(() => {
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/auth/login');
           }, 3000);
           this.loadingService.disableLoading();
         },
@@ -79,7 +79,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
 
   initPasswordResetForm() {
     const res = this.eventService.resetPasswordData.value;
-    if (res === null) this.router.navigateByUrl('/forgotpassword');
+    if (res === null) this.router.navigateByUrl('/auth/forgotpassword');
     this.question = res?.securityQuestion;
     this.resetPasswordForm = new FormGroup({
       username: new FormControl({ value: res?.username, disabled: true }, [

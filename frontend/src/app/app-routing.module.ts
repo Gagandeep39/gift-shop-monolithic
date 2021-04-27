@@ -17,6 +17,7 @@ import { UpdateProductComponent } from './components/admin/update-product/update
 import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
 import { ViewProductNewComponent } from './components/admin/view-product-new/view-product-new.component';
 import { ViewProductComponent } from './components/admin/view-product/view-product.component';
+import { AuthComponent } from './components/auth/auth.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
@@ -47,27 +48,34 @@ import { AccessDeniedComponent } from './shared/access-denied/access-denied.comp
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [AuthAccessGuard] },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'auth',
+    component: AuthComponent,
     canActivate: [AuthAccessGuard],
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+      {
+        path: 'socialregister',
+        component: SocialRegisterComponent,
+      },
+      {
+        path: 'forgotpassword',
+        component: RequestQuestionComponent,
+      },
+      {
+        path: 'changepassword',
+        component: ChangePasswordComponent,
+      },
+    ],
   },
-  {
-    path: 'socialregister',
-    component: SocialRegisterComponent,
-    canActivate: [AuthAccessGuard],
-  },
-  {
-    path: 'forgotpassword',
-    component: RequestQuestionComponent,
-    canActivate: [AuthAccessGuard],
-  },
-  {
-    path: 'changepassword',
-    component: ChangePasswordComponent,
-    canActivate: [AuthAccessGuard],
-  },
+
   {
     path: 'products',
     component: ProductsComponent,

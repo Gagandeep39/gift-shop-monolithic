@@ -52,7 +52,7 @@ export class RequestQuestionComponent implements OnInit, OnDestroy {
         (response) => {
           this.loadingService.disableLoading();
           this.eventService.resetPasswordData.next(response);
-          this.router.navigateByUrl('/changepassword');
+          this.router.navigateByUrl('/auth/changepassword');
         },
         (error) => {
           this.loadingService.disableLoading();

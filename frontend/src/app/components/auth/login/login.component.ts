@@ -109,7 +109,7 @@ export class LoginComponent implements OnInit {
               if (res['status'] !== 202)
                 this.router.navigateByUrl(this.returnUrl);
               else {
-                this.router.navigate(['/socialregister'], {
+                this.router.navigate(['/auth/socialregister'], {
                   state: {
                     data: { emailId: googleUser.getBasicProfile().getEmail() },
                   },
@@ -170,7 +170,7 @@ export class LoginComponent implements OnInit {
                 if (res['status'] !== 202)
                   this.router.navigateByUrl(this.returnUrl);
                 else {
-                  this.router.navigate(['/socialregister'], {
+                  this.router.navigate(['/auth/socialregister'], {
                     state: {
                       data: { emailId: response.email },
                     },

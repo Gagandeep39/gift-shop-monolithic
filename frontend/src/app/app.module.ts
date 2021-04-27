@@ -65,6 +65,7 @@ import { PaymentSuccessComponent } from './components/products/checkout/payment-
 import { CartNewComponent } from './components/products/cart-new/cart-new.component';
 import { CartItemCardComponent } from './components/products/cart-new/cart-item-card/cart-item-card.component';
 import { OrderHistoryNewComponent } from './components/products/orders/order-history-new/order-history-new.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import { OrderHistoryNewComponent } from './components/products/orders/order-his
     CartNewComponent,
     CartItemCardComponent,
     OrderHistoryNewComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

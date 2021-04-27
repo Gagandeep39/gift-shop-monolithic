@@ -30,7 +30,7 @@ export class SocialRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.email = window.history.state?.data?.emailId
-    if (!this.email) this.router.navigateByUrl('/login')
+    if (!this.email) this.router.navigateByUrl('/auth/login')
     this.initForm();
   }
 
