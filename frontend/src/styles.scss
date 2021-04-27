@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+$primary: #24b7d8;
+$secondary: #fb5a69;
+$white: white;
+
 html,
 body {
   height: 100%;
@@ -22,9 +26,9 @@ input {
 
 .primary-btn,
 .secondary-btn {
-  background: #24b7d8;
+  background: $primary;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  color: white;
+  color: $white;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -45,18 +49,16 @@ input {
   }
 
   &:hover {
-    background: white;
-    color: #24b7d8;
+    background: $white;
+    color: $primary;
     transform: scale(1.1);
   }
 }
 
 .secondary-btn {
-  background: #fb5a69;
+  background: $secondary;
   &:hover {
-    background: white;
-    color: #fb5a69;
-    transform: scale(1.1);
+    color: $secondary;
   }
 }
 
