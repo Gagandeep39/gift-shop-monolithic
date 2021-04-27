@@ -17,7 +17,7 @@ import { UpdateStatusModalService } from 'src/app/services/update-status-modal.s
 @Component({
   selector: 'app-update-status-modal',
   templateUrl: './update-status-modal.component.html',
-  styleUrls: ['./update-status-modal.component.css'],
+  styleUrls: ['./update-status-modal.component.scss'],
 })
 export class UpdateStatusModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;

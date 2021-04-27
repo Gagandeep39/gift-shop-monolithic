@@ -16,7 +16,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-request-question',
   templateUrl: './request-question.component.html',
-  styleUrls: ['./request-question.component.css'],
+  styleUrls: ['./request-question.component.scss'],
 })
 export class RequestQuestionComponent implements OnInit, OnDestroy {
   requestQuestionForm: FormGroup;

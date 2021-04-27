@@ -23,7 +23,7 @@ declare var Razorpay: any;
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css'],
+  styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
   address: Address;

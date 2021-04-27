@@ -9,7 +9,7 @@ import { UpdateStatusModalService } from 'src/app/services/update-status-modal.s
 @Component({
   selector: 'app-form-submit-modal',
   templateUrl: './form-submit-modal.component.html',
-  styleUrls: ['./form-submit-modal.component.css'],
+  styleUrls: ['./form-submit-modal.component.scss'],
 })
 export class FormSubmitModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;

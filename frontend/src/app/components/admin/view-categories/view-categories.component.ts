@@ -10,7 +10,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-view-categories',
   templateUrl: './view-categories.component.html',
-  styleUrls: ['./view-categories.component.css'],
+  styleUrls: ['./view-categories.component.scss'],
 })
 export class ViewCategoriesComponent implements OnInit {
   dataSource = new MatTableDataSource<Category>();

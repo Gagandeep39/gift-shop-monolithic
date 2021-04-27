@@ -16,7 +16,7 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-view-profile',
   templateUrl: './view-profile.component.html',
-  styleUrls: ['./view-profile.component.css'],
+  styleUrls: ['./view-profile.component.scss'],
 })
 export class ViewProfileComponent implements OnInit {
   user: UserDetails;

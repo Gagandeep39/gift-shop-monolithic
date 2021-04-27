@@ -7,7 +7,7 @@ import { AccessDeniedModalService } from 'src/app/services/access-denied-modal.s
 @Component({
   selector: 'app-access-denied-modal',
   templateUrl: './access-denied-modal.component.html',
-  styleUrls: ['./access-denied-modal.component.css'],
+  styleUrls: ['./access-denied-modal.component.scss'],
 })
 export class AccessDeniedModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;

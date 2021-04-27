@@ -14,7 +14,7 @@ import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-category-carausel',
   templateUrl: './category-carausel.component.html',
-  styleUrls: ['./category-carausel.component.css'],
+  styleUrls: ['./category-carausel.component.scss'],
 })
 export class CategoryCarauselComponent implements OnInit {
   categories: Category[] = [];

@@ -16,7 +16,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-add-category-new',
   templateUrl: './add-category-new.component.html',
-  styleUrls: ['./add-category-new.component.css'],
+  styleUrls: ['./add-category-new.component.scss'],
 })
 export class AddCategoryNewComponent implements OnInit {
   submitted = false;

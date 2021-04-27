@@ -21,7 +21,7 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-add-product-new',
   templateUrl: './add-product-new.component.html',
-  styleUrls: ['./add-product-new.component.css'],
+  styleUrls: ['./add-product-new.component.scss'],
 })
 export class AddProductNewComponent implements OnInit {
   submitted = false;

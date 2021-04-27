@@ -19,7 +19,7 @@ import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-update-product',
   templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.css'],
+  styleUrls: ['./update-product.component.scss'],
 })
 export class UpdateProductComponent implements OnInit {
   productId;

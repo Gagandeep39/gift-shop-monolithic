@@ -8,7 +8,7 @@ import { SocialAuthService } from 'src/app/services/social-auth.service';
 @Component({
   selector: 'app-social-register',
   templateUrl: './social-register.component.html',
-  styleUrls: ['./social-register.component.css'],
+  styleUrls: ['./social-register.component.scss'],
 })
 export class SocialRegisterComponent implements OnInit {
   email;

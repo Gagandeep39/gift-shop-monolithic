@@ -18,7 +18,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-cart-new',
   templateUrl: './cart-new.component.html',
-  styleUrls: ['./cart-new.component.css'],
+  styleUrls: ['./cart-new.component.scss'],
 })
 export class CartNewComponent implements OnInit {
   cart: Cart;

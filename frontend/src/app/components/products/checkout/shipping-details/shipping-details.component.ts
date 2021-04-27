@@ -18,7 +18,7 @@ import { ManageUserService } from 'src/app/services/manage-user.service';
 @Component({
   selector: 'app-shipping-details',
   templateUrl: './shipping-details.component.html',
-  styleUrls: ['./shipping-details.component.css'],
+  styleUrls: ['./shipping-details.component.scss'],
 })
 export class ShippingDetailsComponent implements OnInit {
   submitted;

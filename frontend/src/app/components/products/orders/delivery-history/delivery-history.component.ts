@@ -17,7 +17,7 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-delivery-history',
   templateUrl: './delivery-history.component.html',
-  styleUrls: ['./delivery-history.component.css'],
+  styleUrls: ['./delivery-history.component.scss'],
 })
 export class DeliveryHistoryComponent implements OnInit {
   OrderStaus = OrderStatus;

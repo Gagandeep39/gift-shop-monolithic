@@ -19,7 +19,7 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-order-details-new',
   templateUrl: './order-details-new.component.html',
-  styleUrls: ['./order-details-new.component.css'],
+  styleUrls: ['./order-details-new.component.scss'],
 })
 export class OrderDetailsNewComponent implements OnInit {
   orderDetails: Order;

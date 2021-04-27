@@ -13,7 +13,7 @@ import { CartConfirmModalService } from 'src/app/services/cart-confirm-modal.ser
 @Component({
   selector: 'app-cart-confirm-modal',
   templateUrl: './cart-confirm-modal.component.html',
-  styleUrls: ['./cart-confirm-modal.component.css'],
+  styleUrls: ['./cart-confirm-modal.component.scss'],
 })
 export class CartConfirmModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;

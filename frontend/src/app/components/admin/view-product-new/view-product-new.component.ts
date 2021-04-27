@@ -11,7 +11,7 @@ import { UpdateStatusModalService } from 'src/app/services/update-status-modal.s
 @Component({
   selector: 'app-view-product-new',
   templateUrl: './view-product-new.component.html',
-  styleUrls: ['./view-product-new.component.css'],
+  styleUrls: ['./view-product-new.component.scss'],
 })
 export class ViewProductNewComponent implements OnInit {
   dataSource = new MatTableDataSource<Product>();

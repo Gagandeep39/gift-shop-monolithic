@@ -6,7 +6,7 @@ import { OrderCancelModalService } from 'src/app/services/order-cancel-modal.ser
 @Component({
   selector: 'app-order-cancel-modal',
   templateUrl: './order-cancel-modal.component.html',
-  styleUrls: ['./order-cancel-modal.component.css']
+  styleUrls: ['./order-cancel-modal.component.scss']
 })
 export class OrderCancelModalComponent implements OnInit {
 

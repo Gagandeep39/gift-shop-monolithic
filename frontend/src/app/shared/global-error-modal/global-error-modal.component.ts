@@ -12,7 +12,7 @@ import { GlobalErrorModalService } from 'src/app/services/global-error-modal.ser
 @Component({
   selector: 'app-global-error-modal',
   templateUrl: './global-error-modal.component.html',
-  styleUrls: ['./global-error-modal.component.css'],
+  styleUrls: ['./global-error-modal.component.scss'],
 })
 export class GlobalErrorModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;

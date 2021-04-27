@@ -13,7 +13,7 @@ import { AuthModalService } from 'src/app/services/auth-modal.service';
 @Component({
   selector: 'app-auth-modal',
   templateUrl: './auth-modal.component.html',
-  styleUrls: ['./auth-modal.component.css'],
+  styleUrls: ['./auth-modal.component.scss'],
 })
 export class AuthModalComponent implements OnInit {
   display$: Observable<'open' | 'close'>;
