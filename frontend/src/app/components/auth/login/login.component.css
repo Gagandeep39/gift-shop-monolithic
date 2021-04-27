@@ -1,29 +1,3 @@
-.backdrop {
-  background-image: url("^assets/images/celebration2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: blur(12px);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.front-img {
-  max-width: 100%;
-  background-image: url("^assets/images/celebration.jpeg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 2px 0 0 2px;
-  opacity: 0.8;
-  transition: opacity 0.5s;
-}
-
-.front-img:hover {
-  opacity: 1;
-}
 /* Fixes extra white content on right */
 .row {
   margin: 0;

@@ -31,7 +31,7 @@ input {
   color: $white;
   border: none;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 12px;
   display: inline-block;
   font-size: medium;
@@ -65,4 +65,18 @@ input {
 // Utility Classes
 .block {
   display: block;
+}
+
+.front-img {
+  max-width: 100%;
+  background-image: url("^assets/images/celebration.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px 0 0 2px;
+  opacity: 0.8;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
 }
