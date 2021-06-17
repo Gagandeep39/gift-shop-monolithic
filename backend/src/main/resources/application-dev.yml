@@ -14,6 +14,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    # Fixes table not found error in Spring boot 2.4+
+    # Ensures data.sql is executed after initilzing hibernate
+    defer-datasource-initialization: true
 logging:
   level:
     # Info level for all java logs
