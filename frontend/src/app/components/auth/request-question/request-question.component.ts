@@ -6,7 +6,7 @@
  * @desc [description]
  */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +19,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./request-question.component.scss'],
 })
 export class RequestQuestionComponent implements OnInit, OnDestroy {
-  requestQuestionForm: FormGroup;
+  requestQuestionForm: UntypedFormGroup;
   formSubscription: Subscription;
   submitted = false;
 
@@ -68,8 +68,8 @@ export class RequestQuestionComponent implements OnInit, OnDestroy {
   }
 
   initQuestionForm() {
-    this.requestQuestionForm = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+    this.requestQuestionForm = new UntypedFormGroup({
+      username: new UntypedFormControl('', [Validators.required]),
     });
   }
 }

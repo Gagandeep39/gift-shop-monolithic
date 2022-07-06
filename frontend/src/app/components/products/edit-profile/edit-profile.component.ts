@@ -7,7 +7,7 @@
  */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDetailsEdit } from 'src/app/models/user-details-edit';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -20,7 +20,7 @@ import { ManageUserService } from 'src/app/services/manage-user.service';
 })
 export class EditProfileComponent implements OnInit {
   submitted = false;
-  updateUserForm: FormGroup;
+  updateUserForm: UntypedFormGroup;
   message;
   userDetailsEdit: UserDetailsEdit;
 
@@ -44,19 +44,19 @@ export class EditProfileComponent implements OnInit {
       });
   }
   initForm() {
-    this.updateUserForm = new FormGroup({
-      userId: new FormControl('', [Validators.required]),
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      emailId: new FormControl('', [Validators.required]),
-      phoneNo: new FormControl('', [Validators.required]),
-      securityQuestion: new FormControl('', [Validators.required]),
-      securityAnswer: new FormControl('', [Validators.required]),
-      address: new FormGroup({
-        state: new FormControl('', [Validators.required]),
-        area: new FormControl('', [Validators.required]),
-        city: new FormControl('', [Validators.required]),
-        pincode: new FormControl('', [
+    this.updateUserForm = new UntypedFormGroup({
+      userId: new UntypedFormControl('', [Validators.required]),
+      firstName: new UntypedFormControl('', [Validators.required]),
+      lastName: new UntypedFormControl('', [Validators.required]),
+      emailId: new UntypedFormControl('', [Validators.required]),
+      phoneNo: new UntypedFormControl('', [Validators.required]),
+      securityQuestion: new UntypedFormControl('', [Validators.required]),
+      securityAnswer: new UntypedFormControl('', [Validators.required]),
+      address: new UntypedFormGroup({
+        state: new UntypedFormControl('', [Validators.required]),
+        area: new UntypedFormControl('', [Validators.required]),
+        city: new UntypedFormControl('', [Validators.required]),
+        pincode: new UntypedFormControl('', [
           Validators.required,
           Validators.pattern('[0-9]{6}'),
         ]),

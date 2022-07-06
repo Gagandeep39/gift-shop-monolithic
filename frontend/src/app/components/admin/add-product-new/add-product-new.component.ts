@@ -7,7 +7,7 @@
  */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Category } from 'src/app/models/category.model';
@@ -25,7 +25,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AddProductNewComponent implements OnInit {
   submitted = false;
-  updateProductForm: FormGroup;
+  updateProductForm: UntypedFormGroup;
   categories: Category[] = [];
   statuses = ProductStatus;
   product: Product;
@@ -47,15 +47,15 @@ export class AddProductNewComponent implements OnInit {
     this.populateData();
   }
   initForm() {
-    this.updateProductForm = new FormGroup({
-      productName: new FormControl('', [Validators.required]),
-      productPrice: new FormControl('', [Validators.required]),
-      discountPercent: new FormControl('', [Validators.required, Validators.pattern('^([1-9][0-9]{0,1})$')]),
-      productStock: new FormControl('', [Validators.required]),
-      productDescription: new FormControl('', [Validators.required]),
-      productIcon: new FormControl('', [Validators.required]),
-      productStatus: new FormControl('', [Validators.required]),
-      categoryId: new FormControl('', [Validators.required]),
+    this.updateProductForm = new UntypedFormGroup({
+      productName: new UntypedFormControl('', [Validators.required]),
+      productPrice: new UntypedFormControl('', [Validators.required]),
+      discountPercent: new UntypedFormControl('', [Validators.required, Validators.pattern('^([1-9][0-9]{0,1})$')]),
+      productStock: new UntypedFormControl('', [Validators.required]),
+      productDescription: new UntypedFormControl('', [Validators.required]),
+      productIcon: new UntypedFormControl('', [Validators.required]),
+      productStatus: new UntypedFormControl('', [Validators.required]),
+      categoryId: new UntypedFormControl('', [Validators.required]),
     });
   }
 

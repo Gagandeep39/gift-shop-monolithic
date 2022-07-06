@@ -6,7 +6,7 @@
  * @desc [description]
  */
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Gender } from 'src/app/models/gender.model';
@@ -21,7 +21,7 @@ import { ManageUserService } from 'src/app/services/manage-user.service';
 export class RegisterComponent implements OnInit {
 
   submitted = false;
-  userForm: FormGroup;
+  userForm: UntypedFormGroup;
   addUserSubscription: Subscription;
   message = null;
   maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 14)).toISOString().slice(0, 10)
@@ -70,32 +70,32 @@ export class RegisterComponent implements OnInit {
   }
 
   initForm() {
-    this.userForm = new FormGroup(
+    this.userForm = new UntypedFormGroup(
       {
-        firstName: new FormControl('', [Validators.required]),
-        lastName: new FormControl('', [Validators.required]),
-        phoneNo: new FormControl('', [Validators.required]),
-        emailId: new FormControl('', [Validators.required]),
-        username: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
-        password2: new FormControl('', [Validators.required]),
-        address: new FormGroup({
-          state: new FormControl('', [
+        firstName: new UntypedFormControl('', [Validators.required]),
+        lastName: new UntypedFormControl('', [Validators.required]),
+        phoneNo: new UntypedFormControl('', [Validators.required]),
+        emailId: new UntypedFormControl('', [Validators.required]),
+        username: new UntypedFormControl('', [Validators.required]),
+        password: new UntypedFormControl('', [Validators.required]),
+        password2: new UntypedFormControl('', [Validators.required]),
+        address: new UntypedFormGroup({
+          state: new UntypedFormControl('', [
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(30),
           ]),
-          area: new FormControl('', [
+          area: new UntypedFormControl('', [
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(30),
           ]),
-          city: new FormControl('', [
+          city: new UntypedFormControl('', [
             Validators.required,
             Validators.minLength(4),
             Validators.maxLength(30),
           ]),
-          pincode: new FormControl('', [
+          pincode: new UntypedFormControl('', [
             Validators.required,
             Validators.pattern('[0-9]{6}'),
           ]),
@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  matchPassword(control: FormControl) {
+  matchPassword(control: UntypedFormControl) {
     const password = control.get('password').value;
     const password2 = control.get('password2').value;
     if (password != password2) {

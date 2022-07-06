@@ -7,7 +7,7 @@
  */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { FormSubmitModalService } from 'src/app/services/form-submit-modal.service';
@@ -20,7 +20,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class AddCategoryNewComponent implements OnInit {
   submitted = false;
-  updateCategoryForm: FormGroup;
+  updateCategoryForm: UntypedFormGroup;
   categories: Category[] = [];
   category: Category;
   categoryImageUrl = '';
@@ -37,10 +37,10 @@ export class AddCategoryNewComponent implements OnInit {
     this.initForm();
   }
   initForm() {
-    this.updateCategoryForm = new FormGroup({
-      categoryName: new FormControl('', [Validators.required]),
-      categoryDescription: new FormControl('', [Validators.required]),
-      categoryImageUrl: new FormControl('', [Validators.required]),
+    this.updateCategoryForm = new UntypedFormGroup({
+      categoryName: new UntypedFormControl('', [Validators.required]),
+      categoryDescription: new UntypedFormControl('', [Validators.required]),
+      categoryImageUrl: new UntypedFormControl('', [Validators.required]),
     });
   }
 
