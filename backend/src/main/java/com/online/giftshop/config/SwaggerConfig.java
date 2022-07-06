@@ -26,7 +26,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
-
   /**
    * @api /swagger-ui/index.html
    * @api /v3/api-docs
@@ -35,7 +34,7 @@ public class SwaggerConfig {
   @Bean
   public Docket api() {                
       return new Docket(DocumentationType.SWAGGER_2)     
-        .select().apis(RequestHandlerSelectors.basePackage("com.cg")).build() 
+        .select().apis(RequestHandlerSelectors.basePackage("com.online.giftshop")).build() 
         .securityContexts(Arrays.asList(securityContext()))
       .securitySchemes(Arrays.asList(apiKey()))      
         .apiInfo(apiInfo());
