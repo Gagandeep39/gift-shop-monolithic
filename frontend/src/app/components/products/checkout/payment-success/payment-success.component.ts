@@ -1,8 +1,7 @@
 import { Location } from '@angular/common';
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, take, tap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { take, tap } from 'rxjs/operators';
 import { DeliveryHistory } from 'src/app/models/delivery-history.model';
 import { DeliveryHistoryService } from 'src/app/services/delivery-history.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -15,7 +14,6 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./payment-success.component.scss'],
 })
 export class PaymentSuccessComponent implements OnInit {
-
   orderId;
   orderDetails;
   deliveryHistory: DeliveryHistory[];
@@ -26,7 +24,7 @@ export class PaymentSuccessComponent implements OnInit {
     private location: Location,
     public loadingService: LoadingService,
     private deliveryHistoryService: DeliveryHistoryService,
-    private orderCancelModal: OrderCancelModalService,
+    private orderCancelModal: OrderCancelModalService
   ) {}
 
   ngOnInit(): void {
@@ -91,7 +89,8 @@ export class PaymentSuccessComponent implements OnInit {
 
   checkIfCancellable() {
     return (
-      this.deliveryHistory?.slice(-1)[0]?.orderStatus !== 'DELIVERED' && this.deliveryHistory?.slice(-1)[0]?.orderStatus !== 'CANCELLED'
+      this.deliveryHistory?.slice(-1)[0]?.orderStatus !== 'DELIVERED' &&
+      this.deliveryHistory?.slice(-1)[0]?.orderStatus !== 'CANCELLED'
     );
   }
 }
