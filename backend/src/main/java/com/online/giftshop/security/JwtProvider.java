@@ -12,9 +12,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -31,16 +29,13 @@ public class JwtProvider {
   @Value("${jwt.secret}")
   private String secret;
 
-  @Autowired
-  private SecretKey secretKey;
-
   SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
   /**
    * Check token validity
    */
   public boolean validateToken(String jwt) {
-    Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(jwt);
+    Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(jwt);
     return true;
   }
 
@@ -48,39 +43,39 @@ public class JwtProvider {
    * Feth username from JWT
    */
   public String getUsernameFromJwt(String token) {
-    Claims claims = Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();
+    Claims claims = Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token).getBody();
     return claims.getSubject();
   }
 
   /**
    * Generate token based on username
+   * 
    * @param username User for which toke is to be generated
    * @return Token
    */
   public String generateTokenWithUsername(String username) {
     return Jwts.builder()
-      .setSubject(username)
-      .setIssuedAt(Date.from(Instant.now()))
-      .signWith(secretKey, signatureAlgorithm)
-      .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
+        .setSubject(username)
+        .setIssuedAt(Date.from(Instant.now()))
+        .signWith(getSecretKey(), signatureAlgorithm)
+        .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
   }
 
-  @Bean
-  public SecretKey getSecretKey () {
+  public SecretKey getSecretKey() {
     return Keys.hmacShaKeyFor(secret.getBytes());
   }
 
   public String generateWithUsernameAndId(String username, Long id) {
     return Jwts.builder()
-      .setSubject(username)
-      .claim("userId", id)
-      .setIssuedAt(Date.from(Instant.now()))
-      .signWith(secretKey, signatureAlgorithm)
-      .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
+        .setSubject(username)
+        .claim("userId", id)
+        .setIssuedAt(Date.from(Instant.now()))
+        .signWith(getSecretKey(), signatureAlgorithm)
+        .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
   }
 
   public Integer getIdFromJwt(String token) {
-    Claims claims = Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();
+    Claims claims = Jwts.parserBuilder().setSigningKey(getSecretKey()).build().parseClaimsJws(token).getBody();
     return claims.get("userId", Integer.class);
   }
 
