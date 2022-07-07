@@ -14,7 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "sonar": "sonar-scanner",
-    "tomcat": "ng build --base-href=/frontend/"
+    "tomcat": "ng build --prod --base-href=/frontend/"
   },
   "private": true,
   "dependencies": {
