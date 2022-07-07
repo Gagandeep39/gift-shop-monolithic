@@ -30,8 +30,8 @@ pipeline =  {
     }
     stage('Make Prod Build') {
         dir (SERVICE) {
-            bat 'npx ng build --base-href=/frontend/ && cd dist/frontend && jar -cvf frontend.war *'
-            bat 'npx ng build --base-href=/ && cd dist/frontend && jar -cvf frontend.war *'
+            bat 'npx ng build --configuration=production --base-href=/frontend/ && cd dist/frontend && jar -cvf frontend.war *'
+            bat 'npx ng build --configuration=production --base-href=/ && cd dist/frontend && jar -cvf frontend.war *'
         }
     }
       stage ('Publish to Nexus') {
