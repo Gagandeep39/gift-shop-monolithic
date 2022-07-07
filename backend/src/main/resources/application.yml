@@ -27,7 +27,7 @@ google:
 facebook:
   TOKEN_VALIDATION_URL: https://graph.facebook.com/me?access_token=
 
-stripe: 
+stripe:
   key: ${stripe_key:sk_test_51I3zWOI8py6Rj5ufAOC0uwcqJy64pIGVg5OK9O80NqICeXosLJYYlDKESNeD0NRTudoL6MtF6u7n6e9tjseDGnZW00JkeuTLoT}
 
 razor:
