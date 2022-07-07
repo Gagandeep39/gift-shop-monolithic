@@ -15,16 +15,12 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrderByOrderId();
-
-    console.log(this.id);
   }
 
   getOrderByOrderId() {
     this.id = parseInt(sessionStorage.getItem('id'));
-    console.log('In getorderbyid method');
     this.orderservice.fetchById(this.id).subscribe((data) => {
       this.products = data;
-      console.log(data);
     });
   }
 

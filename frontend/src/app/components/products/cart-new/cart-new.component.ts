@@ -57,12 +57,9 @@ export class CartNewComponent implements OnInit {
   }
 
   calculateOrderSummary(productsInOrder: ProductInOrder[]) {
-    console.log(productsInOrder);
-
     let discountPrice = 0;
     let totalBeforeDiscount = 0;
     for (const key in productsInOrder) {
-      console.log(productsInOrder[key]);
       totalBeforeDiscount += productsInOrder[key].productPrice;
       if (productsInOrder[key].discountPercent === 0)
         discountPrice = productsInOrder[key].productPrice;

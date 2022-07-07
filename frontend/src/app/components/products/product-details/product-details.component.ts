@@ -67,7 +67,6 @@ export class ProductDetailsComponent implements OnInit {
       productId,
       quantity: this.count,
     };
-    console.log(item);
 
     if (this.checkForAuthAndShowPopUp()) {
       this.loadingService.enableLoading();

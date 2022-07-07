@@ -18,7 +18,6 @@ export class GlobalErrorHandler implements ErrorHandler {
   ) {}
 
   handleError(error: Error) {
-    console.log(error);
     this.loadingService.disableLoading();
     // Only shows error which are not related to http
     if (!(error instanceof HttpErrorResponse)) this.modalService.open(error);

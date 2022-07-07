@@ -39,8 +39,6 @@ export class ViewProfileComponent implements OnInit {
     this.manageUserService
       .fetchById(this.authService.fetchFromSessionStorage().userId)
       .subscribe((res: UserDetails) => {
-        console.log(res);
-
         this.user = res;
       });
   }

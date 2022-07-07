@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
           }, 3000);
         },
         (error) => {
-          console.log(error);
           this.loadingService.disableLoading();
           if (error.error.message === 'FieldException')
             error.error.errors.forEach((element) =>

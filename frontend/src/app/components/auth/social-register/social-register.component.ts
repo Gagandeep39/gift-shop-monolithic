@@ -40,7 +40,6 @@ export class SocialRegisterComponent implements OnInit {
   }
 
   addUser(formData) {
-    console.log(formData);
     
     this.loadingService.enableLoading();
     this.addUserSubscription = this.socialAuthService
@@ -55,7 +54,6 @@ export class SocialRegisterComponent implements OnInit {
           }, 3000);
         },
         (error) => {
-          console.log(error);
           this.loadingService.disableLoading();
           if (error.error.message === 'FieldException')
             error.error.errors.forEach((element) =>

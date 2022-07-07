@@ -115,8 +115,6 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateImage(image) {
-    console.log('triggered');
-
     this.productIcon = image;
   }
 

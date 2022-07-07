@@ -43,8 +43,6 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
 
   resetPassword() {
     this.submitted = true;
-    console.log(this.resetPasswordForm.value);
-
     if (this.resetPasswordForm.valid)
       this.submitResetForm(this.resetPasswordForm.getRawValue());
   }
@@ -64,7 +62,6 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         },
         (error) => {
           this.loadingService.disableLoading();
-          console.log(error);
           
           if (error.error.message === 'FieldException')
             error.error.errors.forEach((element) =>

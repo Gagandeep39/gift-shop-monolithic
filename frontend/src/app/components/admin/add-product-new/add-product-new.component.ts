@@ -69,8 +69,6 @@ export class AddProductNewComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.updateProductForm.value);
-    
     this.submitted = true;
     if (this.updateProductForm.valid)
       this.submitData(this.updateProductForm.value);
@@ -81,10 +79,6 @@ export class AddProductNewComponent implements OnInit {
       (response) => {
         this.loadingService.disableLoading();
         this.formModal.open('Successfully updated product with ID ' + response['productId'], '/admin/view')
-        // this.message = 'Successfully updated product with ID ' + response['productId'];
-        // setTimeout(() => {
-        //   this.router.navigateByUrl('/admin/view');
-        // }, 3000);
       },
       (error) => {
         this.loadingService.disableLoading();
@@ -100,8 +94,6 @@ export class AddProductNewComponent implements OnInit {
   }
 
   updateImage(image) {
-    console.log('triggered');
-
     this.productIcon = image;
   }
 

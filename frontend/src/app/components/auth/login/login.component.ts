@@ -101,7 +101,6 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler(element, {}, (googleUser) =>
       this.ngZone.run(
         () => {
-          console.log(googleUser);
           this.loadingService.enableLoading();
           this.socialAuthService
             .validateGoogleTokenAndLogin({
@@ -121,7 +120,7 @@ export class LoginComponent implements OnInit {
               }
             }).closed;
         },
-        (error) => console.log(error)
+        (error) => console.error(error)
       )
     );
   }
@@ -160,8 +159,6 @@ export class LoginComponent implements OnInit {
       this.ngZone.run(() => {
         if (response.authResponse) {
           FB.api('/me', { fields: 'name, email' }, (res) => {
-            console.log(res);
-            console.log(response);
 
             this.loadingService.enableLoading();
             this.socialAuthService

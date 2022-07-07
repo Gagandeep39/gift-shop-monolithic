@@ -46,7 +46,6 @@ export class PaymentSuccessComponent implements OnInit {
       .pipe(take(1))
       .pipe(
         tap((res) => {
-          console.log(res);
           return res;
         })
       )
@@ -81,7 +80,6 @@ export class PaymentSuccessComponent implements OnInit {
             status: 'CANCELLED',
           })
           .subscribe((res) => {
-            console.log(res);
             this.fetchDeliveryDetails(this.orderDetails?.orderId);
           });
     });

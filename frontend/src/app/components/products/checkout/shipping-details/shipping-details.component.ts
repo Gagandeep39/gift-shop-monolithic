@@ -57,7 +57,7 @@ export class ShippingDetailsComponent implements OnInit {
       .fetchDistance(this.addressForm.value.pincode)
       .subscribe({
         next: (res) => this.handleApiResponse(res),
-        error: (error) => console.log(error),
+        error: (error) => console.error(error),
         complete: () => this.loadingService.disableLoading(),
       });
   }
@@ -70,7 +70,6 @@ export class ShippingDetailsComponent implements OnInit {
       });
     } else {
       this.error = null;
-      console.log(res['route'].distance);
       this.calculateDeliveryCharge(res['route'].distance);
       this.redirectIfFormValidAndSubmitted();
     }
@@ -125,7 +124,6 @@ export class ShippingDetailsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.addressForm.value);
     // Form submitted after handling server response
     this.calculateDistance();
   }
