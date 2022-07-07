@@ -54,7 +54,6 @@ export class OrderDetailsNewComponent implements OnInit {
       .pipe(take(1))
       .pipe(
         tap((res) => {
-          console.log(res);
           return res;
         })
       )

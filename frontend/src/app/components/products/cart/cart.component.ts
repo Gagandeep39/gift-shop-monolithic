@@ -57,8 +57,6 @@ export class CartComponent implements OnInit {
 
   fetchCart() {
     this.cartService.fetchCartByUserId().subscribe((data: Cart) => {
-      console.log(data);
-
       this.manageUserService
         .fetchById(this.authService.fetchFromSessionStorage()?.userId)
         .subscribe((user) => {
@@ -74,20 +72,16 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(productId: number) {
-    console.log('Inside Remove');
     this.cartService.removeItemFromCart(productId).subscribe((data) => {
       this.fetchCart();
     });
   }
 
   calculateOrderSummary(productsInOrder: ProductInOrder[]) {
-    console.log(productsInOrder);
-
     let discountPrice = 0;
     let totalBeforeDiscount = 0;
     let total;
     for (const key in productsInOrder) {
-      console.log(productsInOrder[key]);
       totalBeforeDiscount += productsInOrder[key].productPrice;
       if (productsInOrder[key].discountPercent === 0)
         discountPrice = productsInOrder[key].productPrice;
@@ -124,8 +118,6 @@ export class CartComponent implements OnInit {
       paymentId: res.paymentId,
     };
     this.cartService.checkout(data).subscribe((res) => {
-      console.log(res);
-      // this.router.navigate([])
       this.router.navigateByUrl('/products/delivery/' + res['orderId'])
     });
   }
@@ -136,12 +128,10 @@ export class CartComponent implements OnInit {
         if (res['info'].statuscode !== 0) this.error = 'error';
         else {
           this.error = null;
-          console.log(res['route'].distance);
           this.calculateDeliveryCharge(res['route'].distance);
         }
       },
       (error) => {
-        console.log(error);
       }
     );
   }
@@ -171,8 +161,7 @@ export class CartComponent implements OnInit {
   payFromRazorPay() {
     this.razorpayService.generateOrderId(this.total*100).subscribe((res) => {
       this.setOption(res);
-      // this.initRazorPay();
-    }, error => console.log(error)
+    }, error => console.error(error)
     );
   }
   initRazorPay() {
@@ -210,7 +199,6 @@ export class CartComponent implements OnInit {
     const name = this.user['firstName'] + this.user['lastName'];
     const amount = this.total;
     this.razorpayService.updatePaymentInDb({ razorId, amount, name }).subscribe(res => {
-      console.log(res);
       this.checkOutInServer(res)
     });
   }

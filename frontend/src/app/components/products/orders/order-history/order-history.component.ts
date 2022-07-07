@@ -30,19 +30,13 @@ export class OrderHistoryComponent implements OnInit {
 
   onSave(orderId: number) {
     this.orderId1 = orderId;
-    console.log(orderId);
-
-    //localStorage.setItem("id", this.orderId1);
     sessionStorage.setItem('id', orderId.toString());
-    console.log(sessionStorage.getItem('id'));
     this.router.navigate(['/products/orders', this.orderId1]);
   }
 
   getOrders() {
-    console.log('before call');
     this.orderservice.fetchOrder().subscribe((data: Object[]) => {
       this.order = data.filter((o) => o['userId'] === this.authService.fetchFromSessionStorage()?.userId);
-      //alert("Orders in your cart");
     });
   }
 }

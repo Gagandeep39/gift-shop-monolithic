@@ -75,7 +75,6 @@ export class DeliveryHistoryComponent implements OnInit {
             status: 'CANCELLED',
           })
           .subscribe((res) => {
-            console.log(res);
             this.fetchDeliveryHistory();
           });
     }).closed;

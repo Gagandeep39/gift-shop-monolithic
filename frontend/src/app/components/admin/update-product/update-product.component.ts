@@ -7,7 +7,7 @@
  */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { Product } from 'src/app/models/product.model';
@@ -24,7 +24,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class UpdateProductComponent implements OnInit {
   productId;
   submitted = false;
-  updateProductForm: FormGroup;
+  updateProductForm: UntypedFormGroup;
   categories: Category[] = [];
   statuses = ['ENABLED', 'DISABLED'];
   product: Product;
@@ -47,16 +47,16 @@ export class UpdateProductComponent implements OnInit {
     this.populateData();
   }
   initForm() {
-    this.updateProductForm = new FormGroup({
-      productId: new FormControl(this.productId),
-      productName: new FormControl('', [Validators.required]),
-      productPrice: new FormControl('', [Validators.required]),
-      discountPercent: new FormControl('', [Validators.required]),
-      productStock: new FormControl('', [Validators.required]),
-      productDescription: new FormControl('', [Validators.required]),
-      productIcon: new FormControl('', [Validators.required]),
-      productStatus: new FormControl('', [Validators.required]),
-      categoryId: new FormControl('', [Validators.required]),
+    this.updateProductForm = new UntypedFormGroup({
+      productId: new UntypedFormControl(this.productId),
+      productName: new UntypedFormControl('', [Validators.required]),
+      productPrice: new UntypedFormControl('', [Validators.required]),
+      discountPercent: new UntypedFormControl('', [Validators.required]),
+      productStock: new UntypedFormControl('', [Validators.required]),
+      productDescription: new UntypedFormControl('', [Validators.required]),
+      productIcon: new UntypedFormControl('', [Validators.required]),
+      productStatus: new UntypedFormControl('', [Validators.required]),
+      categoryId: new UntypedFormControl('', [Validators.required]),
     });
   }
   populateData() {
@@ -115,8 +115,6 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateImage(image) {
-    console.log('triggered');
-
     this.productIcon = image;
   }
 

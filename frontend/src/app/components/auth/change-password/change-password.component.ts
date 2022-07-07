@@ -6,7 +6,7 @@
  * @desc [description]
  */
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,7 +19,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./change-password.component.scss'],
 })
 export class ChangePasswordComponent implements OnInit, OnDestroy {
-  resetPasswordForm: FormGroup;
+  resetPasswordForm: UntypedFormGroup;
   submitted = false;
   success = false;
   question = 'Not Found';
@@ -43,8 +43,6 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
 
   resetPassword() {
     this.submitted = true;
-    console.log(this.resetPasswordForm.value);
-
     if (this.resetPasswordForm.valid)
       this.submitResetForm(this.resetPasswordForm.getRawValue());
   }
@@ -64,7 +62,6 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
         },
         (error) => {
           this.loadingService.disableLoading();
-          console.log(error);
           
           if (error.error.message === 'FieldException')
             error.error.errors.forEach((element) =>
@@ -81,12 +78,12 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
     const res = this.eventService.resetPasswordData.value;
     if (res === null) this.router.navigateByUrl('/auth/forgotpassword');
     this.question = res?.securityQuestion;
-    this.resetPasswordForm = new FormGroup({
-      username: new FormControl({ value: res?.username, disabled: true }, [
+    this.resetPasswordForm = new UntypedFormGroup({
+      username: new UntypedFormControl({ value: res?.username, disabled: true }, [
         Validators.required,
       ]),
-      newPassword: new FormControl('', [Validators.required]),
-      securityAnswer: new FormControl('', [Validators.required]),
+      newPassword: new UntypedFormControl('', [Validators.required]),
+      securityAnswer: new UntypedFormControl('', [Validators.required]),
     });
   }
 }

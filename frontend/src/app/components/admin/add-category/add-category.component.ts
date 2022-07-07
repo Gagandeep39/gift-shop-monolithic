@@ -17,11 +17,6 @@ export class AddCategoryComponent implements OnInit {
   ngOnInit() {}
 
   saveCategory() {
-    this.service.createCategory(this.category).subscribe((data) => {
-      console.log(data);
-      
-    });
-    // console.log(this.category);
-    // this.category = new Category();
+    this.service.createCategory(this.category).subscribe();
   }
 }

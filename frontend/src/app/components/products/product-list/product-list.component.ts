@@ -155,9 +155,6 @@ export class ProductListComponent implements OnInit {
       this.previousScrollValue !== window.innerHeight + window.scrollY
     ) {
       this.previousScrollValue = window.innerHeight + window.scrollY;
-      console.log(window.innerHeight + window.scrollY);
-      console.log(this.page);
-      
       this.page++;
       this.fetchAllByPage();
     }
@@ -168,9 +165,7 @@ export class ProductListComponent implements OnInit {
     this.productService
       .fetchAllByPaging(this.page, this.activeSortType.sortBy, this.activeSortType.direction)
       // .pipe(take(1))
-      .subscribe((res: Product[]) => {
-        console.log(this.page);
-        
+      .subscribe((res: Product[]) => {        
         if (!this.activeCategory && !this.productQuery)
           if (
             this.productList &&
@@ -186,7 +181,6 @@ export class ProductListComponent implements OnInit {
             this.productList = res;
           }
         this.loadingService.disableLoading();
-        console.log(this.productList);
         
       });
   }

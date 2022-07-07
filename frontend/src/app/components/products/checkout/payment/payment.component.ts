@@ -56,8 +56,6 @@ export class PaymentComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (res) => {
-          console.log(res);
-
           this.user = res;
         },
       });
@@ -91,13 +89,10 @@ export class PaymentComponent implements OnInit {
   }
 
   calculateOrderSummary(productsInOrder: ProductInOrder[]) {
-    console.log(productsInOrder);
-
     let discountPrice = 0;
     let totalBeforeDiscount = 0;
     let finalTotal;
     for (const key in productsInOrder) {
-      console.log(productsInOrder[key]);
       totalBeforeDiscount += productsInOrder[key].productPrice;
       if (productsInOrder[key].discountPercent === 0)
         discountPrice = productsInOrder[key].productPrice;
@@ -127,7 +122,6 @@ export class PaymentComponent implements OnInit {
     };
     this.cartService.checkout(data).subscribe({
       next: (res) => {
-        console.log(res);
         this.router.navigate(['/products/checkout/success', res['orderId']]);
       },
       complete: () => this.loadingService.disableLoading(),
@@ -160,7 +154,7 @@ export class PaymentComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (res) => this.setOption(res),
-        error: (error) => console.log(error),
+        error: (error) => console.error(error),
         complete: () => this.loadingService.disableLoading(),
       });
   }

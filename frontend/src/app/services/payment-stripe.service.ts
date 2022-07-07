@@ -36,7 +36,6 @@ export class PaymentStripeService {
       token: (token: any) => {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
-        console.log(token);
         this.chargeCard(token.id, amount);
       },
     });
@@ -54,7 +53,6 @@ export class PaymentStripeService {
     // const headers = new HttpHeaders()
     let headers = new HttpHeaders().set('token', token); // create header object
     headers = headers.append('amount', amount.toString()); // add a new header, creating a new object
-    console.log(headers);
 
     this.http
       .post(`${this.paymentServiceUrl}/charge`, {}, { headers })

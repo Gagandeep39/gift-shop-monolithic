@@ -7,7 +7,7 @@
  */
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -22,7 +22,7 @@ import { ManageUserService } from 'src/app/services/manage-user.service';
 })
 export class ShippingDetailsComponent implements OnInit {
   submitted;
-  addressForm: FormGroup;
+  addressForm: UntypedFormGroup;
   deliveryCharge: number;
   address;
   error;
@@ -57,7 +57,7 @@ export class ShippingDetailsComponent implements OnInit {
       .fetchDistance(this.addressForm.value.pincode)
       .subscribe({
         next: (res) => this.handleApiResponse(res),
-        error: (error) => console.log(error),
+        error: (error) => console.error(error),
         complete: () => this.loadingService.disableLoading(),
       });
   }
@@ -70,7 +70,6 @@ export class ShippingDetailsComponent implements OnInit {
       });
     } else {
       this.error = null;
-      console.log(res['route'].distance);
       this.calculateDeliveryCharge(res['route'].distance);
       this.redirectIfFormValidAndSubmitted();
     }
@@ -100,23 +99,23 @@ export class ShippingDetailsComponent implements OnInit {
   }
 
   initAddressForm() {
-    this.addressForm = new FormGroup({
-      state: new FormControl('', [
+    this.addressForm = new UntypedFormGroup({
+      state: new UntypedFormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30),
       ]),
-      area: new FormControl('', [
+      area: new UntypedFormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30),
       ]),
-      city: new FormControl('', [
+      city: new UntypedFormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(30),
       ]),
-      pincode: new FormControl('', [
+      pincode: new UntypedFormControl('', [
         Validators.required,
         Validators.pattern('[0-9]{6}'),
       ]),
@@ -125,11 +124,10 @@ export class ShippingDetailsComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.addressForm.value);
     // Form submitted after handling server response
     this.calculateDistance();
   }
-  navigateToPayment(addressForm: FormGroup) {
+  navigateToPayment(addressForm: UntypedFormGroup) {
     this.router.navigate(['/products/checkout/payment'], {
       state: {
         address: {

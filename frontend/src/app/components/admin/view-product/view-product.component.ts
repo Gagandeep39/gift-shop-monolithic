@@ -19,7 +19,6 @@ export class ViewProductComponent implements OnInit {
   fetchAllProducts() {
     this.service.fetchAllProducts().subscribe((data: Product[]) => {
       this.products = data;
-      console.log(this.products);
     });
   }
 

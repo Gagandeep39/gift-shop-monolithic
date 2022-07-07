@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -14,7 +14,7 @@ export class SocialRegisterComponent implements OnInit {
   email;
 
   submitted = false;
-  userForm: FormGroup;
+  userForm: UntypedFormGroup;
   addUserSubscription: Subscription;
   message = null;
   maxDate = new Date(new Date().setFullYear(new Date().getFullYear() - 14))
@@ -40,7 +40,6 @@ export class SocialRegisterComponent implements OnInit {
   }
 
   addUser(formData) {
-    console.log(formData);
     
     this.loadingService.enableLoading();
     this.addUserSubscription = this.socialAuthService
@@ -55,7 +54,6 @@ export class SocialRegisterComponent implements OnInit {
           }, 3000);
         },
         (error) => {
-          console.log(error);
           this.loadingService.disableLoading();
           if (error.error.message === 'FieldException')
             error.error.errors.forEach((element) =>
@@ -69,28 +67,28 @@ export class SocialRegisterComponent implements OnInit {
   }
 
   initForm() {
-    this.userForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      phoneNo: new FormControl('', [Validators.required]),
-      emailId: new FormControl(this.email, [Validators.required]),
-      address: new FormGroup({
-        state: new FormControl('', [
+    this.userForm = new UntypedFormGroup({
+      firstName: new UntypedFormControl('', [Validators.required]),
+      lastName: new UntypedFormControl('', [Validators.required]),
+      phoneNo: new UntypedFormControl('', [Validators.required]),
+      emailId: new UntypedFormControl(this.email, [Validators.required]),
+      address: new UntypedFormGroup({
+        state: new UntypedFormControl('', [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(30),
         ]),
-        area: new FormControl('', [
+        area: new UntypedFormControl('', [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(30),
         ]),
-        city: new FormControl('', [
+        city: new UntypedFormControl('', [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(30),
         ]),
-        pincode: new FormControl('', [
+        pincode: new UntypedFormControl('', [
           Validators.required,
           Validators.pattern('[0-9]{6}'),
         ]),

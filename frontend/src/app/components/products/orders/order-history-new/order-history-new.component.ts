@@ -54,8 +54,7 @@ export class OrderHistoryNewComponent implements OnInit {
         next: (res: Order[]) => {
           this.dataSource.data = res.reverse();
           this.orderHistory = res;
-        },
-        complete: () => console.log('Completed'),
+        }
       });
   }
 

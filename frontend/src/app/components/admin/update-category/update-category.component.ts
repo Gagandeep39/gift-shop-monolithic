@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
@@ -15,7 +15,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class UpdateCategoryComponent implements OnInit {
   categoryId;
   submitted = false;
-  updateCategoryForm: FormGroup;
+  updateCategoryForm: UntypedFormGroup;
   categories: Category[] = [];
   category: Category;
   categoryImageUrl = '';
@@ -35,11 +35,11 @@ export class UpdateCategoryComponent implements OnInit {
     this.populateData();
   }
   initForm() {
-    this.updateCategoryForm = new FormGroup({
-      categoryId: new FormControl(this.categoryId),
-      categoryName: new FormControl('', [Validators.required]),
-      categoryDescription: new FormControl('', [Validators.required]),
-      categoryImageUrl: new FormControl('', [Validators.required]),
+    this.updateCategoryForm = new UntypedFormGroup({
+      categoryId: new UntypedFormControl(this.categoryId),
+      categoryName: new UntypedFormControl('', [Validators.required]),
+      categoryDescription: new UntypedFormControl('', [Validators.required]),
+      categoryImageUrl: new UntypedFormControl('', [Validators.required]),
     });
   }
   populateData() {

@@ -15,9 +15,6 @@ export class AccessDeniedComponent implements OnInit {
   }
 
   previousPage() {
-    console.log('Clicked');
-    console.log(this.returnUrl);
-    
     this.router.navigateByUrl(this.returnUrl);
   }
 }
