@@ -2,6 +2,10 @@
 spring:
   aop:
     auto: true
+  # New Syntax for specificying plaform
+  sql:
+    init:
+      platform: h2
   h2:
     console:
       enabled: true
@@ -11,12 +15,11 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-    platform: h2
   jpa:
     hibernate:
       ddl-auto: create
     show-sql: true
-    # Fixes table not found error in Spring boot 2.4+ 
+    # Fixes table not found error in Spring boot 2.4+
     # Ensures data.sql is executed after initilzing hibernate
     defer-datasource-initialization: true
 logging:
