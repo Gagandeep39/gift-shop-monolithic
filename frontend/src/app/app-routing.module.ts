@@ -35,7 +35,6 @@ import { DeliveryHistoryComponent } from './components/products/orders/delivery-
 import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
 import { OrderDetailsComponent } from './components/products/orders/order-details/order-details.component';
 import { OrderHistoryNewComponent } from './components/products/orders/order-history-new/order-history-new.component';
-import { OrderHistoryComponent } from './components/products/orders/order-history/order-history.component';
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductsComponent } from './components/products/products.component';

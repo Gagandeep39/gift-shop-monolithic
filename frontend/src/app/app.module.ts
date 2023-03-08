@@ -17,7 +17,6 @@ import { ProductDetailsComponent } from './components/products/product-details/p
 import { CartSummaryComponent } from './components/products/checkout/cart-summary/cart-summary.component';
 import { ShippingDetailsComponent } from './components/products/checkout/shipping-details/shipping-details.component';
 import { PaymentComponent } from './components/products/checkout/payment/payment.component';
-import { OrderHistoryComponent } from './components/products/orders/order-history/order-history.component';
 import { DeliveryHistoryComponent } from './components/products/orders/delivery-history/delivery-history.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { ViewProductComponent } from './components/admin/view-product/view-product.component';
@@ -75,7 +74,6 @@ import { AuthComponent } from './components/auth/auth.component';
     CartSummaryComponent,
     ShippingDetailsComponent,
     PaymentComponent,
-    OrderHistoryComponent,
     DeliveryHistoryComponent,
     AddProductComponent,
     ViewProductComponent,
