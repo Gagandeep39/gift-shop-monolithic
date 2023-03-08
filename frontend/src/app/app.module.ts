@@ -18,8 +18,6 @@ import { CartSummaryComponent } from './components/products/checkout/cart-summar
 import { ShippingDetailsComponent } from './components/products/checkout/shipping-details/shipping-details.component';
 import { PaymentComponent } from './components/products/checkout/payment/payment.component';
 import { DeliveryHistoryComponent } from './components/products/orders/delivery-history/delivery-history.component';
-import { AddProductComponent } from './components/admin/add-product/add-product.component';
-import { ViewProductComponent } from './components/admin/view-product/view-product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/products/orders/orders.component';
 import { CheckoutComponent } from './components/products/checkout/checkout.component';
@@ -41,7 +39,6 @@ import { AuthModalComponent } from './shared/auth-modal/auth-modal.component';
 import { CartConfirmModalComponent } from './shared/cart-confirm-modal/cart-confirm-modal.component';
 import { OrderCancelModalComponent } from './shared/order-cancel-modal/order-cancel-modal.component';
 import { UpdateProductComponent } from './components/admin/update-product/update-product.component';
-import { OrderDetailsComponent } from './components/products/orders/order-details/order-details.component';
 import { GlobalErrorModalComponent } from './shared/global-error-modal/global-error-modal.component';
 import { SocialRegisterComponent } from './components/auth/social-register/social-register.component';
 import { AccessDeniedModalComponent } from './shared/access-denied-modal/access-denied-modal.component';
@@ -74,8 +71,6 @@ import { AuthComponent } from './components/auth/auth.component';
     ShippingDetailsComponent,
     PaymentComponent,
     DeliveryHistoryComponent,
-    AddProductComponent,
-    ViewProductComponent,
     UpdateProductComponent,
     ProductsComponent,
     OrdersComponent,
@@ -93,7 +88,6 @@ import { AuthComponent } from './components/auth/auth.component';
     AuthModalComponent,
     CartConfirmModalComponent,
     OrderCancelModalComponent,
-    OrderDetailsComponent,
     GlobalErrorModalComponent,
     SocialRegisterComponent,
     AccessDeniedModalComponent,
