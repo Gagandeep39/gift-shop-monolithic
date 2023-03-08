@@ -9,6 +9,8 @@ import { UpdateCategoryComponent } from './update-category/update-category.compo
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ViewCategoriesComponent } from './view-categories/view-categories.component';
 import { ViewProductNewComponent } from './view-product-new/view-product-new.component';
+import { AdminComponent } from './admin.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { ViewProductNewComponent } from './view-product-new/view-product-new.com
     UpdateProductComponent,
     ViewCategoriesComponent,
     ViewProductNewComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
     MaterialCustomModule,
     AdminRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   exports: [],
 })
