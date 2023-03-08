@@ -50,7 +50,6 @@ import { EditProfileComponent } from './components/products/edit-profile/edit-pr
 import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
 import { MaterialCustomModule } from './material-custom/material-custom.module';
 import { UpdateCategoryComponent } from './components/admin/update-category/update-category.component';
-import { AddCategoryComponent } from './components/admin/add-category/add-category.component';
 import { CategoryCarauselComponent } from './components/products/product-list/category-carausel/category-carausel.component';
 import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
 import { ProductDetailCardComponent } from './components/products/orders/order-details-new/product-detail-card/product-detail-card.component';
@@ -102,7 +101,6 @@ import { AuthComponent } from './components/auth/auth.component';
     EditProfileComponent,
     ViewCategoriesComponent,
     UpdateCategoryComponent,
-    AddCategoryComponent,
     CategoryCarauselComponent,
     OrderDetailsNewComponent,
     ProductDetailCardComponent,

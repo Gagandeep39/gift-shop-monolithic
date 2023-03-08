@@ -8,7 +8,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCategoryNewComponent } from './components/admin/add-category-new/add-category-new.component';
-import { AddCategoryComponent } from './components/admin/add-category/add-category.component';
 import { AddProductNewComponent } from './components/admin/add-product-new/add-product-new.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { AdminComponent } from './components/admin/admin.component';
