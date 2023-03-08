@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
-import { CartComponent } from './components/products/cart/cart.component';
 import { CartSummaryComponent } from './components/products/checkout/cart-summary/cart-summary.component';
 import { ShippingDetailsComponent } from './components/products/checkout/shipping-details/shipping-details.component';
 import { PaymentComponent } from './components/products/checkout/payment/payment.component';
@@ -73,7 +72,6 @@ import { AuthComponent } from './components/auth/auth.component';
     LoginComponent,
     RegisterComponent,
     ProductDetailsComponent,
-    CartComponent,
     CartSummaryComponent,
     ShippingDetailsComponent,
     PaymentComponent,

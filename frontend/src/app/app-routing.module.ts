@@ -25,7 +25,6 @@ import { RequestQuestionComponent } from './components/auth/request-question/req
 import { SocialRegisterComponent } from './components/auth/social-register/social-register.component';
 import { AboutUsComponent } from './components/products/about-us/about-us.component';
 import { CartNewComponent } from './components/products/cart-new/cart-new.component';
-import { CartComponent } from './components/products/cart/cart.component';
 import { CartSummaryComponent } from './components/products/checkout/cart-summary/cart-summary.component';
 import { CheckoutComponent } from './components/products/checkout/checkout.component';
 import { PaymentSuccessComponent } from './components/products/checkout/payment-success/payment-success.component';
