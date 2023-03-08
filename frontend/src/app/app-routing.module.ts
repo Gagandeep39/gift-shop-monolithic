@@ -65,50 +65,10 @@ const routes: Routes = [
 
   {
     path: 'products',
-    component: ProductsComponent,
-    children: [
-      { path: '', component: ProductListComponent },
-      { path: 'cart', component: CartNewComponent, canActivate: [AuthGuard] },
-      {
-        path: 'orders',
-        component: OrderHistoryNewComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'profile',
-        component: ViewProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'editprofile',
-        component: EditProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'orders/:orderId',
-        component: OrderDetailsNewComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: 'about', component: AboutUsComponent },
-      {
-        path: 'delivery/:orderId',
-        component: DeliveryHistoryComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'checkout',
-        component: CheckoutComponent,
-        canActivate: [AuthGuard],
-        children: [
-          { path: 'summary', component: CartSummaryComponent },
-          { path: 'shipping', component: ShippingDetailsComponent },
-          { path: 'payment', component: PaymentComponent },
-          { path: 'success/:orderId', component: PaymentSuccessComponent },
-          { path: '', redirectTo: 'shipping', pathMatch: 'full' },
-        ],
-      },
-      { path: ':productId', component: ProductDetailsComponent },
-    ],
+    loadChildren: () =>
+      import('./components/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
   },
   {
     path: 'admin',
