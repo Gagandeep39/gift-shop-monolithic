@@ -7,60 +7,14 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './components/auth/auth.component';
-import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-import { RequestQuestionComponent } from './components/auth/request-question/request-question.component';
-import { SocialRegisterComponent } from './components/auth/social-register/social-register.component';
-import { AboutUsComponent } from './components/products/about-us/about-us.component';
-import { CartNewComponent } from './components/products/cart-new/cart-new.component';
-import { CartSummaryComponent } from './components/products/checkout/cart-summary/cart-summary.component';
-import { CheckoutComponent } from './components/products/checkout/checkout.component';
-import { PaymentSuccessComponent } from './components/products/checkout/payment-success/payment-success.component';
-import { PaymentComponent } from './components/products/checkout/payment/payment.component';
-import { ShippingDetailsComponent } from './components/products/checkout/shipping-details/shipping-details.component';
-import { EditProfileComponent } from './components/products/edit-profile/edit-profile.component';
-import { DeliveryHistoryComponent } from './components/products/orders/delivery-history/delivery-history.component';
-import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
-import { OrderHistoryNewComponent } from './components/products/orders/order-history-new/order-history-new.component';
-import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
-import { ProductListComponent } from './components/products/product-list/product-list.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ViewProfileComponent } from './components/products/view-profile/view-profile.component';
-import { AuthAccessGuard } from './guards/auth-access.guard';
-import { AuthGuard } from './guards/auth.guard';
-import { RoleGuard } from './guards/role.guard';
 import { AccessDeniedComponent } from './shared/access-denied/access-denied.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: 'auth',
-    component: AuthComponent,
-    canActivate: [AuthAccessGuard],
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
-        path: 'socialregister',
-        component: SocialRegisterComponent,
-      },
-      {
-        path: 'forgotpassword',
-        component: RequestQuestionComponent,
-      },
-      {
-        path: 'changepassword',
-        component: ChangePasswordComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
 
   {
