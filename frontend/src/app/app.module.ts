@@ -38,23 +38,17 @@ import { AccessDeniedComponent } from './shared/access-denied/access-denied.comp
 import { AuthModalComponent } from './shared/auth-modal/auth-modal.component';
 import { CartConfirmModalComponent } from './shared/cart-confirm-modal/cart-confirm-modal.component';
 import { OrderCancelModalComponent } from './shared/order-cancel-modal/order-cancel-modal.component';
-import { UpdateProductComponent } from './components/admin/update-product/update-product.component';
 import { GlobalErrorModalComponent } from './shared/global-error-modal/global-error-modal.component';
 import { SocialRegisterComponent } from './components/auth/social-register/social-register.component';
 import { AccessDeniedModalComponent } from './shared/access-denied-modal/access-denied-modal.component';
 import { ViewProfileComponent } from './components/products/view-profile/view-profile.component';
 import { EditProfileComponent } from './components/products/edit-profile/edit-profile.component';
-import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
 import { MaterialCustomModule } from './material-custom/material-custom.module';
-import { UpdateCategoryComponent } from './components/admin/update-category/update-category.component';
 import { CategoryCarauselComponent } from './components/products/product-list/category-carausel/category-carausel.component';
 import { OrderDetailsNewComponent } from './components/products/orders/order-details-new/order-details-new.component';
 import { ProductDetailCardComponent } from './components/products/orders/order-details-new/product-detail-card/product-detail-card.component';
-import { ViewProductNewComponent } from './components/admin/view-product-new/view-product-new.component';
 import { UpdateStatusModalComponent } from './shared/update-status-modal/update-status-modal.component';
-import { AddProductNewComponent } from './components/admin/add-product-new/add-product-new.component';
 import { FormSubmitModalComponent } from './shared/form-submit-modal/form-submit-modal.component';
-import { AddCategoryNewComponent } from './components/admin/add-category-new/add-category-new.component';
 import { PaymentSuccessComponent } from './components/products/checkout/payment-success/payment-success.component';
 import { CartNewComponent } from './components/products/cart-new/cart-new.component';
 import { CartItemCardComponent } from './components/products/cart-new/cart-item-card/cart-item-card.component';
@@ -71,7 +65,6 @@ import { AuthComponent } from './components/auth/auth.component';
     ShippingDetailsComponent,
     PaymentComponent,
     DeliveryHistoryComponent,
-    UpdateProductComponent,
     ProductsComponent,
     OrdersComponent,
     CheckoutComponent,
@@ -93,16 +86,11 @@ import { AuthComponent } from './components/auth/auth.component';
     AccessDeniedModalComponent,
     ViewProfileComponent,
     EditProfileComponent,
-    ViewCategoriesComponent,
-    UpdateCategoryComponent,
     CategoryCarauselComponent,
     OrderDetailsNewComponent,
     ProductDetailCardComponent,
-    ViewProductNewComponent,
     UpdateStatusModalComponent,
-    AddProductNewComponent,
     FormSubmitModalComponent,
-    AddCategoryNewComponent,
     PaymentSuccessComponent,
     CartNewComponent,
     CartItemCardComponent,

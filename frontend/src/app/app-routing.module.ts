@@ -7,13 +7,6 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddCategoryNewComponent } from './components/admin/add-category-new/add-category-new.component';
-import { AddProductNewComponent } from './components/admin/add-product-new/add-product-new.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { UpdateCategoryComponent } from './components/admin/update-category/update-category.component';
-import { UpdateProductComponent } from './components/admin/update-product/update-product.component';
-import { ViewCategoriesComponent } from './components/admin/view-categories/view-categories.component';
-import { ViewProductNewComponent } from './components/admin/view-product-new/view-product-new.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -119,18 +112,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard, RoleGuard],
-    data: { role: 'Admin' },
-    children: [
-      { path: 'add', component: AddProductNewComponent },
-      { path: 'view', component: ViewProductNewComponent },
-      { path: 'categoryview', component: ViewCategoriesComponent },
-      { path: 'categoryadd', component: AddCategoryNewComponent },
-      { path: 'categoryedit/:categoryId', component: UpdateCategoryComponent },
-      { path: '', redirectTo: 'view', pathMatch: 'full' },
-      { path: 'update/:productId', component: UpdateProductComponent },
-    ],
+    loadChildren: () =>
+      import('./components/admin/admin.module').then((m) => m.AdminModule),
   },
   { path: 'about', redirectTo: 'products/about', pathMatch: 'full' },
   { path: '404', component: NotFoundComponent },
