@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialCustomModule } from '../material-custom/material-custom.module';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AccessDeniedModalComponent } from './access-denied-modal/access-denied-modal.component';
 import { AuthModalComponent } from './auth-modal/auth-modal.component';
@@ -46,7 +45,6 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    MaterialCustomModule,
     RouterModule,
     FormsModule,
   ]
