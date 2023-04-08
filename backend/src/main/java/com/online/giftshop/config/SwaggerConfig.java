@@ -7,22 +7,17 @@
  */
 package com.online.giftshop.config;
 
-import java.util.Arrays;
-import java.util.List;
-
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.Contact;
-import springfox.documentation.service.SecurityReference;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
-import springfox.documentation.spring.web.plugins.Docket;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
 public class SwaggerConfig {
@@ -30,45 +25,31 @@ public class SwaggerConfig {
    * @api /swagger-ui/index.html
    * @api /v3/api-docs
    */
+  @Bean
+  public GroupedOpenApi api() {
+    return GroupedOpenApi.builder()
+        .packagesToScan("com.online.giftshop")
+        .group("Gift Shop")
+        .build();
+  }
 
   @Bean
-  public Docket api() {                
-      return new Docket(DocumentationType.SWAGGER_2)     
-        .select().apis(RequestHandlerSelectors.basePackage("com.online.giftshop")).build() 
-        .securityContexts(Arrays.asList(securityContext()))
-      .securitySchemes(Arrays.asList(apiKey()))      
-        .apiInfo(apiInfo());
-  }
-
-  private ApiInfo apiInfo() {
-    return new ApiInfoBuilder()
-      .title("Gift Shop - Backend API")
-      .description("E-Commerce Application")
-      .license("Apache 2.0")
-      .licenseUrl("NONE")
-      .version("1.0")
-      .contact(
-        new Contact(
-          "Gagandeep Singh", 
-          "NONE", 
-          "Doesn't Exist")
-      )
-      .build();
-  }
-
-  private ApiKey apiKey() {
-    return new ApiKey("JWT", "Authorization", "header");
-  }
-
-  private SecurityContext securityContext() {
-    return SecurityContext.builder().securityReferences(defaultAuth()).build();
-  }
-
-  private List<SecurityReference> defaultAuth() {
-    AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-    authorizationScopes[0] = authorizationScope;
-    return Arrays.asList(new SecurityReference("JWT", authorizationScopes));
+  public OpenAPI apiInfo() {
+    return new OpenAPI()
+        .info(new Info()
+            .title("Gift Shop - Backend API")
+            .description("E-Commerce Application")
+            .version("1.0")
+            .contact(new Contact().name("Gagandeep Singh").url("https://github.com/gagandeep39"))
+            .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+        .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+        .components(new Components().addSecuritySchemes("bearerAuth",
+            new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT")
+                .in(SecurityScheme.In.HEADER)
+                .name("bearerAuth")));
   }
 
 }
