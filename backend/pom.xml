@@ -76,12 +76,12 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
-		</dependency>
+		</dependency> -->
 
 		
 		<!-- Jwt -->
@@ -123,6 +123,13 @@
   		<artifactId>stripe-java</artifactId>
   		<version>20.35.0</version>
 		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+    	<groupId>org.springdoc</groupId>
+    	<artifactId>springdoc-openapi-ui</artifactId>
+    	<version>1.7.0</version>
+</dependency>
 	</dependencies>
 
 	<build>
