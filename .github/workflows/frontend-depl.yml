@@ -28,7 +28,7 @@ jobs:
           npm install
           npx ng build --configuration=production --base-href=/gift-shop-monolithic/
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+        uses: JamesIves/github-pages-deploy-action@4
         with:
-          branch: gh-pages # The branch the action should deploy to.
+          # branch: gh-pages # The branch the action should deploy to.
           folder: frontend/dist/frontend # The folder the action should deploy.
