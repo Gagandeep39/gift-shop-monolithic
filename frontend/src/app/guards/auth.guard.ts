@@ -1,32 +1,19 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+/**
+ * Prevents certain pages to be accessed when user is not logged in
+ */
+import { inject } from '@angular/core';
+import { RouterStateSnapshot } from '@angular/router';
 import { AuthModalService } from '../services/auth-modal.service';
 import { AuthService } from '../services/auth.service';
-import { EventService } from '../services/event.service';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthGuard  {
-  constructor(
-    private authServie: AuthService,
-    private router: Router,
-    private modalAuthService: AuthModalService,
-  ) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    if (!this.authServie.isAuthenticated()) {
-      this.modalAuthService.open(state.url);
-      // this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-      return false;
-    }
-    return true;
+export const AuthGuard = (state: RouterStateSnapshot) => {
+  const authService = inject(AuthService);
+  const authModalService = inject(AuthModalService);
+
+  if (!authService.isAuthenticated()) {
+    authModalService.open(state.url);
+    return false
   }
-}
+  return true;
+};
+

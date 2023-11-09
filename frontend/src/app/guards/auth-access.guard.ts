@@ -5,29 +5,18 @@
  * @modify date 2021-01-29 14:12:31
  * @desc Prevents logged in user from accessing Auth pages
  */
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthAccessGuard  {
-  constructor(private authServie: AuthService, private router: Router) {}
+export const AuthAccessGuard = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router)
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    if (this.authServie.isAuthenticated()) {
-      this.router.navigateByUrl('/');
-      return false;
-    }
-    return true;
+  if (authService.isAuthenticated()) {
+    router.navigateByUrl('/');
+    return false;
   }
-}
+  return true;
+};
+
