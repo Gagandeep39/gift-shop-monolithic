@@ -19,7 +19,7 @@ jobs:
         distribution: 'adopt'
         java-version: '17'
     - name: Change wrapper permissions
-      run: chmod +x ./mvnw
+      run: chmod +x ./backend/mvnw
     - name: Build with Maven
       run: |
         ./mvnw clean install -B
