@@ -48,3 +48,4 @@ jobs:
         with:
           push: true
           tags: user/gift-shop-api:latest
+          context: backend
