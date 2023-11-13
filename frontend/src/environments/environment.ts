@@ -6,8 +6,7 @@ export const environment = {
   production: false,
   protocol: 'https://',
   // applicationUrl: 'localhost:8085/gift-shop-api',
-  // applicationUrl: 'localhost:1999',
-  applicationUrl: 'gift-shop-api-pgkj.onrender.com', //renderUrl
+  applicationUrl: 'localhost:1999',
   authService: '',
   productService: '',
   orderService: '',
