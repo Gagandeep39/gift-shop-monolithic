@@ -28,7 +28,7 @@ jobs:
       # working-directory: ./backend  # Specify your Spring Boot project directory
   docker:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     # defaults:
     #   run:
     #     working-directory: backend
