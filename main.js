@@ -2365,7 +2365,8 @@ __webpack_require__.r(__webpack_exports__);
 const environment = {
   production: false,
   protocol: 'https://',
-  applicationUrl: 'glacial-bastion-78267.herokuapp.com',
+  // applicationUrl: 'glacial-bastion-78267.herokuapp.com',
+  applicationUrl: 'gift-shop-api-pgkj.onrender.com',
   authService: '',
   productService: '',
   orderService: '',
