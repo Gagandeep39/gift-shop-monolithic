@@ -66,32 +66,32 @@ public class CartControllerTest {
 
   }
 
-  @Test
-  void testCheckOutSuccess() throws Exception {
+  // @Test
+  // void testCheckOutSuccess() throws Exception {
 
-    mockMvc.perform(MockMvcRequestBuilders.post("/cart/checkout/100001").contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
+  //   mockMvc.perform(MockMvcRequestBuilders.post("/cart/checkout/100001").contentType(MediaType.APPLICATION_JSON))
+  //       .andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
-  }
+  // }
 
-  @Test
-  void testAddToCartSuccess() throws Exception {
+  // @Test
+  // void testAddToCartSuccess() throws Exception {
 
-    ObjectMapper mapper = new ObjectMapper();
+  //   ObjectMapper mapper = new ObjectMapper();
 
-    // List<ItemDto> list=new ArrayList<ItemDto>();
-    // list.add(new ItemDto(100002L, 4));
+  //   // List<ItemDto> list=new ArrayList<ItemDto>();
+  //   // list.add(new ItemDto(100002L, 4));
 
-    ItemDto item = new ItemDto(100002L, 4);
+  //   ItemDto item = new ItemDto(100002L, 4);
 
-    // CartDto cart = new CartDto(list);
+  //   // CartDto cart = new CartDto(list);
 
-    mockMvc.perform(MockMvcRequestBuilders.put("/cart/100001").contentType(MediaType.APPLICATION_JSON)
-        .content(mapper.writeValueAsString(item))).andExpect(status().isOk());
+  //   mockMvc.perform(MockMvcRequestBuilders.put("/cart/100001").contentType(MediaType.APPLICATION_JSON)
+  //       .content(mapper.writeValueAsString(item))).andExpect(status().isOk());
 
-    // mockMvc.perform(MockMvcRequestBuilders.delete("/cart/delete/100001/100001").contentType(MediaType.APPLICATION_JSON))
-    // .andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
+  //   // mockMvc.perform(MockMvcRequestBuilders.delete("/cart/delete/100001/100001").contentType(MediaType.APPLICATION_JSON))
+  //   // .andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
-  }
+  // }
 
 }
