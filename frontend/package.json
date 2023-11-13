@@ -1,10 +1,10 @@
 {
   "name": "gift-shop-monolithic",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": {
     "name": "Gagandeep Singh",
     "email": "singh.gagandeep3911@gmail.com",
-    "url": "https://github.com/Gagandeep39"
+    "url": "https://github.com/Gagandeep39/gift-shop-monolithic"
   },
   "scripts": {
     "ng": "ng",
