@@ -1,6 +1,5 @@
-ENV JAVA_OPTS="-Xmx512m -Xms256m"
-
 FROM maven:3.8.4-openjdk-17 AS build
+ENV JAVA_OPTS="-Xmx512m -Xms256m"
 WORKDIR /app
 COPY ./backend .
 RUN mvn clean package -DskipTests
