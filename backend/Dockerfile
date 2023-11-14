@@ -1,10 +1,11 @@
-FROM maven:3.6.3-jdk-8 AS build
+FROM maven:3.8.4-openjdk-17 AS build
+ENV JAVA_OPTS="-Xmx512m -Xms256m"
 WORKDIR /app
-COPY . .
+COPY ./backend .
 RUN mvn clean package -DskipTests
-RUN cp target/*.war app.war
+RUN cp target/*.jar app.jar
 
-FROM openjdk:8-jre-alpine
+FROM openjdk:17-alpine
 COPY --from=build /app .
 EXPOSE 1999
-ENTRYPOINT [ "java", "-jar", "app.war" ]
+ENTRYPOINT [ "java", "-jar", "app.jar" ]

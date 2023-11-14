@@ -1,0 +1,50 @@
+name: Render Deploy - Docker
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'backend/**'  # Triggers workflow only when there are changes in backend directory
+defaults:
+  run:
+    working-directory: ./backend # Not working
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set datetime tag
+        run: echo "DATETIME_TAG=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: |
+            gagandeep39/gift-shop-api:${{ env.DATETIME_TAG }}
+            gagandeep39/gift-shop-api:latest
+          # context: backend
+          file: backend/Dockerfile
+  # Deploy new Image to Render
+  # Calls a webhook which pulls the lates image from docker
+  render-deploy:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"

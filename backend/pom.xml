@@ -137,7 +137,9 @@
 		<finalName>gift-shop-api</finalName>
 		<plugins>
 			<!-- JCOCO -->
-			<plugin>
+			<!-- Removing Jacoco temporarily -->
+			<!-- TODO Add it back -->
+			<!-- <plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.6</version>
@@ -164,7 +166,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
