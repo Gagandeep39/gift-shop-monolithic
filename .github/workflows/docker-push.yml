@@ -26,12 +26,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set datetime tag
+        run: echo "DATETIME_TAG=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
       -
         name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: gagandeep39/gift-shop-api:$(date +"%Y%m%d%H%M%S")
+          tags: gagandeep39/gift-shop-api:${{ env.DATETIME_TAG }}
           # context: backend
           file: backend/Dockerfile
   # Deploy new Image to Render
