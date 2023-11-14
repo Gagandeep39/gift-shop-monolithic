@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - '**'
+    paths:
+      - 'backend/**'  # Triggers workflow only when there are changes in backend directory
 defaults:
   run:
     working-directory: ./backend # Not working
